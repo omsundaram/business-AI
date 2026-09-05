@@ -2,14 +2,18 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from openai import OpenAI
+import google.generativeai as genai
 import os, json
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-# API Key Render ke Environment Variables se automatically aayegi
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Gemini API Key Render ke Environment Variables se aayegi
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=GEMINI_API_KEY)
+
+# Gemini Model Setup
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 BUSINESS_DB = {}
 
@@ -26,13 +30,19 @@ async def serve_home(request: Request):
 
 @app.post("/api/register")
 async def register_business(data: BusinessRegister):
-    prompt = f"Create a marketing strategy JSON for business: {data.business_name}, {data.category} in {data.city}. Offer: {data.offers}. Keys: tagline, target_audience, brand_tone, welcome_pitch."
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"}
-    )
-    BUSINESS_DB["profile"] = {"info": data.dict(), "brand": json.loads(response.choices[0].message.content)}
+    prompt = f"""
+    Create a marketing strategy JSON for business:
+    Name: {data.business_name}, Category: {data.category}, City: {data.city}, Services: {data.services}, Offer: {data.offers}.
+    Return ONLY a valid JSON object with keys: tagline, target_audience, brand_tone, welcome_pitch. No markdown formatting.
+    """
+    response = model.generate_content(prompt)
+    clean_text = response.text.replace("```json", "").replace("```", "").strip()
+    try:
+        brand_json = json.loads(clean_text)
+    except:
+        brand_json = {"tagline": response.text}
+        
+    BUSINESS_DB["profile"] = {"info": data.dict(), "brand": brand_json}
     return {"status": "success", "data": BUSINESS_DB["profile"]}
 
 @app.post("/api/generate-content")
@@ -40,35 +50,45 @@ async def generate_content():
     if "profile" not in BUSINESS_DB:
         return JSONResponse(status_code=400, content={"error": "Pehle register karein."})
     info = BUSINESS_DB["profile"]["info"]
-    prompt = f"Write an Instagram promotional caption and hashtags for {info['business_name']} ({info['category']}). JSON keys: caption, hashtags."
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"}
-    )
-    return {"status": "success", "content": json.loads(response.choices[0].message.content)}
+    prompt = f"""
+    Write an Instagram promotional caption and hashtags for {info['business_name']} ({info['category']}) in {info['city']}.
+    Return ONLY valid JSON with keys: caption, hashtags. No markdown formatting.
+    """
+    response = model.generate_content(prompt)
+    clean_text = response.text.replace("```json", "").replace("```", "").strip()
+    try:
+        content_json = json.loads(clean_text)
+    except:
+        content_json = {"caption": response.text, "hashtags": ""}
+    return {"status": "success", "content": content_json}
 
 @app.post("/api/find-leads")
 async def find_leads():
     if "profile" not in BUSINESS_DB:
         return JSONResponse(status_code=400, content={"error": "Pehle register karein."})
     info = BUSINESS_DB["profile"]["info"]
-    prompt = f"Generate 5 target leads for {info['category']} in {info['city']}. JSON keys: leads (array of objects with name, contact, interest)."
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"}
-    )
-    return {"status": "success", "leads": json.loads(response.choices[0].message.content)}
+    prompt = f"""
+    Generate 5 target potential business/client leads for {info['category']} in {info['city']}.
+    Return ONLY valid JSON with format: {{"leads": [{{"name": "...", "contact": "+91 98XXXXXXXX", "interest": "High"}}]}}. No markdown.
+    """
+    response = model.generate_content(prompt)
+    clean_text = response.text.replace("```json", "").replace("```", "").strip()
+    try:
+        leads_json = json.loads(clean_text)
+    except:
+        leads_json = {"leads": []}
+    return {"status": "success", "leads": leads_json}
 
 @app.post("/api/chat-reply")
 async def chat_reply(customer_query: str = Form(...)):
     if "profile" not in BUSINESS_DB:
         return {"reply": "Namaste! Hamari service jald live hogi."}
     info = BUSINESS_DB["profile"]["info"]
-    system_prompt = f"Tum {info['business_name']} ke customer executive ho. Services: {info['services']}. Offers: {info['offers']}. Helpful Hindi/Hinglish me jawab do."
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": customer_query}]
-    )
-    return {"reply": response.choices[0].message.content}
+    prompt = f"""
+    Tum {info['business_name']} ({info['category']}, {info['city']}) ke customer executive ho.
+    Services: {info['services']}. Offers: {info['offers']}.
+    Customer Query: "{customer_query}"
+    Ek helpful, polite Hindi/Hinglish reply do.
+    """
+    response = model.generate_content(prompt)
+    return {"reply": response.text}
