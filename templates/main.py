@@ -29,7 +29,6 @@ class BusinessRegister(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_home(request: Request):
-    # Naye FastAPI versions ke liye keyword arguments
     return templates.TemplateResponse(request=request, name="dashboard.html")
 
 @app.post("/api/register")
