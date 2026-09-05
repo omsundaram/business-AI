@@ -1,8 +1,7 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel
-import google.generativeai as genai
-import os, json
+import os, json, urllib.request, urllib.error
 from pathlib import Path
 
 app = FastAPI()
@@ -22,21 +21,42 @@ def get_html_content():
                 return f.read()
     return "<h1>dashboard.html not found</h1>"
 
-# Gemini Setup with fallback model name
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
 
-def get_model():
-    # Model name compatibility check
-    for m in ["gemini-1.5-flash-latest", "gemini-1.5-pro-latest", "gemini-pro"]:
+# Bulletproof direct Google API caller (Zero SDK error, Zero 404 model error)
+def call_gemini(prompt: str) -> str:
+    if not GEMINI_API_KEY:
+        return "Error: GEMINI_API_KEY Render environment me nahi mili."
+
+    # Models list to try sequentially
+    models = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"]
+    
+    for m in models:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={GEMINI_API_KEY}"
+        headers = {"Content-Type": "application/json"}
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}]
+        }
         try:
-            return genai.GenerativeModel(m)
-        except Exception:
-            continue
-    return genai.GenerativeModel("gemini-1.5-flash")
+            req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+            with urllib.request.urlopen(req, timeout=20) as response:
+                result = json.loads(response.read().decode("utf-8"))
+                candidates = result.get("candidates", [])
+                if candidates:
+                    parts = candidates[0].get("content", {}).get("parts", [])
+                    if parts:
+                        return parts[0].get("text", "")
+        except urllib.error.HTTPError as e:
+            err_msg = e.read().decode("utf-8")
+            # Agar 404 model not found hai to agle model par jao
+            if e.code == 404:
+                continue
+            return f"Google API Error ({e.code}): {err_msg}"
+        except Exception as e:
+            return f"Connection Error: {str(e)}"
 
-model = get_model()
+    return "AI generation failed. Kripya API Key check karein."
+
 BUSINESS_DB = {}
 
 class FullBusinessRegister(BaseModel):
@@ -65,69 +85,48 @@ async def serve_home():
 
 @app.post("/api/register")
 async def register_business(data: FullBusinessRegister):
-    try:
-        if not GEMINI_API_KEY:
-            return JSONResponse(status_code=500, content={"status": "error", "message": "GEMINI_API_KEY missing hai Render environment me."})
+    prompt = f"""
+    Act as a World-Class CMO. Create a professional Marketing Blueprint for:
+    - Business: {data.business_name} (Owner: {data.owner_name})
+    - Niche: {data.category} -> {data.subcategory}
+    - Location: {data.city}, {data.state}, {data.country}
+    - Services: {data.services}
+    - Offers: {data.offers}
+    - Package: {data.package_name} (Rs. {data.package_price})
 
-        prompt = f"""
-        Act as an Elite Business Consultant and CMO.
-        Create an executive marketing and growth strategy for:
-        - Business: {data.business_name} (Owner: {data.owner_name})
-        - Niche: {data.category} -> {data.subcategory}
-        - Location: {data.city}, {data.state}, {data.country}
-        - Services: {data.services}
-        - Current Offer: {data.offers}
-        - Selected Plan: {data.package_name} (Rs. {data.package_price})
-
-        Provide:
-        1. Winning Brand Tagline
-        2. Target Audience Profile
-        3. 30-Day Client Acquisition Plan
-        4. WhatsApp Onboarding Welcome Pitch
-        """
-        response = model.generate_content(prompt)
-        ai_text = response.text if hasattr(response, 'text') else str(response)
-
-        BUSINESS_DB["profile"] = {
-            "info": data.dict(),
-            "brand": ai_text
-        }
-        return JSONResponse(content={"status": "success", "data": BUSINESS_DB["profile"]})
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"status": "error", "message": str(e)})
+    Provide:
+    1. Winning Tagline
+    2. Target Customer Persona
+    3. 30-Day Growth Strategy
+    4. WhatsApp Onboarding Welcome Pitch
+    """
+    output = call_gemini(prompt)
+    BUSINESS_DB["profile"] = {"info": data.dict(), "brand": output}
+    return JSONResponse(content={"status": "success", "data": BUSINESS_DB["profile"]})
 
 @app.post("/api/generate-content")
 async def generate_content():
-    try:
-        if "profile" not in BUSINESS_DB:
-            return JSONResponse(status_code=400, content={"error": "Pehle form bharkar register karein."})
-        info = BUSINESS_DB["profile"]["info"]
-        prompt = f"Write 2 high-converting Instagram ad posts with 15 viral hashtags for {info['business_name']} ({info['subcategory']}) in {info['city']}. Offer: {info['offers']}."
-        response = model.generate_content(prompt)
-        return JSONResponse(content={"status": "success", "content": {"caption": response.text, "hashtags": ""}})
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"status": "error", "message": str(e)})
+    if "profile" not in BUSINESS_DB:
+        return JSONResponse(status_code=400, content={"error": "Pehle form bharkar register karein."})
+    info = BUSINESS_DB["profile"]["info"]
+    prompt = f"Write 2 high-converting Instagram ad copies with 15 trending hashtags for {info['business_name']} ({info['subcategory']}) in {info['city']}. Current Offer: {info['offers']}."
+    output = call_gemini(prompt)
+    return JSONResponse(content={"status": "success", "content": {"caption": output}})
 
 @app.post("/api/find-leads")
 async def find_leads():
-    try:
-        if "profile" not in BUSINESS_DB:
-            return JSONResponse(status_code=400, content={"error": "Pehle form bharkar register karein."})
-        info = BUSINESS_DB["profile"]["info"]
-        prompt = f"List 5 targeted prospective client categories and potential local partner leads for {info['subcategory']} in {info['city']}, {info['state']}."
-        response = model.generate_content(prompt)
-        return JSONResponse(content={"status": "success", "leads": response.text})
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"status": "error", "message": str(e)})
+    if "profile" not in BUSINESS_DB:
+        return JSONResponse(status_code=400, content={"error": "Pehle form bharkar register karein."})
+    info = BUSINESS_DB["profile"]["info"]
+    prompt = f"List 5 targeted prospective client categories and potential local business leads for {info['subcategory']} in {info['city']}."
+    output = call_gemini(prompt)
+    return JSONResponse(content={"status": "success", "leads": output})
 
 @app.post("/api/chat-reply")
 async def chat_reply(customer_query: str = Form(...)):
-    try:
-        if "profile" not in BUSINESS_DB:
-            return JSONResponse(content={"reply": "Namaste! Hamara AI engine active hai. Kripya apna sawal puchein."})
-        info = BUSINESS_DB["profile"]["info"]
-        prompt = f"Tum '{info['business_name']}' ke AI support executive ho. Services: {info['services']}. Offers: {info['offers']}. Customer Query: '{customer_query}'. Polite Hinglish me professional reply do."
-        response = model.generate_content(prompt)
-        return JSONResponse(content={"reply": response.text})
-    except Exception as e:
-        return JSONResponse(content={"reply": f"Support Executive offline: {str(e)}"})
+    if "profile" not in BUSINESS_DB:
+        return JSONResponse(content={"reply": "Namaste! Hamara platform active hai. Kripya pehle details submit karein."})
+    info = BUSINESS_DB["profile"]["info"]
+    prompt = f"Tum '{info['business_name']}' ke support executive ho. Services: {info['services']}. Offers: {info['offers']}. Query: '{customer_query}'. Polite Hinglish me jawab do."
+    output = call_gemini(prompt)
+    return JSONResponse(content={"reply": output})
