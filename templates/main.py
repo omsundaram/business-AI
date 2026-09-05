@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse
-from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 import google.generativeai as genai
 import os, json
@@ -8,10 +7,19 @@ from pathlib import Path
 
 app = FastAPI()
 
-# Jinja2 template setup (FastAPI new syntax)
+# Jinja2 hata diya, seedha file read karenge (Zero Cache/Tuple Error)
 BASE_DIR = Path(__file__).resolve().parent
-TEMPLATES_DIR = BASE_DIR if (BASE_DIR / "dashboard.html").exists() else BASE_DIR / "templates"
-templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
+
+def get_html_content():
+    # File chahe root par ho ya templates folder mein, dono jagah dhoondhega
+    file_path = BASE_DIR / "dashboard.html"
+    if not file_path.exists():
+        file_path = BASE_DIR / "templates" / "dashboard.html"
+    if not file_path.exists():
+        file_path = BASE_DIR.parent / "templates" / "dashboard.html"
+    
+    with open(file_path, "r", encoding="utf-8") as f:
+        return f.read()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 if GEMINI_API_KEY:
@@ -28,8 +36,8 @@ class BusinessRegister(BaseModel):
     offers: str
 
 @app.get("/", response_class=HTMLResponse)
-async def serve_home(request: Request):
-    return templates.TemplateResponse(request=request, name="dashboard.html")
+async def serve_home():
+    return HTMLResponse(content=get_html_content())
 
 @app.post("/api/register")
 async def register_business(data: BusinessRegister):
@@ -48,7 +56,7 @@ async def generate_content():
     if "profile" not in BUSINESS_DB:
         return JSONResponse(status_code=400, content={"error": "Pehle register karein."})
     info = BUSINESS_DB["profile"]["info"]
-    prompt = f"Write an Instagram promotional caption and hashtags for {info['business_name']} ({info['category']}). Return JSON keys: caption, hashtags."
+    prompt = f"Write an Instagram caption and hashtags for {info['business_name']} ({info['category']}) in {info['city']}. Return JSON keys: caption, hashtags."
     response = model.generate_content(prompt)
     clean_text = response.text.replace("```json", "").replace("```", "").strip()
     try:
@@ -76,6 +84,6 @@ async def chat_reply(customer_query: str = Form(...)):
     if "profile" not in BUSINESS_DB:
         return {"reply": "Namaste! Hamari service jald live hogi."}
     info = BUSINESS_DB["profile"]["info"]
-    prompt = f"Tum {info['business_name']} ke representative ho. Customer sawal: '{customer_query}'. Polite Hindi/Hinglish me jawab do."
+    prompt = f"Tum {info['business_name']} ke executive ho. Customer sawal: '{customer_query}'. Polite Hindi/Hinglish me jawab do."
     response = model.generate_content(prompt)
     return {"reply": response.text}
