@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Universal Business AI SaaS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+  <div class="max-w-6xl mx-auto py-10 px-4">
+    <header class="border-b border-slate-800 pb-6 mb-8 flex justify-between items-center">
+      <div>
+        <h1 class="text-3xl font-bold text-sky-400">Universal Business AI</h1>
+        <p class="text-slate-400 text-sm">Automated Leads, Branding, Content & Support</p>
+      </div>
+      <div id="statusBadge" class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-500/30">
+        Registration Pending
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+        <h2 class="text-xl font-semibold mb-4 text-white">1. Business Setup</h2>
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs text-slate-400">Business Name</label>
+            <input id="b_name" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white" value="Apex Fitness Hub">
+          </div>
+          <div>
+            <label class="text-xs text-slate-400">Category</label>
+            <input id="b_cat" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white" value="Gym & Personal Training">
+          </div>
+          <div>
+            <label class="text-xs text-slate-400">Target City</label>
+            <input id="b_city" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white" value="Jaipur">
+          </div>
+          <div>
+            <label class="text-xs text-slate-400">Services Offered</label>
+            <input id="b_services" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white" value="Weight loss, Muscle building, Diet plans">
+          </div>
+          <div>
+            <label class="text-xs text-slate-400">Offers / Discounts</label>
+            <input id="b_offers" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white" value="Flat 40% OFF on Annual Membership">
+          </div>
+          <button onclick="registerBusiness()" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-medium py-2 rounded-lg text-sm transition">
+            Save & Activate AI Engine
+          </button>
+        </div>
+      </div>
+
+      <div class="md:col-span-2 space-y-6">
+        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-wrap gap-3">
+          <button onclick="generateContent()" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium">Generate Ads & Graphics</button>
+          <button onclick="findLeads()" class="bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded-lg text-sm font-medium">Extract Leads</button>
+        </div>
+
+        <div id="outputArea" class="bg-slate-800 p-6 rounded-xl border border-slate-700 min-h-[300px]">
+          <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Live Output Console</h3>
+          <div id="consoleLog" class="text-slate-300 text-sm whitespace-pre-wrap font-mono bg-slate-950 p-4 rounded-lg border border-slate-800">
+            Business details bhariye aur "Save & Activate" par click karein.
+          </div>
+        </div>
+
+        <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+          <h3 class="text-md font-semibold text-white mb-2">WhatsApp / Support Bot Test</h3>
+          <div class="flex gap-2">
+            <input id="userQuery" placeholder="Customer ban kar sawal puche... e.g. Timing kya hai?" class="flex-1 bg-slate-900 border border-slate-700 rounded p-2 text-sm text-white">
+            <button onclick="testBot()" class="bg-teal-600 hover:bg-teal-500 px-4 py-2 rounded-lg text-sm font-medium">Send</button>
+          </div>
+          <p id="botReply" class="mt-3 text-sm text-teal-400 font-sans"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function registerBusiness() {
+      const payload = {
+        business_name: document.getElementById('b_name').value,
+        category: document.getElementById('b_cat').value,
+        city: document.getElementById('b_city').value,
+        services: document.getElementById('b_services').value,
+        offers: document.getElementById('b_offers').value,
+      };
+      document.getElementById('consoleLog').innerText = "AI Brand Kit generate kar raha hai...";
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      document.getElementById('consoleLog').innerText = JSON.stringify(data.data.brand, null, 2);
+      document.getElementById('statusBadge').innerText = "AI System Active";
+      document.getElementById('statusBadge').className = "bg-emerald-500/20 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-500/30";
+    }
+
+    async function generateContent() {
+      document.getElementById('consoleLog').innerText = "Content aur Ad Copy ready ho rahi hai...";
+      const res = await fetch('/api/generate-content', { method: 'POST' });
+      const data = await res.json();
+      document.getElementById('consoleLog').innerText = "CAPTION:\n" + data.content.caption + "\n\nHASHTAGS:\n" + data.content.hashtags;
+    }
+
+    async function findLeads() {
+      document.getElementById('consoleLog').innerText = "Leads find ki ja rahi hain...";
+      const res = await fetch('/api/find-leads', { method: 'POST' });
+      const data = await res.json();
+      document.getElementById('consoleLog').innerText = JSON.stringify(data.leads, null, 2);
+    }
+
+    async function testBot() {
+      const query = document.getElementById('userQuery').value;
+      if(!query) return;
+      const formData = new FormData();
+      formData.append('customer_query', query);
+      const res = await fetch('/api/chat-reply', { method: 'POST', body: formData });
+      const data = await res.json();
+      document.getElementById('botReply').innerText = "AI Executive: " + data.reply;
+    }
+  </script>
+</body>
+</html>
