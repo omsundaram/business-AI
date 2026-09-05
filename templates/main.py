@@ -4,17 +4,20 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 import google.generativeai as genai
 import os, json
+from pathlib import Path
 
 app = FastAPI()
-templates = Jinja2Templates(directory="templates")
 
-# Gemini API Key Render ke Environment Variables se aayegi
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=GEMINI_API_KEY)
+# Jinja2 template setup (FastAPI new syntax)
+BASE_DIR = Path(__file__).resolve().parent
+TEMPLATES_DIR = BASE_DIR if (BASE_DIR / "dashboard.html").exists() else BASE_DIR / "templates"
+templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
-# Gemini Model Setup
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+
 model = genai.GenerativeModel("gemini-1.5-flash")
-
 BUSINESS_DB = {}
 
 class BusinessRegister(BaseModel):
@@ -26,22 +29,18 @@ class BusinessRegister(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_home(request: Request):
-    return templates.TemplateResponse("dashboard.html", {"request": request})
+    # Naye FastAPI versions ke liye keyword arguments
+    return templates.TemplateResponse(request=request, name="dashboard.html")
 
 @app.post("/api/register")
 async def register_business(data: BusinessRegister):
-    prompt = f"""
-    Create a marketing strategy JSON for business:
-    Name: {data.business_name}, Category: {data.category}, City: {data.city}, Services: {data.services}, Offer: {data.offers}.
-    Return ONLY a valid JSON object with keys: tagline, target_audience, brand_tone, welcome_pitch. No markdown formatting.
-    """
+    prompt = f"Create a marketing strategy JSON for: {data.business_name}, {data.category} in {data.city}. Offers: {data.offers}. Return JSON keys: tagline, target_audience, brand_tone, welcome_pitch."
     response = model.generate_content(prompt)
     clean_text = response.text.replace("```json", "").replace("```", "").strip()
     try:
         brand_json = json.loads(clean_text)
     except:
         brand_json = {"tagline": response.text}
-        
     BUSINESS_DB["profile"] = {"info": data.dict(), "brand": brand_json}
     return {"status": "success", "data": BUSINESS_DB["profile"]}
 
@@ -50,10 +49,7 @@ async def generate_content():
     if "profile" not in BUSINESS_DB:
         return JSONResponse(status_code=400, content={"error": "Pehle register karein."})
     info = BUSINESS_DB["profile"]["info"]
-    prompt = f"""
-    Write an Instagram promotional caption and hashtags for {info['business_name']} ({info['category']}) in {info['city']}.
-    Return ONLY valid JSON with keys: caption, hashtags. No markdown formatting.
-    """
+    prompt = f"Write an Instagram promotional caption and hashtags for {info['business_name']} ({info['category']}). Return JSON keys: caption, hashtags."
     response = model.generate_content(prompt)
     clean_text = response.text.replace("```json", "").replace("```", "").strip()
     try:
@@ -67,10 +63,7 @@ async def find_leads():
     if "profile" not in BUSINESS_DB:
         return JSONResponse(status_code=400, content={"error": "Pehle register karein."})
     info = BUSINESS_DB["profile"]["info"]
-    prompt = f"""
-    Generate 5 target potential business/client leads for {info['category']} in {info['city']}.
-    Return ONLY valid JSON with format: {{"leads": [{{"name": "...", "contact": "+91 98XXXXXXXX", "interest": "High"}}]}}. No markdown.
-    """
+    prompt = f"Generate 5 target leads for {info['category']} in {info['city']}. Return JSON format: {{\"leads\": [{{\"name\": \"...\", \"contact\": \"+91 98XXXXXXXX\", \"interest\": \"High\"}}]}}."
     response = model.generate_content(prompt)
     clean_text = response.text.replace("```json", "").replace("```", "").strip()
     try:
@@ -84,11 +77,6 @@ async def chat_reply(customer_query: str = Form(...)):
     if "profile" not in BUSINESS_DB:
         return {"reply": "Namaste! Hamari service jald live hogi."}
     info = BUSINESS_DB["profile"]["info"]
-    prompt = f"""
-    Tum {info['business_name']} ({info['category']}, {info['city']}) ke customer executive ho.
-    Services: {info['services']}. Offers: {info['offers']}.
-    Customer Query: "{customer_query}"
-    Ek helpful, polite Hindi/Hinglish reply do.
-    """
+    prompt = f"Tum {info['business_name']} ke representative ho. Customer sawal: '{customer_query}'. Polite Hindi/Hinglish me jawab do."
     response = model.generate_content(prompt)
     return {"reply": response.text}
