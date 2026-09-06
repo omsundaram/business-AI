@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OS GROUP (OM SUNDARAM) - Global AI Classified Directory & Super-App</title>
+  <title>OS GROUP (OM SUNDARAM) - Global AI Classified Super-App</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Full Crisp FontAwesome 6 Icon Vector Pack -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .brand-title { font-family: 'Cinzel', serif; letter-spacing: 0.15em; }
-    .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .glow-hover { transition: all 0.25s ease; border: 1px solid rgba(56, 189, 248, 0.15); }
-    .glow-hover:hover { border-color: rgba(56, 189, 248, 0.6); transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.25); }
-    .search-dropdown { max-height: 280px; overflow-y: auto; z-index: 999; }
+    .glass-card { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .interactive-card { transition: all 0.2s ease; border: 1px solid rgba(56, 189, 248, 0.15); cursor: pointer; }
+    .interactive-card:hover { border-color: rgba(56, 189, 248, 0.6); transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.3); }
+    .search-flyout { max-height: 320px; overflow-y: auto; z-index: 9999; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
 
   <!-- TOP HELPLINE BAR -->
-  <div class="bg-slate-900 border-b border-slate-800 text-[12px] py-2 px-4 text-slate-400">
+  <div class="bg-slate-900 border-b border-slate-800 text-[12px] py-2 px-4 text-slate-400 relative z-30">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-3">
         <span class="text-sky-400 font-bold flex items-center gap-1.5">
@@ -33,7 +32,7 @@
         <a href="tel:+917597777897" class="text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1.5">
           <i class="fa-solid fa-phone"></i> +91 7597777897
         </a>
-        <a href="https://wa.me/917597777897?text=Hi%20OS%20Group,%20I%20want%20to%20list%20my%20business." target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+        <a href="https://wa.me/917597777897" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
           <i class="fa-brands fa-whatsapp"></i> WhatsApp Desk
         </a>
       </div>
@@ -41,7 +40,7 @@
   </div>
 
   <!-- MAIN APP BAR -->
-  <header class="bg-slate-950/90 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-lg">
+  <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between gap-4">
       
       <!-- Brand Logo -->
@@ -77,78 +76,88 @@
     </div>
   </header>
 
-  <!-- ================= MULTI-PAGE VIEW: HOME ================= -->
+  <!-- ================= MULTI-PAGE: HOME ================= -->
   <div id="page-home" class="page-view flex-1">
-    <!-- Hero & Instant Typeahead Search -->
-    <section class="relative py-14 px-4 border-b border-slate-900 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-slate-950/60 to-slate-950 pointer-events-none"></div>
-      <div class="max-w-5xl mx-auto text-center relative z-10">
+    <!-- Hero & Search -->
+    <section class="relative py-14 px-4 border-b border-slate-900">
+      <div class="max-w-5xl mx-auto text-center relative z-20">
         
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold mb-6">
           <span class="text-sky-400 font-bold">OM SUNDARAM</span>
           <span class="text-slate-600">&bull;</span>
-          <span class="text-amber-400 font-bold tracking-wider">AUTONOMOUS BUSINESS AI ENGINE</span>
+          <span class="text-amber-400 font-bold tracking-wider">ALL INDIA CASCADING LOCATION & AI DIRECTORY</span>
         </div>
 
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
           Find Any Verified Business & <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-200 to-amber-300">Instant Autonomous AI Services</span>
         </h1>
         <p class="text-slate-400 text-xs sm:text-base mt-4 mb-8 max-w-3xl mx-auto">
-          Type any service to view verified vendors, instant direct calls, WhatsApp routing, and map navigation.
+          Country, State, District filtered listings with instant calls, WhatsApp leads, and live AI response.
         </p>
 
-        <!-- Search Box with Live Suggestion Autocomplete -->
-        <div class="bg-slate-900/95 border border-slate-800 p-2 sm:p-3 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2.5 max-w-4xl mx-auto relative">
-          <!-- City Dropdown -->
-          <div class="sm:w-1/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3">
-            <i class="fa-solid fa-location-dot text-sky-400 mr-2.5"></i>
-            <select id="searchCity" onchange="performSearch()" class="w-full bg-transparent text-sm text-slate-200 font-medium focus:outline-none cursor-pointer">
-              <option value="Jaipur" selected class="bg-slate-900">Jaipur, Rajasthan</option>
-              <option value="Delhi NCR" class="bg-slate-900">Delhi NCR</option>
-              <option value="Mumbai" class="bg-slate-900">Mumbai, Maharashtra</option>
-              <option value="Bangalore" class="bg-slate-900">Bangalore, Karnataka</option>
-              <option value="all" class="bg-slate-900">All India</option>
+        <!-- FULL INTERACTIVE SEARCH SYSTEM (Cascading State & District) -->
+        <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-3 max-w-5xl mx-auto relative z-30">
+          
+          <!-- Country Fixed -->
+          <div class="md:w-1/6 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
+            <span class="text-sm mr-1.5">🇮🇳</span>
+            <select id="mainCountry" class="w-full bg-transparent text-xs text-slate-200 font-bold focus:outline-none cursor-pointer">
+              <option value="India" selected>India (+91)</option>
+              <option value="USA">USA (+1)</option>
+              <option value="UAE">UAE (+971)</option>
             </select>
           </div>
 
-          <!-- Typeahead Search Input -->
-          <div class="sm:w-2/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 relative">
-            <i class="fa-solid fa-magnifying-glass text-slate-500 mr-2.5"></i>
-            <input id="searchQuery" oninput="handleTypeahead(this.value)" onkeypress="handleEnter(event)" placeholder="Type to search (e.g. Gym, Doctor, Dental, Real Estate)..." class="w-full bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none" autocomplete="off">
-            <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-6 py-2.5 rounded-lg text-xs shadow-md transition whitespace-nowrap">
+          <!-- State Selector -->
+          <div class="md:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
+            <i class="fa-solid fa-map-location-dot text-sky-400 mr-2 text-xs"></i>
+            <select id="mainState" onchange="onHeaderStateChange()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer">
+              <!-- Dynamically populated with all Indian States -->
+            </select>
+          </div>
+
+          <!-- District Selector -->
+          <div class="md:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
+            <i class="fa-solid fa-location-dot text-amber-400 mr-2 text-xs"></i>
+            <select id="mainDistrict" onchange="performSearch()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer">
+              <!-- Dynamically populated districts -->
+            </select>
+          </div>
+
+          <!-- Typeahead Query Input -->
+          <div class="md:w-1/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 relative">
+            <i class="fa-solid fa-magnifying-glass text-slate-500 mr-2 text-xs"></i>
+            <input id="searchQuery" oninput="handleLocalTypeahead(this.value)" onkeypress="handleEnter(event)" placeholder="Search Gym, Doctor, Dental, IT, Legal..." class="w-full bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none" autocomplete="off">
+            <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-4 py-2 rounded-lg text-xs shadow-md transition whitespace-nowrap">
               Search
             </button>
 
-            <!-- LIVE TYPEAHEAD FLOATING AUTOCOMPLETE DROPDOWN -->
-            <div id="typeaheadDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl search-dropdown text-left">
-              <!-- Dynamically populated suggestions -->
-            </div>
+            <!-- LIVE AUTOCOMPLETE DROPDOWN -->
+            <div id="typeaheadDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl search-flyout text-left"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 30+ POPULAR CATEGORIES (WITH GUARANTEED CRISP FONTAWESOME ICONS) -->
-    <section class="max-w-7xl mx-auto px-4 py-10">
+    <!-- POPULAR CATEGORIES (WITH INSTANT CLICK HANDLER) -->
+    <section class="max-w-7xl mx-auto px-4 py-10 relative z-10">
       <div class="flex justify-between items-center mb-6">
         <div>
           <h2 class="text-base sm:text-lg font-bold text-white">Popular Classified Sectors</h2>
-          <p class="text-xs text-slate-400">Click to filter authorized service heads</p>
+          <p class="text-xs text-slate-400">Click any sector to filter authorized listings instantly</p>
         </div>
-        <span class="text-xs text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">4000+ Categories</span>
+        <span class="text-xs text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">30+ Verticals</span>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-3 text-center" id="categoryIconsGrid">
-        <!-- Rendered by JavaScript dynamically to guarantee 0 missing icons -->
-      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-3 text-center" id="categoryIconsGrid"></div>
     </section>
 
     <!-- RESULTS FEED -->
-    <main class="max-w-7xl mx-auto px-4 pb-20">
+    <main class="max-w-7xl mx-auto px-4 pb-20 relative z-10">
       <div class="flex justify-between items-center mb-6">
         <div>
           <h2 id="resultsHeading" class="text-lg sm:text-xl font-bold text-white">Verified Listings</h2>
-          <p class="text-xs text-slate-400">Instant quote, calls, WhatsApp & maps</p>
+          <p class="text-xs text-slate-400">Direct phone calls, WhatsApp leads & verified locations</p>
         </div>
         <span id="resultsCount" class="text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1 rounded-full font-bold">Loading...</span>
       </div>
@@ -157,53 +166,51 @@
     </main>
   </div>
 
-  <!-- ================= MULTI-PAGE: ABOUT US ================= -->
+  <!-- MULTI-PAGE: ABOUT -->
   <div id="page-about" class="page-view hidden flex-1 py-16 px-4">
     <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-6">
       <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">ABOUT OS GROUP</div>
       <h1 class="text-3xl sm:text-4xl font-black text-white">Universal Autonomous AI Directory & Super-App</h1>
       <p class="text-slate-300 text-sm leading-relaxed">
-        <strong>OS GROUP (OM SUNDARAM)</strong> is an enterprise technology ecosystem uniting 4,000+ industries with autonomous AI infrastructure. Our philosophy <strong>ENTHRAL | ENGAGE | EXECUTE</strong> ensures verified authority, continuous client conversion, and localized market leadership.
+        <strong>OS GROUP (OM SUNDARAM)</strong> unites 4,000+ business categories with autonomous marketing, instant customer qualification, and lead delivery.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-800">
         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <div class="text-xl font-bold text-sky-400"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> ENTHRAL</div>
-          <p class="text-xs text-slate-400 mt-1">Verified dynamic storefronts that captivate customer trust instantly.</p>
+          <div class="text-xl font-bold text-sky-400">ENTHRAL</div>
+          <p class="text-xs text-slate-400 mt-1">Verified interactive storefronts.</p>
         </div>
         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <div class="text-xl font-bold text-amber-400"><i class="fa-solid fa-comments mr-1"></i> ENGAGE</div>
-          <p class="text-xs text-slate-400 mt-1">Autonomous WhatsApp bots and intelligent real-time lead qualification.</p>
+          <div class="text-xl font-bold text-amber-400">ENGAGE</div>
+          <p class="text-xs text-slate-400 mt-1">Autonomous 24/7 client connection.</p>
         </div>
         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-          <div class="text-xl font-bold text-emerald-400"><i class="fa-solid fa-bolt mr-1"></i> EXECUTE</div>
-          <p class="text-xs text-slate-400 mt-1">Direct call connection, localized Google map routing, and client scale.</p>
+          <div class="text-xl font-bold text-emerald-400">EXECUTE</div>
+          <p class="text-xs text-slate-400 mt-1">Direct calls and local market leadership.</p>
         </div>
       </div>
       <div class="p-4 bg-sky-500/10 border border-sky-500/20 rounded-2xl text-xs text-slate-300">
-        <strong>Headquarters:</strong> Jaipur, Rajasthan, India &bull; <strong>Helpline:</strong> +91 7597777897 &bull; <strong>Official Desk:</strong> support@osgroup.in
+        <strong>Helpline:</strong> +91 7597777897 &bull; <strong>Email:</strong> support@osgroup.in
       </div>
     </div>
   </div>
 
-  <!-- ================= MULTI-PAGE: TERMS ================= -->
+  <!-- MULTI-PAGE: TERMS -->
   <div id="page-terms" class="page-view hidden flex-1 py-16 px-4">
-    <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-4 text-xs text-slate-300 leading-relaxed">
-      <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">LEGAL TERMS</div>
-      <h1 class="text-2xl sm:text-3xl font-black text-white">Terms and Conditions</h1>
-      <p>By registering on <strong>osgroup.in</strong>, vendors agree to undergo OTP verification and provide authentic service representations. All leads generated are transmitted directly to the designated business phone.</p>
+    <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-4 text-xs text-slate-300">
+      <h1 class="text-2xl font-black text-white">Terms & Conditions</h1>
+      <p>All listings must complete OTP verification. Fraudulent registrations are suspended immediately.</p>
     </div>
   </div>
 
-  <!-- ================= MULTI-PAGE: PRIVACY POLICY ================= -->
+  <!-- MULTI-PAGE: PRIVACY -->
   <div id="page-policy" class="page-view hidden flex-1 py-16 px-4">
-    <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-4 text-xs text-slate-300 leading-relaxed">
-      <div class="text-xs font-bold text-emerald-400 uppercase tracking-widest">SECURITY & POLICY</div>
-      <h1 class="text-2xl sm:text-3xl font-black text-white">Privacy Policy</h1>
-      <p>Data transmitted on OS GROUP is encrypted. We do not sell user or vendor phone numbers. De-listing can be requested via helpline at +91 7597777897.</p>
+    <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-4 text-xs text-slate-300">
+      <h1 class="text-2xl font-black text-white">Privacy Policy</h1>
+      <p>Your data is encrypted. We do not sell vendor or customer contact information to third parties.</p>
     </div>
   </div>
 
-  <!-- ================= MODAL: LIST BUSINESS WITH COMPLETE GEOGRAPHY (COUNTRY, CODE, STATE, DISTRICT) ================= -->
+  <!-- MODAL: LIST BUSINESS -->
   <div id="listingModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative my-8">
       <button onclick="closeListingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -211,215 +218,144 @@
       <div class="border-b border-slate-800 pb-4 mb-6">
         <div class="text-[10px] tracking-widest text-sky-400 font-bold uppercase">OM SUNDARAM &bull; OS GROUP</div>
         <h3 class="text-2xl font-extrabold text-white mt-1">List Your Business Free</h3>
-        <p class="text-xs text-slate-400 mt-1">Worldwide Country Dial Codes, State & District Cascading Verification</p>
+        <p class="text-xs text-slate-400 mt-1">Complete Country Dial Codes, State & District Cascading Verification</p>
       </div>
 
-      <!-- Step 1: Input Form -->
       <div id="formStep1" class="space-y-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="text-xs font-semibold text-slate-400">Owner Full Name *</label>
-            <input id="new_owner" placeholder="Kamlesh Kumar" value="Kamlesh Kumar" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <input id="new_owner" placeholder="Kamlesh Kumar" value="Kamlesh Kumar" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-sky-500">
           </div>
           <div>
             <label class="text-xs font-semibold text-slate-400">Business Name *</label>
-            <input id="new_biz" placeholder="Apex Fitness Hub" value="Apex Fitness Hub" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <input id="new_biz" placeholder="Apex Fitness Hub" value="Apex Fitness Hub" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-sky-500">
           </div>
         </div>
 
-        <!-- Phone with Dynamic Country Dialing Code -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
             <label class="text-xs font-semibold text-slate-400">Country Code *</label>
-            <select id="new_dial_code" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <select id="new_dial_code" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none">
               <option value="+91" selected>🇮🇳 India (+91)</option>
               <option value="+1">🇺🇸 USA (+1)</option>
               <option value="+971">🇦🇪 UAE (+971)</option>
               <option value="+44">🇬🇧 UK (+44)</option>
-              <option value="+1">🇨🇦 Canada (+1)</option>
-              <option value="+61">🇦🇺 Australia (+61)</option>
-              <option value="+65">🇸🇬 Singapore (+65)</option>
             </select>
           </div>
           <div class="sm:col-span-2">
-            <label class="text-xs font-semibold text-slate-400">Mobile Number (For OTP Verification) *</label>
-            <input id="new_mob" placeholder="9829012345" value="9829012345" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <label class="text-xs font-semibold text-slate-400">Mobile Number (For OTP) *</label>
+            <input id="new_mob" placeholder="9829012345" value="9829012345" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none">
           </div>
         </div>
 
         <div>
-          <label class="text-xs font-semibold text-slate-400">Industry / Category *</label>
-          <input list="modal_categories" id="new_cat" placeholder="Type or select category..." value="Gym & Strength Fitness" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+          <label class="text-xs font-semibold text-slate-400">Category *</label>
+          <input id="new_cat" list="modal_categories" placeholder="Select or type category..." value="Gym & Fitness" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none">
           <datalist id="modal_categories"></datalist>
         </div>
 
-        <!-- Cascading Complete Country -> State -> District Selector -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div>
-            <label class="text-xs font-semibold text-slate-400">Country *</label>
-            <select id="reg_country" onchange="onCountrySelect()" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
-              <option value="India" selected>India</option>
-              <option value="USA">United States</option>
-              <option value="UAE">United Arab Emirates</option>
-            </select>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="text-xs font-semibold text-slate-400">State *</label>
-            <select id="reg_state" onchange="onStateSelect()" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none"></select>
+            <select id="reg_state" onchange="onModalStateSelect()" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none"></select>
           </div>
           <div>
             <label class="text-xs font-semibold text-slate-400">District / City *</label>
-            <select id="reg_city" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none"></select>
+            <select id="reg_city" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none"></select>
           </div>
         </div>
 
         <div>
           <label class="text-xs font-semibold text-slate-400">Area / Locality *</label>
-          <input id="new_area" placeholder="e.g. Malviya Nagar" value="Malviya Nagar" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+          <input id="new_area" placeholder="e.g. Malviya Nagar" value="Malviya Nagar" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none">
         </div>
 
         <div>
-          <label class="text-xs font-semibold text-slate-400">Services Offered (Comma Separated) *</label>
-          <input id="new_services" placeholder="CrossFit, Weight Loss, Personal Coaching" value="CrossFit, Weight Loss, Personal Coaching" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+          <label class="text-xs font-semibold text-slate-400">Services (Comma Separated) *</label>
+          <input id="new_services" placeholder="CrossFit, Personal Training" value="CrossFit, Personal Training, Weight Loss" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none">
         </div>
 
         <div>
-          <label class="text-xs font-semibold text-slate-400">Promotional Offer *</label>
-          <input id="new_offer" placeholder="e.g. Flat 30% OFF on Annual Plan" value="Flat 30% OFF on Annual Plan" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+          <label class="text-xs font-semibold text-slate-400">Special Offer *</label>
+          <input id="new_offer" placeholder="e.g. Flat 30% OFF" value="Flat 30% OFF on Annual Plan" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none">
         </div>
 
-        <button onclick="triggerVendorOTP()" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-sky-500/20 transition">
-          <i class="fa-solid fa-lock mr-1.5"></i> Verify Phone with OTP & Publish Listing
+        <button onclick="triggerVendorOTP()" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-sm rounded-xl shadow-lg transition">
+          <i class="fa-solid fa-lock mr-1.5"></i> Verify Phone via OTP & Publish
         </button>
       </div>
 
-      <!-- Step 2: OTP Entry -->
       <div id="formStep2" class="hidden text-center py-8 space-y-4">
-        <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-3xl mx-auto text-sky-400">
-          <i class="fa-solid fa-key"></i>
-        </div>
+        <div class="text-3xl text-sky-400"><i class="fa-solid fa-key"></i></div>
         <h4 class="text-xl font-bold text-white">Enter 4-Digit OTP Code</h4>
-        <p class="text-xs text-slate-400" id="otpText">Verification OTP dispatched to your mobile number.</p>
+        <p class="text-xs text-slate-400" id="otpText">Verification OTP dispatched.</p>
         <div class="my-4">
-          <input id="vendorOtpInput" maxlength="4" placeholder="0000" class="w-36 text-center text-3xl tracking-widest font-mono bg-slate-950 border-2 border-sky-500 rounded-xl p-2.5 text-white focus:outline-none">
+          <input id="vendorOtpInput" maxlength="4" placeholder="0000" class="w-36 text-center text-3xl font-mono bg-slate-950 border-2 border-sky-500 rounded-xl p-2.5 text-white focus:outline-none">
         </div>
-        <button onclick="verifyVendorAndList()" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-500/20 transition">
+        <button onclick="verifyVendorAndList()" class="w-full py-3.5 bg-emerald-600 text-white font-bold rounded-xl text-sm transition">
           Confirm OTP & Activate Listing
         </button>
       </div>
 
-      <!-- Step 3: Success View -->
       <div id="formStep3" class="hidden text-center py-8 space-y-4">
-        <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-4xl mx-auto text-emerald-400">
-          <i class="fa-solid fa-circle-check"></i>
-        </div>
+        <div class="text-4xl text-emerald-400"><i class="fa-solid fa-circle-check"></i></div>
         <h4 class="text-2xl font-extrabold text-white">Business Listed Successfully!</h4>
-        <p class="text-xs text-slate-400">Indexed under OS GROUP global directory.</p>
-        
         <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl text-left text-xs font-mono space-y-2 my-4">
           <div><strong class="text-slate-400">Vendor ID:</strong> <span id="outVendorId" class="text-sky-400 font-bold"></span></div>
           <div><strong class="text-slate-400">Password:</strong> <span id="outVendorPwd" class="text-emerald-400 font-bold"></span></div>
           <div><strong class="text-slate-400">Live URL:</strong> <span id="outVendorUrl" class="text-amber-400 font-bold"></span></div>
         </div>
-
-        <div class="flex gap-3">
-          <button onclick="openLiveStorefront()" class="flex-1 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs transition">
-            View Live Storefront
-          </button>
-          <button onclick="closeListingModal(); performSearch();" class="flex-1 py-3 bg-blue-600 text-white font-bold rounded-xl text-xs transition">
-            Explore Directory
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: ENQUIRY LEAD FORM -->
-  <div id="enquiryModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
-      <button onclick="closeEnquiryModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-      <div class="mb-4">
-        <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest">OM SUNDARAM &bull; LEAD CONNECT</span>
-        <h3 id="enqBizTitle" class="text-lg font-bold text-white mt-0.5">Send Direct Requirement</h3>
-        <p class="text-xs text-slate-400">Instant connection with certified vendor desk.</p>
-      </div>
-      <form onsubmit="submitLeadEnquiry(event)" class="space-y-3">
-        <input id="enq_name" required placeholder="Your Name" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-        <input id="enq_mob" required placeholder="Your Mobile Number" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-        <textarea id="enq_req" rows="3" placeholder="Tell us your requirement..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500"></textarea>
-        <button type="submit" class="w-full py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-xs rounded-xl shadow-lg transition">
-          Forward to Vendor WhatsApp
+        <button onclick="openLiveStorefront()" class="w-full py-3 bg-amber-500 text-slate-950 font-black rounded-xl text-xs">
+          View Live Storefront
         </button>
-      </form>
+      </div>
     </div>
   </div>
 
-  <!-- MODAL: VENDOR LOGIN -->
+  <!-- MODAL: LOGIN -->
   <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
       <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-      <div class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">OM SUNDARAM</div>
-      <h3 class="text-lg font-bold text-white mb-1">Vendor Portal Sign In</h3>
-      <p class="text-xs text-slate-400 mb-4">Access leads & autonomous AI engine</p>
-      <div class="space-y-3">
-        <input id="login_id" placeholder="Vendor ID or Mobile" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-        <input id="login_pwd" type="password" placeholder="Password" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-        <button onclick="alert('Logged in to OS GROUP Vendor Console!')" class="w-full py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold rounded-xl text-xs transition">
-          Enter Dashboard
-        </button>
-      </div>
+      <h3 class="text-lg font-bold text-white mb-2">Vendor Portal Login</h3>
+      <input id="login_id" placeholder="Vendor ID or Mobile" class="w-full mb-3 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white">
+      <input id="login_pwd" type="password" placeholder="Password" class="w-full mb-4 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white">
+      <button onclick="alert('Logged in to OS GROUP Console!')" class="w-full py-3 bg-sky-600 text-white font-bold rounded-xl text-xs">Sign In</button>
     </div>
   </div>
 
-  <!-- MULTI-PAGE FOOTER -->
-  <footer class="border-t border-slate-900 bg-slate-950 pt-12 pb-8 text-xs text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-      <div class="space-y-3">
-        <div class="text-lg font-black text-white brand-title">OS GROUP</div>
-        <div class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">OM SUNDARAM ENTERPRISE</div>
-        <p class="text-slate-500 text-xs leading-relaxed">
-          India's 1st Autonomous Business Ecosystem uniting classified listings, AI marketing blueprints, and direct customer connectivity.
-        </p>
-        <div class="text-sky-400 font-semibold tracking-wider text-[11px]">
-          ENTHRAL &bull; ENGAGE &bull; EXECUTE
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Quick Navigation</div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('about')" class="hover:text-sky-400">About OS Group</a></div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('terms')" class="hover:text-sky-400">Terms & Conditions</a></div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('policy')" class="hover:text-sky-400">Privacy & Security</a></div>
-        <div><a href="javascript:void(0)" onclick="openListingModal()" class="text-amber-400 hover:underline">Free Merchant Registration</a></div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Direct Helpdesk</div>
-        <div class="text-slate-300"><strong>Helpline:</strong> <a href="tel:+917597777897" class="text-amber-400 font-bold">+91 7597777897</a></div>
-        <div class="text-slate-300"><strong>WhatsApp:</strong> <a href="https://wa.me/917597777897" target="_blank" class="text-emerald-400 font-bold">+91 7597777897</a></div>
-        <div class="text-slate-300"><strong>Official Desk:</strong> support@osgroup.in</div>
-        <div class="text-slate-400"><strong>Availability:</strong> 24/7 AI Lead Routing</div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-white font-bold mb-2 uppercase tracking-wider text-[11px]">Corporate Office & Map</div>
-        <p class="text-[11px] text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Jaipur, Rajasthan, India</p>
-        <div class="w-full h-32 rounded-xl overflow-hidden border border-slate-800">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113911.1969695679!2d75.71960251702845!3d26.88514167909381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="border-t border-slate-900 pt-6 text-center text-slate-600 text-[11px]">
-      &copy; 2026 OM SUNDARAM &bull; OS GROUP Technologies. All rights reserved. Registered Indian Digital Corporation.
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-xs text-slate-500 text-center relative z-20">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <div class="text-sm font-bold text-slate-300">OM SUNDARAM &bull; OS GROUP TECHNOLOGIES</div>
+      <div class="tracking-[0.2em] text-sky-400 font-semibold uppercase">ENTHRAL | ENGAGE | EXECUTE</div>
+      <p class="text-[11px] text-slate-600">&copy; 2026 OS GROUP. All rights reserved. Helpline: +91 7597777897</p>
     </div>
   </footer>
 
   <script>
-    // 30 Core Classified Verticals with Verified FontAwesome Icon Names
+    // FULL COMPREHENSIVE ALL-INDIA STATES & DISTRICTS ENGINE
+    const indiaGeo = {
+      "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Sikar", "Pali", "Sri Ganganagar", "Bharatpur", "Chittorgarh"],
+      "Delhi NCR": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Noida", "Gurugram", "Faridabad", "Ghaziabad"],
+      "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad", "Solapur", "Kolhapur", "Navi Mumbai"],
+      "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Junagadh"],
+      "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Meerut", "Bareilly", "Aligarh", "Moradabad", "Gorakhpur"],
+      "Karnataka": ["Bengaluru Urban", "Mysuru", "Hubballi-Dharwad", "Mangaluru", "Belagavi", "Ballari", "Kalaburagi"],
+      "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Dewas", "Satna"],
+      "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Mohali", "Bathinda", "Hoshiarpur"],
+      "Haryana": ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal", "Hisar", "Rohtak"],
+      "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Siliguri", "Asansol", "Bardhaman"],
+      "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli"],
+      "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Khammam"],
+      "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga"],
+      "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Kollam"],
+      "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur"],
+      "Assam": ["Guwahati", "Silchar", "Dibrugarh", "Jorhat"],
+      "Uttarakhand": ["Dehradun", "Haridwar", "Roorkee", "Haldwani", "Nainital"],
+      "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro"]
+    };
+
     const coreCategories = [
       { name: "Doctors", icon: "fa-user-doctor" },
       { name: "Dentists", icon: "fa-tooth" },
@@ -453,101 +389,81 @@
       { name: "Logistics", icon: "fa-dolly" }
     ];
 
-    // Exhaustive Country -> State -> Districts Dataset
-    const geoData = {
-      "India": {
-        "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Sikar", "Pali", "Chittorgarh"],
-        "Delhi NCR": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Noida", "Gurugram", "Faridabad", "Ghaziabad"],
-        "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad", "Solapur", "Kolhapur"],
-        "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar"],
-        "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Meerut", "Bareilly", "Aligarh", "Moradabad"],
-        "Karnataka": ["Bengaluru Urban", "Mysuru", "Hubballi", "Mangaluru", "Belagavi", "Ballari"],
-        "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar"],
-        "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Mohali", "Bathinda"],
-        "Haryana": ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal", "Hisar"],
-        "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Siliguri", "Asansol"],
-        "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
-        "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar"]
-      },
-      "USA": {
-        "California": ["Los Angeles", "San Francisco", "San Diego", "San Jose", "Sacramento"],
-        "New York": ["New York City", "Buffalo", "Rochester", "Albany"],
-        "Texas": ["Houston", "Austin", "Dallas", "San Antonio", "Fort Worth"],
-        "Florida": ["Miami", "Orlando", "Tampa", "Jacksonville"]
-      },
-      "UAE": {
-        "Emirates": ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah", "Fujairah"]
-      }
-    };
-
     let activeMobile = "";
     let newlyCreatedVendorId = "";
-    let targetBizForEnquiry = null;
 
-    // Render Crisp FontAwesome Icons into Grid (Guarantees zero missing boxes)
-    function renderCategoryGrid() {
-      const container = document.getElementById("categoryIconsGrid");
-      container.innerHTML = coreCategories.map(c => `
-        <div onclick="filterByCat('${c.name}')" class="glow-hover glass-card p-3.5 rounded-2xl cursor-pointer">
-          <div class="text-2xl mb-1.5 text-sky-400"><i class="fa-solid ${c.icon}"></i></div>
+    // Populate Cascading Dropdowns
+    function setupGeo() {
+      const stateSel = document.getElementById("mainState");
+      const regStateSel = document.getElementById("reg_state");
+      stateSel.innerHTML = "";
+      regStateSel.innerHTML = "";
+
+      Object.keys(indiaGeo).forEach(st => {
+        stateSel.innerHTML += `<option value="${st}" ${st === 'Rajasthan' ? 'selected' : ''}>${st}</option>`;
+        regStateSel.innerHTML += `<option value="${st}" ${st === 'Rajasthan' ? 'selected' : ''}>${st}</option>`;
+      });
+
+      onHeaderStateChange();
+      onModalStateSelect();
+    }
+
+    function onHeaderStateChange() {
+      const selectedState = document.getElementById("mainState").value;
+      const distSel = document.getElementById("mainDistrict");
+      distSel.innerHTML = `<option value="all">All Districts (${selectedState})</option>`;
+      
+      const districts = indiaGeo[selectedState] || [];
+      districts.forEach(d => {
+        distSel.innerHTML += `<option value="${d}" ${d === 'Jaipur' ? 'selected' : ''}>${d}</option>`;
+      });
+      performSearch();
+    }
+
+    function onModalStateSelect() {
+      const selectedState = document.getElementById("reg_state").value;
+      const citySel = document.getElementById("reg_city");
+      citySel.innerHTML = "";
+      const districts = indiaGeo[selectedState] || ["Main City"];
+      districts.forEach(d => {
+        citySel.innerHTML += `<option value="${d}">${d}</option>`;
+      });
+    }
+
+    // Render Categories & Fix Click Triggers
+    function setupCategories() {
+      const grid = document.getElementById("categoryIconsGrid");
+      grid.innerHTML = coreCategories.map(c => `
+        <div onclick="selectCategoryDirectly('${c.name}')" class="interactive-card glass-card p-3 rounded-2xl">
+          <div class="text-2xl mb-1 text-sky-400"><i class="fa-solid ${c.icon}"></i></div>
           <div class="text-[11px] font-bold text-slate-300 leading-tight">${c.name}</div>
         </div>
       `).join('');
 
-      // Populate Datalist
       const dl = document.getElementById("modal_categories");
       dl.innerHTML = coreCategories.map(c => `<option value="${c.name}">`).join('');
     }
 
-    // Dynamic Cascading Selectors
-    function initGeo() {
-      onCountrySelect();
-    }
-    function onCountrySelect() {
-      const country = document.getElementById("reg_country").value;
-      const stateSel = document.getElementById("reg_state");
-      stateSel.innerHTML = "";
-      const states = geoData[country] ? Object.keys(geoData[country]) : ["All Regions"];
-      states.forEach(st => {
-        const opt = document.createElement("option");
-        opt.value = st;
-        opt.textContent = st;
-        stateSel.appendChild(opt);
-      });
-      onStateSelect();
-    }
-    function onStateSelect() {
-      const country = document.getElementById("reg_country").value;
-      const state = document.getElementById("reg_state").value;
-      const citySel = document.getElementById("reg_city");
-      citySel.innerHTML = "";
-      const cities = (geoData[country] && geoData[country][state]) ? geoData[country][state] : ["Main City"];
-      cities.forEach(ct => {
-        const opt = document.createElement("option");
-        opt.value = ct;
-        opt.textContent = ct;
-        citySel.appendChild(opt);
-      });
+    function selectCategoryDirectly(catName) {
+      document.getElementById("searchQuery").value = catName;
+      performSearch();
     }
 
-    // Typeahead Autocomplete Functionality
-    async function handleTypeahead(text) {
+    // Direct Local Typeahead Engine (Zero Lag, Instant Click)
+    function handleLocalTypeahead(val) {
       const dropdown = document.getElementById("typeaheadDropdown");
-      if (!text || text.trim().length === 0) {
+      const q = (val || "").trim().toLowerCase();
+      if (!q) {
         dropdown.classList.add("hidden");
         return;
       }
-      const res = await fetch(`/api/categories/suggest?q=${encodeURIComponent(text)}`);
-      const data = await res.json();
-      
-      if (data.suggestions && data.suggestions.length > 0) {
-        dropdown.innerHTML = data.suggestions.map(s => `
-          <div onclick="selectTypeahead('${s.name}')" class="px-4 py-2.5 hover:bg-slate-800 cursor-pointer flex items-center gap-3 border-b border-slate-800/50">
-            <i class="fa-solid ${s.icon} text-sky-400 text-sm"></i>
-            <div>
-              <div class="text-xs font-bold text-white">${s.name}</div>
-              <div class="text-[10px] text-slate-400">${s.group}</div>
-            </div>
+
+      const matches = coreCategories.filter(c => c.name.toLowerCase().includes(q));
+      if (matches.length > 0) {
+        dropdown.innerHTML = matches.map(m => `
+          <div onclick="chooseTypeahead('${m.name}')" class="px-4 py-2.5 hover:bg-slate-800 cursor-pointer flex items-center gap-3 border-b border-slate-800/80">
+            <i class="fa-solid ${m.icon} text-sky-400"></i>
+            <span class="text-xs font-bold text-white">${m.name}</span>
           </div>
         `).join('');
         dropdown.classList.remove("hidden");
@@ -556,84 +472,33 @@
       }
     }
 
-    function selectTypeahead(name) {
+    function chooseTypeahead(name) {
       document.getElementById("searchQuery").value = name;
       document.getElementById("typeaheadDropdown").classList.add("hidden");
       performSearch();
     }
 
-    // Hide dropdown on outside click
-    document.addEventListener('click', (e) => {
-      const searchBox = document.getElementById('searchQuery');
-      const dropdown = document.getElementById('typeaheadDropdown');
-      if (e.target !== searchBox && !dropdown.contains(e.target)) {
-        dropdown.classList.add('hidden');
-      }
-    });
-
-    function navigateTo(pageId) {
-      document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
-      const target = document.getElementById(`page-${pageId}`);
-      if (target) {
-        target.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-
-    function openListingModal() {
-      document.getElementById('formStep1').classList.remove('hidden');
-      document.getElementById('formStep2').classList.add('hidden');
-      document.getElementById('formStep3').classList.add('hidden');
-      document.getElementById('listingModal').classList.remove('hidden');
-    }
-    function closeListingModal() { document.getElementById('listingModal').classList.add('hidden'); }
-    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-    function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
-    function handleEnter(e) { if(e.key === 'Enter') performSearch(); }
-    
-    function resetToHome() {
-      document.getElementById('searchQuery').value = "";
-      navigateTo('home');
-      performSearch();
-    }
-    function filterByCat(cat) {
-      navigateTo('home');
-      document.getElementById('searchQuery').value = cat;
-      performSearch();
-    }
-
-    function openEnquiryModal(bizObj) {
-      targetBizForEnquiry = bizObj;
-      document.getElementById('enqBizTitle').innerText = "Enquiry for " + bizObj.name;
-      document.getElementById('enquiryModal').classList.remove('hidden');
-    }
-    function closeEnquiryModal() { document.getElementById('enquiryModal').classList.add('hidden'); }
-
-    function submitLeadEnquiry(e) {
-      e.preventDefault();
-      const req = document.getElementById('enq_req').value;
-      const cleanMob = (targetBizForEnquiry.whatsapp || targetBizForEnquiry.mobile).replace("+", "").replace(" ", "").replace("-", "");
-      closeEnquiryModal();
-      window.open(`https://wa.me/${cleanMob}?text=${encodeURIComponent("New Lead Inquiry via OS GROUP: " + req)}`, '_blank');
-    }
-
-    // Dynamic Search & Listing Render with Crisp FontAwesome Action Icons
+    // Search Execution
     async function performSearch() {
-      const q = document.getElementById('searchQuery').value;
-      const city = document.getElementById('searchCity').value;
-      const res = await fetch(`/api/search?query=${encodeURIComponent(q)}&city=${encodeURIComponent(city)}`);
-      const data = await res.json();
+      const q = document.getElementById("searchQuery").value;
+      const district = document.getElementById("mainDistrict").value;
+      const state = document.getElementById("mainState").value;
       
-      const container = document.getElementById('listingsContainer');
+      const targetCity = (district === "all" || !district) ? state : district;
+
+      const res = await fetch(`/api/search?query=${encodeURIComponent(q)}&city=${encodeURIComponent(targetCity)}`);
+      const data = await res.json();
+
+      const container = document.getElementById("listingsContainer");
       container.innerHTML = "";
       
-      document.getElementById('resultsHeading').innerText = q ? `Results for "${q}" in ${city}` : `Verified Listings in ${city}`;
-      document.getElementById('resultsCount').innerText = `${data.count} Verified Partners`;
+      document.getElementById("resultsHeading").innerText = q ? `Results for "${q}" in ${targetCity}` : `Verified Listings in ${targetCity}`;
+      document.getElementById("resultsCount").innerText = `${data.count} Verified Partners`;
 
       if (data.results.length === 0) {
         container.innerHTML = `
           <div class="glass-card p-12 rounded-3xl text-center border border-slate-800 space-y-3">
-            <p class="text-slate-400 text-sm">No listings found matching "${q}" in ${city}.</p>
+            <p class="text-slate-400 text-sm">No verified listings found matching "${q}" in ${targetCity} yet.</p>
             <button onclick="openListingModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black text-xs px-6 py-3 rounded-xl shadow-lg">
               + Be The First To List In This Category
             </button>
@@ -645,13 +510,12 @@
       data.results.forEach(b => {
         const cleanMob = b.mobile.replace("+", "").replace(" ", "").replace("-", "");
         const servicesTags = b.services.map(s => `<span class="bg-slate-950 text-slate-300 text-[11px] px-2.5 py-1 rounded-md border border-slate-800">${s}</span>`).join(" ");
-        const mapSearchQuery = encodeURIComponent(`${b.name}, ${b.area}, ${b.city}`);
 
-        const card = `
+        container.innerHTML += `
           <div class="glass-card rounded-3xl p-6 hover:border-sky-500/50 transition duration-300 flex flex-col lg:flex-row gap-6">
-            <div class="w-full lg:w-64 h-48 rounded-2xl overflow-hidden flex-shrink-0 bg-slate-950 border border-slate-800 relative group">
-              <img src="${b.image}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-              <div class="absolute top-2 left-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-800 text-[10px] font-bold text-emerald-400 flex items-center gap-1">
+            <div class="w-full lg:w-64 h-48 rounded-2xl overflow-hidden flex-shrink-0 bg-slate-950 border border-slate-800 relative">
+              <img src="${b.image}" alt="${b.name}" class="w-full h-full object-cover">
+              <div class="absolute top-2 left-2 bg-slate-950/80 px-2.5 py-1 rounded-lg text-[10px] font-bold text-emerald-400">
                 <i class="fa-solid fa-circle-check"></i> Verified
               </div>
             </div>
@@ -660,65 +524,58 @@
               <div>
                 <div class="flex flex-wrap items-start justify-between gap-2">
                   <div>
-                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                      ${b.name}
-                      <i class="fa-solid fa-circle-check text-sky-400 text-sm" title="OS Group Certified"></i>
-                    </h3>
-                    <p class="text-xs text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
-                      <span><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> ${b.area}, ${b.city}</span>
-                      <span>&bull;</span>
-                      <strong class="text-sky-400">${b.category}</strong>
-                      <span>&bull;</span>
-                      <a href="https://maps.google.com/?q=${mapSearchQuery}" target="_blank" class="text-amber-400 hover:underline flex items-center gap-1">
-                        <i class="fa-solid fa-map-location-dot"></i> View on Google Map
-                      </a>
-                    </p>
+                    <h3 class="text-xl font-bold text-white">${b.name} <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i></h3>
+                    <p class="text-xs text-slate-400 mt-1">📍 ${b.area}, ${b.city} &bull; <strong class="text-sky-400">${b.category}</strong></p>
                   </div>
-                  <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-black px-3 py-1.5 rounded-xl flex items-center gap-1">
+                  <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-black px-3 py-1 rounded-xl">
                     <i class="fa-solid fa-star text-amber-400"></i> ${b.rating} (${b.votes})
                   </div>
                 </div>
 
-                <div class="mt-3 inline-flex items-center gap-2 text-xs text-amber-300 bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/20 font-semibold">
-                  <i class="fa-solid fa-tag"></i> Exclusive Offer: ${b.offer}
+                <div class="mt-3 inline-flex items-center gap-2 text-xs text-amber-300 bg-amber-500/10 px-3 py-1 rounded-xl border border-amber-500/20 font-semibold">
+                  <i class="fa-solid fa-tag"></i> ${b.offer}
                 </div>
 
-                <div class="mt-3.5 flex flex-wrap gap-1.5">
-                  ${servicesTags}
-                </div>
+                <div class="mt-3 flex flex-wrap gap-1.5">${servicesTags}</div>
               </div>
 
-              <div class="mt-5 pt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-2.5">
-                <a href="tel:${b.mobile}" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-md transition">
+              <div class="mt-4 pt-3 border-t border-slate-800 flex flex-wrap items-center gap-2">
+                <a href="tel:${b.mobile}" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
                   <i class="fa-solid fa-phone"></i> Call: ${b.mobile}
                 </a>
-                <a href="https://wa.me/${cleanMob}?text=Hi%20${encodeURIComponent(b.name)},%20I%20saw%20your%20verified%20listing%20on%20OS%20GROUP.%20Please%20share%20details." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-md transition">
+                <a href="https://wa.me/${cleanMob}?text=Hi%20${encodeURIComponent(b.name)},%20I%20saw%20your%20verified%20listing%20on%20OS%20GROUP." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
                   <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </a>
-                <button onclick='openEnquiryModal(${JSON.stringify(b)})' class="border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl transition">
-                  <i class="fa-solid fa-bolt"></i> Send Enquiry
-                </button>
-                <a href="/biz/${b.id}" target="_blank" class="text-xs text-sky-400 hover:underline ml-auto flex items-center gap-1">
-                  Full Storefront &rarr;
+                <a href="/biz/${b.id}" target="_blank" class="text-xs text-sky-400 hover:underline ml-auto">
+                  View Full Profile &rarr;
                 </a>
               </div>
             </div>
           </div>
         `;
-        container.innerHTML += card;
       });
     }
 
+    // Modal & Navigation Handlers
+    function navigateTo(id) {
+      document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+      document.getElementById(`page-${id}`).classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function openListingModal() { document.getElementById('listingModal').classList.remove('hidden'); }
+    function closeListingModal() { document.getElementById('listingModal').classList.add('hidden'); }
+    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
+    function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
+    function handleEnter(e) { if(e.key === 'Enter') performSearch(); }
+
     async function triggerVendorOTP() {
-      const code = document.getElementById('new_dial_code').value;
-      const mob = document.getElementById('new_mob').value.trim();
       const payload = {
         owner_name: document.getElementById('new_owner').value.trim(),
         business_name: document.getElementById('new_biz').value.trim(),
-        country_code: code,
-        mobile: mob,
+        country_code: document.getElementById('new_dial_code').value,
+        mobile: document.getElementById('new_mob').value.trim(),
         category: document.getElementById('new_cat').value.trim(),
-        country: document.getElementById('reg_country').value,
+        country: "India",
         state: document.getElementById('reg_state').value,
         city: document.getElementById('reg_city').value,
         area: document.getElementById('new_area').value.trim(),
@@ -726,20 +583,15 @@
         offer: document.getElementById('new_offer').value.trim()
       };
 
-      if (!payload.owner_name || !payload.business_name || !payload.mobile) {
-        alert("Please complete owner name, business name, and mobile number.");
-        return;
-      }
-
       const res = await fetch('/api/vendor/send-otp', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
       });
       const data = await res.json();
-      if (data.status === 'success') {
+      if(data.status === 'success') {
         activeMobile = data.mobile;
-        document.getElementById('otpText').innerText = `Verification code sent to ${data.mobile} (Testing code: ${data.dev_otp})`;
+        document.getElementById('otpText').innerText = `OTP: ${data.dev_otp}`;
         document.getElementById('vendorOtpInput').value = data.dev_otp;
         document.getElementById('formStep1').classList.add('hidden');
         document.getElementById('formStep2').classList.remove('hidden');
@@ -754,29 +606,30 @@
         body: JSON.stringify({ mobile: activeMobile, otp: otp })
       });
       const data = await res.json();
-      if (data.status === 'success') {
+      if(data.status === 'success') {
         newlyCreatedVendorId = data.vendor_id;
         document.getElementById('outVendorId').innerText = data.vendor_id;
         document.getElementById('outVendorPwd').innerText = data.password;
         document.getElementById('outVendorUrl').innerText = `/biz/${data.vendor_id}`;
         document.getElementById('formStep2').classList.add('hidden');
         document.getElementById('formStep3').classList.remove('hidden');
-      } else {
-        alert(data.message);
       }
     }
 
     function openLiveStorefront() {
-      if (newlyCreatedVendorId) {
-        window.open(`/biz/${newlyCreatedVendorId}`, '_blank');
-      }
+      if(newlyCreatedVendorId) window.open(`/biz/${newlyCreatedVendorId}`, '_blank');
     }
 
-    // Startup Initialization
+    // Close flyout on outside click
+    document.addEventListener('click', (e) => {
+      const box = document.getElementById('searchQuery');
+      const dd = document.getElementById('typeaheadDropdown');
+      if(e.target !== box && !dd.contains(e.target)) dd.classList.add('hidden');
+    });
+
     window.onload = () => {
-      renderCategoryGrid();
-      initGeo();
-      performSearch();
+      setupGeo();
+      setupCategories();
     };
   </script>
 </body>
