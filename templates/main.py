@@ -30,16 +30,15 @@ def get_html_content():
                 return f.read()
     return "<h1>OS GROUP Engine Loading...</h1>"
 
-# OFFICIAL OS GROUP VENTURES & PROJECTS DIRECTORY
 OS_PROJECTS_DATABASE = [
     {
         "id": "OS-VENTURE-01",
         "name": "Digi Grow Hub (OS Digital Media)",
         "brand": "Digi Grow Hub",
         "category": "Digital Media & IT",
-        "city": "Jaipur",
-        "state": "Rajasthan",
-        "area": "Marudhar Nagar, Ajmer Road",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "area": "Thane, Mumbai",
         "rating": 4.9,
         "votes": 340,
         "mobile": "+91 7597777897",
@@ -54,9 +53,9 @@ OS_PROJECTS_DATABASE = [
         "name": "Quiesta Hospitality",
         "brand": "Quiesta",
         "category": "Hospitality & Properties",
-        "city": "Jaipur",
-        "state": "Rajasthan",
-        "area": "Marudhar Nagar, Ajmer Road",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "area": "Thane, Mumbai",
         "rating": 4.8,
         "votes": 280,
         "mobile": "+91 7597777897",
@@ -71,9 +70,9 @@ OS_PROJECTS_DATABASE = [
         "name": "Jeevan Parinay (Jeewanparinay)",
         "brand": "Jeevan Parinay",
         "category": "Matrimonial & Events",
-        "city": "Jaipur",
-        "state": "Rajasthan",
-        "area": "Ajmer Road",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "area": "Thane, Mumbai",
         "rating": 4.9,
         "votes": 512,
         "mobile": "+91 7597777897",
@@ -88,9 +87,9 @@ OS_PROJECTS_DATABASE = [
         "name": "OS Real Estate",
         "brand": "OS Real Estate",
         "category": "Real Estate",
-        "city": "Jodhpur",
-        "state": "Rajasthan",
-        "area": "Bombay Motor Circle",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "area": "Thane, Mumbai",
         "rating": 4.7,
         "votes": 190,
         "mobile": "+91 7597777897",
@@ -105,9 +104,9 @@ OS_PROJECTS_DATABASE = [
         "name": "Clever Mandy Handicrafts",
         "brand": "Clever Mandy",
         "category": "Handicrafts & Jewelry",
-        "city": "Jaipur",
-        "state": "Rajasthan",
-        "area": "Chitrakoot Yojna",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "area": "Thane, Mumbai",
         "rating": 4.9,
         "votes": 165,
         "mobile": "+91 7597777897",
@@ -122,9 +121,9 @@ OS_PROJECTS_DATABASE = [
         "name": "OS Government & EduTech Hub",
         "brand": "OS EduTech",
         "category": "Government & EduTech",
-        "city": "Jaipur",
-        "state": "Rajasthan",
-        "area": "Chitrakoot Yojna",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "area": "Thane, Mumbai",
         "rating": 5.0,
         "votes": 410,
         "mobile": "+91 7597777897",
@@ -139,11 +138,10 @@ OS_PROJECTS_DATABASE = [
 PENDING_OTP_DB = {}
 VENDOR_ACCOUNTS = {}
 
-# Fallback AI Generator
 def run_ai_generator(task: str, context: dict) -> str:
     biz = context.get("business_name", "OS Partner")
     sub = context.get("category", "Services")
-    city = context.get("city", "Jaipur")
+    city = context.get("city", "Thane, Mumbai")
     off = context.get("offer", "Exclusive Deal")
 
     if task == "graphics":
@@ -170,7 +168,7 @@ Banner 2: "Verified Authority & Trusted Service"
 
     elif task == "leads":
         return f"""🎯 HYPER-LOCAL CLIENT LEADS FOR {sub} IN {city}:
-1. Commercial Corporate Accounts & Local Retailers in {city} Central Hub
+1. Commercial Corporate Accounts & Local Retailers in {city} Hub
 2. High-Intent Walk-in Prospects seeking "{off}"
 3. Premium B2B Referrals through OS Group Marketplace Network
 4. Inbound Direct WhatsApp Leads channeled through your Storefront"""
@@ -190,14 +188,13 @@ async def search_listings(query: str = "", city: str = ""):
 
     results = []
     for b in OS_PROJECTS_DATABASE:
-        match_city = not c or (c == "all") or (c in b["city"].lower()) or (c in b["state"].lower())
+        match_city = not c or (c == "all") or (c in b["city"].lower()) or (c in b["state"].lower()) or (c in b["area"].lower())
         match_query = not q or (q in b["name"].lower()) or (q in b["category"].lower()) or any(q in s.lower() for s in b.get("services", []))
         if match_city and match_query:
             results.append(b)
 
     return JSONResponse(content={"status": "success", "count": len(results), "results": results})
 
-# AI Suite Execution Endpoint
 class AIRequestPayload(BaseModel):
     tool: str
     business_name: str
@@ -234,7 +231,6 @@ async def execute_ai_suite(data: AIRequestPayload):
 
     return JSONResponse(content={"status": "success", "tool": data.tool, "output": result_text})
 
-# Vendor Registration
 class VendorRegisterPayload(BaseModel):
     owner_name: str
     business_name: str
@@ -242,9 +238,9 @@ class VendorRegisterPayload(BaseModel):
     mobile: str
     category: str
     country: str = "India"
-    state: str = "Rajasthan"
-    city: str = "Jaipur"
-    area: str = ""
+    state: str = "Maharashtra"
+    city: str = "Thane"
+    area: str = "Thane, Mumbai"
     services: str = ""
     offer: str = ""
     package_name: str = "Gold"
@@ -282,7 +278,7 @@ async def verify_vendor_otp(data: VerifyPayload):
         "category": d["category"],
         "city": d["city"],
         "state": d["state"],
-        "area": d.get("area") or d["city"],
+        "area": d.get("area") or "Thane, Mumbai",
         "rating": 5.0,
         "votes": 1,
         "mobile": f"{d.get('country_code', '+91')} {d['mobile']}",
@@ -353,7 +349,7 @@ async def serve_storefront(biz_id: str):
             <h4 class="font-bold text-white border-b border-slate-800 pb-2">Merchant Verification</h4>
             <div class="text-xs text-slate-400 space-y-2">
               <div><strong>Vendor ID:</strong> <span class="text-sky-400">{biz['id']}</span></div>
-              <div><strong>CIN Compliance:</strong> U74999RJ2018PTC060766</div>
+              <div><strong>Headquarters:</strong> Thane, Mumbai, Maharashtra</div>
               <div><strong>Status:</strong> <span class="text-emerald-400 font-bold">100% Verified</span></div>
               <div><strong>Autonomous AI Suite:</strong> Active</div>
             </div>
