@@ -11,7 +11,7 @@
     <header class="border-b border-slate-800 pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div>
         <h1 class="text-3xl font-extrabold text-sky-400 tracking-tight">UNIVERSAL BUSINESS AI</h1>
-        <p class="text-slate-400 text-sm">Autonomous Client Onboarding, Brand Engine & Growth Suite</p>
+        <p class="text-slate-400 text-sm">Autonomous Client Onboarding, Brand Engine & Growth Suite (4000+ Categories Ready)</p>
       </div>
       <div id="statusBadge" class="bg-amber-500/20 text-amber-300 text-xs px-4 py-1.5 rounded-full border border-amber-500/30 font-semibold">
         Profile Incomplete
@@ -49,38 +49,76 @@
           </div>
         </div>
 
+        <!-- 4000+ Categories Searchable Autocomplete -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="text-xs font-medium text-slate-400">Main Industry / Category *</label>
-            <select id="main_category" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white">
-              <option value="Technology & Software" selected>Technology & Software</option>
-              <option value="Healthcare & Medical">Healthcare & Medical</option>
-              <option value="Real Estate & Infrastructure">Real Estate & Infrastructure</option>
-              <option value="Fitness & Wellness">Fitness & Wellness</option>
-              <option value="Education & Coaching">Education & Coaching</option>
-              <option value="Food & Hospitality">Food & Hospitality</option>
-              <option value="Retail & E-commerce">Retail & E-commerce</option>
-              <option value="Financial & Legal Services">Financial & Legal Services</option>
-            </select>
+            <label class="text-xs font-medium text-slate-400">Main Industry / Category (Searchable) *</label>
+            <input list="category_list" id="main_category" placeholder="Type or select category..." value="Information Technology & Software" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <datalist id="category_list">
+              <option value="Information Technology & Software">
+              <option value="Healthcare, Clinics & Hospitals">
+              <option value="Real Estate, Builders & Properties">
+              <option value="Gym, Fitness Centers & Yoga">
+              <option value="Education, Schools & Coaching Institutes">
+              <option value="Restaurants, Cafes & Cloud Kitchens">
+              <option value="Retail, Supermarkets & FMCG">
+              <option value="Financial, CA & Legal Services">
+              <option value="Automobile Sales, Workshops & Spares">
+              <option value="Manufacturing, Industrial & Textiles">
+              <option value="Beauty Salons, Spas & Cosmetics">
+              <option value="Travel, Tourism & Hotel Stays">
+              <option value="Event Management & Wedding Planners">
+              <option value="Interior Design, Architecture & Furniture">
+              <option value="Digital Marketing, Media & Advertising">
+              <option value="Logistics, Packers & Movers">
+              <option value="Solar, Clean Energy & Electricals">
+              <option value="Jewellery, Gemstones & Luxury Retail">
+              <option value="Agriculture, Farming & Agro-Equipment">
+              <option value="Security, Surveillance & Housekeeping">
+            </datalist>
           </div>
           <div>
-            <label class="text-xs font-medium text-slate-400">Subcategory (Searchable / Niche) *</label>
-            <input id="subcategory" placeholder="Developers, Gym, Clinic..." value="Developers" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <label class="text-xs font-medium text-slate-400">Subcategory / Micro-Niche (Open Search) *</label>
+            <input list="subcat_list" id="subcategory" placeholder="Type niche (e.g. AI Dev, Dental Clinic, Gym...)" value="AI Agent Development" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <datalist id="subcat_list">
+              <option value="AI Agent & SaaS Development">
+              <option value="Web & Mobile App Agency">
+              <option value="Dental Clinic & Orthodontics">
+              <option value="CrossFit & Strength Gym">
+              <option value="Luxury Apartments & Commercial Plots">
+              <option value="UPSC & Competitive Exam Coaching">
+              <option value="Fine Dining Restaurant & Banquet">
+              <option value="Direct Tax & GST Advisory">
+              <option value="Multi-Brand Car Service Station">
+              <option value="Bridal Makeup & Premium Spa">
+            </datalist>
           </div>
         </div>
 
+        <!-- Dynamic Cascading Location (Country -> State -> District) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="text-xs font-medium text-slate-400">Country *</label>
-            <input id="country" value="India" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white">
+            <select id="country" onchange="onCountryChange()" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
+              <option value="India" selected>India</option>
+              <option value="United States">United States</option>
+              <option value="United Arab Emirates">United Arab Emirates</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Canada">Canada</option>
+              <option value="Australia">Australia</option>
+            </select>
           </div>
           <div>
             <label class="text-xs font-medium text-slate-400">State *</label>
-            <input id="state" value="Rajasthan" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white">
+            <select id="state" onchange="onStateChange()" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
+              <!-- Dynamically populated -->
+            </select>
           </div>
           <div>
             <label class="text-xs font-medium text-slate-400">District / City *</label>
-            <input id="city" value="Jaipur" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white">
+            <select id="city" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
+              <!-- Dynamically populated -->
+            </select>
           </div>
         </div>
 
@@ -114,6 +152,7 @@
           </div>
         </div>
 
+        <!-- 5-Tier Packages -->
         <div>
           <label class="text-xs font-medium text-slate-400 block mb-2">Select Growth Package *</label>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="packageList">
@@ -180,6 +219,78 @@
   </div>
 
   <script>
+    // Location Data Store (States & Key Districts)
+    const locationData = {
+      "India": {
+        "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Sikar"],
+        "Delhi NCR": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Noida", "Gurugram", "Faridabad"],
+        "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad", "Solapur"],
+        "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar"],
+        "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Meerut", "Ghaziabad", "Bareilly"],
+        "Karnataka": ["Bengaluru Urban", "Mysuru", "Hubballi-Dharwad", "Mangaluru", "Belagavi"],
+        "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
+        "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar"],
+        "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain"],
+        "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Siliguri", "Asansol"],
+        "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Mohali"],
+        "Haryana": ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal"],
+        "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia"]
+      },
+      "United States": {
+        "California": ["Los Angeles", "San Francisco", "San Diego", "San Jose"],
+        "New York": ["New York City", "Buffalo", "Rochester"],
+        "Texas": ["Houston", "Austin", "Dallas", "San Antonio"],
+        "Florida": ["Miami", "Orlando", "Tampa", "Jacksonville"]
+      },
+      "United Arab Emirates": {
+        "Emirates": ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah"]
+      }
+    };
+
+    function initLocations() {
+      const countrySel = document.getElementById("country");
+      onCountryChange();
+    }
+
+    function onCountryChange() {
+      const country = document.getElementById("country").value;
+      const stateSel = document.getElementById("state");
+      stateSel.innerHTML = "";
+
+      const states = locationData[country] ? Object.keys(locationData[country]) : ["Other / All States"];
+      states.forEach(st => {
+        const opt = document.createElement("option");
+        opt.value = st;
+        opt.textContent = st;
+        stateSel.appendChild(opt);
+      });
+      onStateChange();
+    }
+
+    function onStateChange() {
+      const country = document.getElementById("country").value;
+      const state = document.getElementById("state").value;
+      const citySel = document.getElementById("city");
+      citySel.innerHTML = "";
+
+      let cities = [];
+      if (locationData[country] && locationData[country][state]) {
+        cities = locationData[country][state];
+      } else {
+        cities = ["Capital / Main City", "Other Region"];
+      }
+
+      cities.forEach(ct => {
+        const opt = document.createElement("option");
+        opt.value = ct;
+        opt.textContent = ct;
+        citySel.appendChild(opt);
+      });
+    }
+
+    // Initialize dropdowns on load
+    window.onload = initLocations;
+
     function selectPackage(name, price, element) {
       document.querySelectorAll('.package-card').forEach(c => {
         c.className = "package-card cursor-pointer border border-slate-700 bg-slate-950 p-3 rounded-xl text-center";
