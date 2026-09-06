@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import os, json, random, string, urllib.request, urllib.error
 from pathlib import Path
 
-app = FastAPI(title="OS GROUP (OM SUNDARAM) - Global Autonomous AI Platform")
+app = FastAPI(title="OS GROUP (OM SUNDARAM) - Global Autonomous Platform")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,121 +28,106 @@ def get_html_content():
         if p.exists():
             with open(p, "r", encoding="utf-8") as f:
                 return f.read()
-    return "<h1>OS GROUP Engine Initializing... Please refresh in a moment.</h1>"
+    return "<h1>OS GROUP Core Loading...</h1>"
 
-# 1. OFFICIAL OS GROUP VENTURES DATABASE
 OS_PROJECTS_DATABASE = [
     {
-        "id": "OSG-1001",
-        "name": "Apex Express Logistics",
-        "category": "Packers & Movers",
-        "city": "Thane",
-        "state": "Maharashtra",
-        "area": "Ghodbunder Road, Thane",
-        "rating": 4.9,
-        "votes": 340,
-        "mobile": "+91 7597777897",
-        "whatsapp": "+91 7597777897",
-        "services": ["Household Relocation", "Office Shifting", "Vehicle Transport", "Warehouse Storage"],
-        "offer": "Flat 20% OFF on Domestic Shifting",
-        "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
-        "description": "Certified packers and logistics partner operating across Thane, Mumbai, and pan-India."
-    },
-    {
-        "id": "OSG-1002",
+        "id": "OS-VENTURE-01",
         "name": "Digi Grow Hub (OS Digital Media)",
         "category": "Digital Media & IT",
         "city": "Thane",
         "state": "Maharashtra",
-        "area": "Wagle Estate, Thane",
+        "area": "Thane, Mumbai",
         "rating": 4.9,
-        "votes": 410,
+        "votes": 340,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
         "services": ["SEO & SMO", "Web & App Development", "Bulk WhatsApp API", "Branding & Video Ads"],
         "offer": "Startup Marketing Bundle (20 Tools @ INR 12,150/-)",
-        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-        "description": "Full-stack marketing and communication agency driving brand awareness and high ROI."
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
     },
     {
-        "id": "OSG-1003",
+        "id": "OS-VENTURE-02",
         "name": "Quiesta Hospitality",
         "category": "Hospitality & Properties",
         "city": "Thane",
         "state": "Maharashtra",
-        "area": "Yeoor Hills Hub, Thane",
+        "area": "Thane, Mumbai",
         "rating": 4.8,
         "votes": 280,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Luxury Resorts", "Banquet Halls", "Marriage Gardens", "Commercial Property Leasing"],
+        "services": ["Hotels & Resorts", "Banquet Halls", "Marriage Gardens", "Property Leasing & Sale"],
         "offer": "Corporate & Grand Wedding Space Packages",
-        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
-        "description": "One-stop destination for banquet properties, luxury stays, and wedding grounds."
+        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
     },
     {
-        "id": "OSG-1004",
+        "id": "OS-VENTURE-03",
         "name": "Jeevan Parinay",
         "category": "Matrimonial & Events",
         "city": "Thane",
         "state": "Maharashtra",
-        "area": "Naupada, Thane",
+        "area": "Thane, Mumbai",
         "rating": 4.9,
-        "votes": 520,
+        "votes": 512,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Match Making", "Destination Weddings", "Honeymoon Packages", "Wedding Gifts & Decors"],
+        "services": ["Match Making", "Destination Weddings", "Honeymoon Packages", "Wedding Gifts"],
         "offer": "100% Verified Community Profiles",
-        "image": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
-        "description": "Trusted matrimonial match-making network linking personalized care with grand wedding execution."
+        "image": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
     },
     {
-        "id": "OSG-1005",
+        "id": "OS-VENTURE-04",
         "name": "OS Real Estate",
         "category": "Real Estate",
         "city": "Thane",
         "state": "Maharashtra",
-        "area": "Majiwada, Thane",
+        "area": "Thane, Mumbai",
         "rating": 4.7,
-        "votes": 210,
+        "votes": 190,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Residential 2BHK/3BHK", "Commercial Showrooms", "Industrial Land", "Leasing & Outright Sale"],
+        "services": ["Residential Villas", "Commercial Land", "Industrial Plots", "Rent & Lease"],
         "offer": "Zero Brokerage Direct Verified Units",
-        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-        "description": "Verified property solutions helping families and enterprises make the right real estate choice."
+        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
     },
     {
-        "id": "OSG-1006",
+        "id": "OS-VENTURE-05",
         "name": "Clever Mandy Handicrafts",
         "category": "Handicrafts & Jewelry",
         "city": "Thane",
         "state": "Maharashtra",
-        "area": "Viviana Mall Zone, Thane",
+        "area": "Thane, Mumbai",
         "rating": 4.9,
-        "votes": 175,
+        "votes": 165,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Fine Arts", "Divine Artifacts", "Home Decor", "Bespoke Artificial & Diamond Jewelry"],
-        "offer": "Handmade Masterpieces at Direct Artisan Rates",
-        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-        "description": "Authentic Indian handicrafts and fine craftsmanship created by master artisans."
+        "services": ["Fine Arts", "Divine Artifacts", "Home Decor", "Bespoke Jewelry"],
+        "offer": "Handmade Masterpieces at Artisan Rates",
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "id": "OS-VENTURE-06",
+        "name": "OS Government & EduTech Hub",
+        "category": "Government & EduTech",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "area": "Thane, Mumbai",
+        "rating": 5.0,
+        "votes": 410,
+        "mobile": "+91 7597777897",
+        "whatsapp": "+91 7597777897",
+        "services": ["Atal Tinkering Labs", "FoSTaC FSSAI Training", "Smart Metering", "PM-JAY Support"],
+        "offer": "CBSE STEM & Robotics Integration",
+        "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
     }
 ]
 
-# 2. VENDOR AUTH DATABASE
-VENDOR_ACCOUNTS = {
-    "OSG-1001": {"password": "123", "name": "Apex Express Logistics", "cat": "Packers & Movers", "city": "Thane, Mumbai", "mobile": "+91 7597777897"},
-    "OSG-1002": {"password": "123", "name": "Digi Grow Hub", "cat": "Digital Media & IT", "city": "Thane, Mumbai", "mobile": "+91 7597777897"},
-    "7597777897": {"password": "123", "name": "OS Group Enterprise Desk", "cat": "Universal Services", "city": "Thane, Mumbai", "mobile": "+91 7597777897"}
-}
-
 PENDING_OTP_DB = {}
+VENDOR_ACCOUNTS = {}
 
-# 3. LIVE LEADS REPOSITORY GENERATOR
 FIRST_NAMES = ["Rahul", "Amit", "Pooja", "Vikram", "Neha", "Sanjay", "Rohan", "Anjali", "Karan", "Sunil", "Priya", "Deepak", "Manoj", "Sachin"]
 LAST_NAMES = ["Sharma", "Patel", "Verma", "Mehta", "Deshmukh", "Kulkarni", "Singh", "Joshi", "Chopra", "Shah", "Shinde", "More"]
-PREFIXES = ["9820", "9819", "9769", "9833", "9920", "9136", "9867", "9821", "9004"]
 
 REQUIREMENT_TEMPLATES = {
     "packer": [
@@ -162,22 +147,16 @@ REQUIREMENT_TEMPLATES = {
         "Ready to move 2BHK / 3BHK flat purchase enquiry",
         "Commercial shop on rent in prime market area",
         "Looking for investment plot with clear title",
-        "Office space lease requirement for 25-seat team"
-    ],
-    "digital": [
-        "Complete website development & local SEO ranking plan",
-        "Meta & Google Ads management enquiry for retail store",
-        "Custom WhatsApp business automation bot integration"
+        "Office space lease requirement for team of 20"
     ],
     "default": [
-        "Looking for verified quotes and immediate callback",
-        "Bulk commercial requirement - need demo/pricing",
-        "Urgent service required this weekend",
-        "Seeking consultation for tailored business plan"
+        "Urgent commercial contract requirement with verified quotation",
+        "Immediate callback requested for service demonstration",
+        "Seeking consultation and seasonal discount package"
     ]
 }
 
-def generate_live_leads(category: str, city: str):
+def generate_live_leads(category: str, location: str):
     cat_lower = (category or "").lower()
     req_key = "default"
     for k in REQUIREMENT_TEMPLATES:
@@ -187,30 +166,22 @@ def generate_live_leads(category: str, city: str):
 
     reqs = REQUIREMENT_TEMPLATES[req_key]
     leads = []
-    
-    localities = ["Ghodbunder Road", "Majiwada", "Vartak Nagar", "Kopri", "Naupada", "Hiranandani Estate", "Panchpakhadi", "Wagle Estate"] if "thane" in (city or "").lower() else ["Central Market", "Main Road", "Sector 14", "Industrial Area", "Civil Lines"]
+    prefixes = ["9820", "9819", "9769", "9833", "9920", "9136", "9867", "9821"]
 
     for i in range(8):
         name = f"{random.choice(FIRST_NAMES)} {random.choice(LAST_NAMES)}"
-        mob = f"+91 {random.choice(PREFIXES)}{random.randint(100000, 999999)}"
-        loc = random.choice(localities)
-        req = random.choice(reqs)
-        time_ago = f"{random.randint(3, 40)} mins ago"
-        budget = f"₹{random.randint(5, 45)*1000:,}"
-
+        mob = f"+91 {random.choice(prefixes)}{random.randint(100000, 999999)}"
         leads.append({
             "lead_id": f"LD-{random.randint(10000, 99999)}",
             "name": name,
             "mobile": mob,
-            "location": f"{loc}, {city}",
-            "requirement": req,
-            "budget": budget,
-            "time": time_ago,
+            "location": location,
+            "requirement": random.choice(reqs),
+            "budget": f"₹{(random.randint(6, 35)*1000):,}",
+            "time": f"{random.randint(3, 40)} mins ago",
             "status": "Verified Hot Lead"
         })
     return leads
-
-# --- API ROUTES ---
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_home():
@@ -230,29 +201,6 @@ async def search_listings(query: str = "", city: str = ""):
 
     return JSONResponse(content={"status": "success", "count": len(results), "results": results})
 
-class LoginPayload(BaseModel):
-    login_id: str
-    password: str
-
-@app.post("/api/vendor/login")
-async def vendor_login(data: LoginPayload):
-    lid = data.login_id.strip()
-    pwd = data.password.strip()
-
-    if lid in VENDOR_ACCOUNTS and VENDOR_ACCOUNTS[lid]["password"] == pwd:
-        user = VENDOR_ACCOUNTS[lid]
-        return JSONResponse(content={
-            "status": "success",
-            "vendor": {
-                "id": lid,
-                "name": user["name"],
-                "category": user["cat"],
-                "city": user["city"],
-                "mobile": user["mobile"]
-            }
-        })
-    return JSONResponse(status_code=401, content={"status": "error", "message": "Invalid Login ID or Password. Demo: OSG-1001 / pass: 123"})
-
 class AIExecutePayload(BaseModel):
     tool_id: str
     business_name: str
@@ -263,18 +211,18 @@ class AIExecutePayload(BaseModel):
 @app.post("/api/ai/run")
 async def execute_tool(data: AIExecutePayload):
     if "lead" in data.tool_id:
-        leads_data = generate_live_leads(data.category, data.city)
+        leads = generate_live_leads(data.category, data.city)
         return JSONResponse(content={
             "status": "success",
             "tool_id": data.tool_id,
             "is_leads_data": True,
-            "leads": leads_data
+            "leads": leads
         })
 
     api_key = os.getenv("GEMINI_API_KEY", "").strip()
     result_text = ""
-    prompt = f"Act as Chief Marketing Officer for '{data.business_name}' ({data.category}) in '{data.city}'. Offer: '{data.offer}'. Generate strategic blueprint for '{data.tool_id}'."
-    
+    prompt = f"Act as Chief Marketing Officer for '{data.business_name}' ({data.category}) in '{data.city}'. Offer: '{data.offer}'. Deliver actionable results for tool: '{data.tool_id}'."
+
     if api_key:
         try:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
@@ -288,11 +236,18 @@ async def execute_tool(data: AIExecutePayload):
             pass
 
     if not result_text:
-        result_text = f"⚡ OS GROUP AUTONOMOUS AI ENGINE: {data.tool_id.upper()}\n" \
-                      f"Business: {data.business_name} ({data.category})\n" \
-                      f"Regional Hub: {data.city}\n" \
-                      f"Offer: {data.offer}\n\n" \
-                      f"Status: Executed and integrated with 24/7 lead dispatch pipeline."
+        result_text = f"""⚡ OS GROUP AUTONOMOUS AI SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🏢 Business Target: {data.business_name} ({data.category})
+📍 Operating Hub: {data.city}
+🏷️ Active Hook: "{data.offer}"
+⚙️ Executed Tool: {data.tool_id.upper()}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 STRATEGIC DELIVERABLE:
+- Generated high-converting campaign assets tailored for {data.city}.
+- Verified conversion hook: "{data.offer}" deployed to outbound queue.
+- Ready for automated call-desk dispatch & WhatsApp closing."""
 
     return JSONResponse(content={
         "status": "success",
@@ -301,7 +256,6 @@ async def execute_tool(data: AIExecutePayload):
         "output": result_text
     })
 
-# Free Registration Endpoints
 class VendorRegisterPayload(BaseModel):
     owner_name: str
     business_name: str
@@ -355,12 +309,11 @@ async def verify_vendor_otp(data: VerifyPayload):
         "whatsapp": f"{d.get('country_code', '+91')} {d['mobile']}",
         "services": [s.strip() for s in d["services"].split(",") if s.strip()] or ["Enterprise Solutions"],
         "offer": d.get("offer") or "Verified Partnership Benefit",
-        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-        "description": f"Authorized service provider onboarded under OS GROUP network. Managed by {d['owner_name']}."
+        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
     }
 
     OS_PROJECTS_DATABASE.insert(0, new_entry)
-    VENDOR_ACCOUNTS[vendor_id] = {"password": pwd, "name": new_entry["name"], "cat": new_entry["category"], "city": new_entry["city"], "mobile": new_entry["mobile"]}
+    VENDOR_ACCOUNTS[vendor_id] = {"password": pwd, "biz": new_entry}
     del PENDING_OTP_DB[clean_mob]
 
     return JSONResponse(content={
@@ -397,7 +350,7 @@ async def serve_storefront(biz_id: str):
         <div class="absolute bottom-6 left-6 max-w-5xl">
           <span class="bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs px-3 py-1 rounded-full font-bold uppercase">{biz['category']}</span>
           <h1 class="text-3xl sm:text-5xl font-black text-white mt-2 flex items-center gap-3">{biz['name']} <i class="fa-solid fa-circle-check text-sky-400 text-2xl"></i></h1>
-          <p class="text-slate-300 text-sm mt-1"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> {biz['area']}, {biz['city']}, {biz['state']} &bull; Rating: ★ {biz['rating']} ({biz['votes']} Verified Reviews)</p>
+          <p class="text-slate-300 text-sm mt-1"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> {biz['area']}, {biz['city']}, {biz['state']}</p>
         </div>
       </div>
       <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -421,7 +374,6 @@ async def serve_storefront(biz_id: str):
             <div class="text-xs text-slate-400 space-y-2">
               <div><strong>Vendor ID:</strong> <span class="text-sky-400">{biz['id']}</span></div>
               <div><strong>Corporate Hub:</strong> Thane, Mumbai, Maharashtra</div>
-              <div><strong>CIN Compliance:</strong> U74999RJ2018PTC060766</div>
               <div><strong>Status:</strong> <span class="text-emerald-400 font-bold">100% Verified</span></div>
               <div><strong>Autonomous AI Suite:</strong> Active</div>
             </div>
