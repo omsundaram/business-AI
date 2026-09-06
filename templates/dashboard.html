@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- OFFICIAL OS EMBLEM EXACT VECTOR FAVICON -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%23090d16'/%3E%3Ccircle cx='54' cy='60' r='32' stroke='%23ffffff' stroke-width='9' fill='none'/%3E%3Cpath d='M 82,38 C 72,30 58,36 58,50 C 58,66 90,62 90,80 C 90,96 68,100 55,92' fill='none' stroke='%2338bdf8' stroke-width='9' stroke-linecap='round'/%3E%3Cline x1='40' y1='80' x2='78' y2='38' stroke='%23f59e0b' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <!-- FAVICON: DEDICATED OFFICIAL COLOR-COMBO 'OS' ONLY -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23090d16'/%3E%3Ccircle cx='44' cy='50' r='28' stroke='%2338bdf8' stroke-width='9' fill='none'/%3E%3Cpath d='M 74,32 C 64,24 50,30 50,44 C 50,60 82,56 82,72 C 82,88 60,92 48,84' fill='none' stroke='%23f59e0b' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -22,7 +22,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
 
-  <!-- TOP BAR -->
+  <!-- TOP HELPLINE BAR -->
   <div class="bg-slate-900 border-b border-slate-800 text-[12px] py-2 px-4 text-slate-400 relative z-30">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-3">
@@ -37,31 +37,21 @@
     </div>
   </div>
 
-  <!-- MAIN HEADER (WITH YOUR EXACT ORIGINAL LOGO & EMBLEM) -->
+  <!-- MAIN HEADER (ORIGINAL LOGO RESTORED AS REQUESTED) -->
   <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between gap-4">
       
-      <!-- Official Logo Representation -->
-      <div class="flex items-center gap-3.5 cursor-pointer" onclick="navigateTo('home')">
-        <div class="h-16 w-auto p-1 bg-slate-900/90 border border-slate-800 rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/10">
-          <svg viewBox="0 0 240 100" class="h-14 w-auto">
-            <!-- Overlapping 'O' and 'S' with diagonal cut line -->
-            <circle cx="55" cy="50" r="32" stroke="#ffffff" stroke-width="8" fill="none"/>
-            <path d="M 85,28 C 72,20 54,26 54,42 C 54,60 92,54 92,74 C 92,92 68,98 52,88" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
-            <line x1="38" y1="76" x2="80" y2="28" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round"/>
-            
-            <!-- Brand Text -->
-            <text x="110" y="42" fill="#ffffff" font-family="'Cinzel', serif" font-weight="900" font-size="28" letter-spacing="3">OS</text>
-            <text x="160" y="42" fill="#38bdf8" font-family="'Cinzel', serif" font-weight="900" font-size="28" letter-spacing="3">GROUP</text>
-            
-            <!-- Ornamental Divider Bar -->
-            <line x1="110" y1="52" x2="230" y2="52" stroke="#64748b" stroke-width="1.5"/>
-            <circle cx="170" cy="52" r="3.5" fill="#f59e0b"/>
-            
-            <!-- Sub-brand & Tagline -->
-            <text x="110" y="68" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" letter-spacing="3">OM SUNDARAM</text>
-            <text x="110" y="82" fill="#f59e0b" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" letter-spacing="1.5">ENTHRAL | ENGAGE | EXECUTE</text>
+      <!-- Original Restored Logo Representation -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+        <div class="w-13 h-13 p-1.5 bg-slate-900 border border-sky-500/40 rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/20">
+          <svg viewBox="0 0 100 100" class="w-10 h-10">
+            <circle cx="42" cy="50" r="30" stroke="#38bdf8" stroke-width="9" fill="none"/>
+            <path d="M 68,32 C 60,25 48,30 48,42 C 48,56 75,52 75,68 C 75,82 56,85 45,78" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round"/>
           </svg>
+        </div>
+        <div>
+          <span class="text-2xl font-black text-white brand-title">OS GROUP</span>
+          <div class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">OM SUNDARAM &bull; AI SUPER-APP</div>
         </div>
       </div>
 
@@ -82,12 +72,10 @@
   <!-- ================= VIEW: DIRECTORY HOME ================= -->
   <div id="page-home" class="page-view flex-1">
     
-    <!-- Hero Slider Showcase (From PDF Project Assets) -->
+    <!-- Hero Slider Showcase -->
     <section class="relative max-w-7xl mx-auto px-4 pt-6 pb-4">
       <div class="glass-card rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative">
-        <div id="heroSliderTrack" class="relative h-[360px] sm:h-[440px] w-full overflow-hidden">
-          <!-- Slides will rotate dynamically -->
-        </div>
+        <div id="heroSliderTrack" class="relative h-[360px] sm:h-[440px] w-full overflow-hidden"></div>
 
         <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/80 border border-slate-700 text-white flex items-center justify-center hover:bg-sky-600 transition">
           <i class="fa-solid fa-chevron-left"></i>
@@ -203,7 +191,6 @@
               <span id="outputBadge" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Live Inquiries</span>
             </div>
 
-            <!-- Leads Console Table -->
             <div id="leadsTableContainer" class="space-y-3">
               <div class="flex flex-wrap justify-between items-center bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs gap-2">
                 <span class="text-slate-400">Selected: <strong id="leadVendorLabel" class="text-white">Vendor</strong> &bull; <strong id="leadCatLabel" class="text-sky-400">Category</strong> in <strong id="leadCityLabel" class="text-amber-400">Locality</strong></span>
@@ -214,7 +201,6 @@
               <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1" id="leadsList"></div>
             </div>
 
-            <!-- Poster Canvas with Logo Integration -->
             <div id="posterContainer" class="hidden flex flex-col items-center justify-center p-3 bg-slate-950 rounded-2xl border border-slate-800">
               <canvas id="posterCanvas" width="1080" height="1080" class="w-full max-w-[340px] h-auto rounded-xl shadow-2xl border border-slate-700"></canvas>
               <button onclick="downloadPoster()" class="mt-4 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
@@ -675,7 +661,6 @@
       link.click();
     }
 
-    // DRAW POSTER WITH EMBEDDED OFFICIAL OS LOGO
     function drawPoster() {
       const canvas = document.getElementById("posterCanvas");
       const ctx = canvas.getContext("2d");
@@ -698,43 +683,22 @@
       ctx.lineWidth = 4;
       ctx.strokeRect(40, 40, 1000, 1000);
 
-      // Render Official OS Emblem on the poster canvas
-      ctx.save();
-      ctx.translate(470, 70);
-      ctx.strokeStyle = "#ffffff";
-      ctx.lineWidth = 8;
-      ctx.beginPath();
-      ctx.arc(45, 45, 30, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(75, 45, 20, -Math.PI / 2, Math.PI);
-      ctx.stroke();
-
-      ctx.strokeStyle = "#38bdf8";
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.moveTo(30, 70);
-      ctx.lineTo(70, 20);
-      ctx.stroke();
-      ctx.restore();
-
       ctx.fillStyle = "#38bdf8";
-      ctx.font = "bold 30px 'Cinzel', serif";
+      ctx.font = "bold 32px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("OS GROUP VERIFIED PARTNER", 540, 195);
+      ctx.fillText("OS GROUP VERIFIED PARTNER", 540, 120);
 
       ctx.fillStyle = "#f59e0b";
       ctx.font = "bold 26px sans-serif";
-      ctx.fillText(cat.toUpperCase(), 540, 270);
+      ctx.fillText(cat.toUpperCase(), 540, 260);
 
       ctx.fillStyle = "#ffffff";
       ctx.font = "900 64px sans-serif";
-      ctx.fillText(biz, 540, 370);
+      ctx.fillText(biz, 540, 360);
 
       ctx.fillStyle = "#94a3b8";
       ctx.font = "600 30px sans-serif";
-      ctx.fillText("📍 " + loc, 540, 430);
+      ctx.fillText("📍 " + loc, 540, 420);
 
       ctx.fillStyle = "rgba(245, 158, 11, 0.15)";
       ctx.fillRect(120, 520, 840, 200);
