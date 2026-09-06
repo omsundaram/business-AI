@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='42' cy='50' r='32' stroke='%2338bdf8' stroke-width='10' fill='none'/%3E%3Cpath d='M 68,32 C 60,25 48,30 48,42 C 48,56 75,52 75,68 C 75,82 56,85 45,78' fill='none' stroke='%23f59e0b' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
+  <!-- OFFICIAL OS EMBLEM EXACT VECTOR FAVICON -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%23090d16'/%3E%3Ccircle cx='54' cy='60' r='32' stroke='%23ffffff' stroke-width='9' fill='none'/%3E%3Cpath d='M 82,38 C 72,30 58,36 58,50 C 58,66 90,62 90,80 C 90,96 68,100 55,92' fill='none' stroke='%2338bdf8' stroke-width='9' stroke-linecap='round'/%3E%3Cline x1='40' y1='80' x2='78' y2='38' stroke='%23f59e0b' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -17,7 +18,6 @@
     .tool-active { background: #0284c7 !important; color: #ffffff !important; border-color: #38bdf8 !important; }
     select { background-color: #020617 !important; color: #f8fafc !important; }
     select option { background-color: #0f172a; color: #f8fafc; }
-    .slide-fade { transition: opacity 0.5s ease-in-out; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
@@ -37,19 +37,31 @@
     </div>
   </div>
 
-  <!-- HEADER -->
+  <!-- MAIN HEADER (WITH YOUR EXACT ORIGINAL LOGO & EMBLEM) -->
   <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between gap-4">
-      <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
-        <div class="w-13 h-13 p-1.5 bg-slate-900 border border-sky-500/40 rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/20">
-          <svg viewBox="0 0 100 100" class="w-10 h-10">
-            <circle cx="42" cy="50" r="30" stroke="#38bdf8" stroke-width="9" fill="none"/>
-            <path d="M 68,32 C 60,25 48,30 48,42 C 48,56 75,52 75,68 C 75,82 56,85 45,78" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round"/>
+      
+      <!-- Official Logo Representation -->
+      <div class="flex items-center gap-3.5 cursor-pointer" onclick="navigateTo('home')">
+        <div class="h-16 w-auto p-1 bg-slate-900/90 border border-slate-800 rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/10">
+          <svg viewBox="0 0 240 100" class="h-14 w-auto">
+            <!-- Overlapping 'O' and 'S' with diagonal cut line -->
+            <circle cx="55" cy="50" r="32" stroke="#ffffff" stroke-width="8" fill="none"/>
+            <path d="M 85,28 C 72,20 54,26 54,42 C 54,60 92,54 92,74 C 92,92 68,98 52,88" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+            <line x1="38" y1="76" x2="80" y2="28" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round"/>
+            
+            <!-- Brand Text -->
+            <text x="110" y="42" fill="#ffffff" font-family="'Cinzel', serif" font-weight="900" font-size="28" letter-spacing="3">OS</text>
+            <text x="160" y="42" fill="#38bdf8" font-family="'Cinzel', serif" font-weight="900" font-size="28" letter-spacing="3">GROUP</text>
+            
+            <!-- Ornamental Divider Bar -->
+            <line x1="110" y1="52" x2="230" y2="52" stroke="#64748b" stroke-width="1.5"/>
+            <circle cx="170" cy="52" r="3.5" fill="#f59e0b"/>
+            
+            <!-- Sub-brand & Tagline -->
+            <text x="110" y="68" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" letter-spacing="3">OM SUNDARAM</text>
+            <text x="110" y="82" fill="#f59e0b" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" letter-spacing="1.5">ENTHRAL | ENGAGE | EXECUTE</text>
           </svg>
-        </div>
-        <div>
-          <span class="text-2xl font-black text-white brand-title">OS GROUP</span>
-          <div class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">OM SUNDARAM &bull; AI SUPER-APP</div>
         </div>
       </div>
 
@@ -74,10 +86,9 @@
     <section class="relative max-w-7xl mx-auto px-4 pt-6 pb-4">
       <div class="glass-card rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative">
         <div id="heroSliderTrack" class="relative h-[360px] sm:h-[440px] w-full overflow-hidden">
-          <!-- Slides will rotate here dynamically -->
+          <!-- Slides will rotate dynamically -->
         </div>
 
-        <!-- Carousel Navigation Controls -->
         <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/80 border border-slate-700 text-white flex items-center justify-center hover:bg-sky-600 transition">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
@@ -85,7 +96,6 @@
           <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <!-- Slider Dots -->
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20" id="sliderDots"></div>
       </div>
     </section>
@@ -101,7 +111,7 @@
     </section>
   </div>
 
-  <!-- ================= VIEW: OFFICIAL PROJECT VISUAL GALLERY (FROM ALL PDFS) ================= -->
+  <!-- ================= VIEW: OFFICIAL PROJECT VISUAL GALLERY ================= -->
   <div id="page-gallery" class="page-view hidden flex-1 py-12 px-4">
     <div class="max-w-7xl mx-auto space-y-8">
       <div class="text-center max-w-3xl mx-auto">
@@ -110,9 +120,7 @@
         <p class="text-slate-400 text-sm mt-3">Visual showcases compiled from our corporate profile, brand portfolios, and government initiatives.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
-        <!-- Rendered dynamically from official PDF images catalog -->
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid"></div>
     </div>
   </div>
 
@@ -195,6 +203,7 @@
               <span id="outputBadge" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Live Inquiries</span>
             </div>
 
+            <!-- Leads Console Table -->
             <div id="leadsTableContainer" class="space-y-3">
               <div class="flex flex-wrap justify-between items-center bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs gap-2">
                 <span class="text-slate-400">Selected: <strong id="leadVendorLabel" class="text-white">Vendor</strong> &bull; <strong id="leadCatLabel" class="text-sky-400">Category</strong> in <strong id="leadCityLabel" class="text-amber-400">Locality</strong></span>
@@ -205,6 +214,7 @@
               <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1" id="leadsList"></div>
             </div>
 
+            <!-- Poster Canvas with Logo Integration -->
             <div id="posterContainer" class="hidden flex flex-col items-center justify-center p-3 bg-slate-950 rounded-2xl border border-slate-800">
               <canvas id="posterCanvas" width="1080" height="1080" class="w-full max-w-[340px] h-auto rounded-xl shadow-2xl border border-slate-700"></canvas>
               <button onclick="downloadPoster()" class="mt-4 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
@@ -227,14 +237,53 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-xs text-slate-500 text-center">
-    <div>OMSUNDARAM ENTERTAINTMENT PVT. LTD. &bull; OS GROUP TECHNOLOGIES</div>
-    <p class="text-[11px] text-slate-600 mt-1">&copy; 2026 OS GROUP. All rights reserved. Helpline: +91 7597777897</p>
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-slate-900 bg-slate-950 pt-12 pb-8 text-xs text-slate-400 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      <div class="space-y-3">
+        <div class="text-lg font-black text-white brand-title">OS GROUP</div>
+        <div class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">OMSUNDARAM ENTERTAINTMENT PVT. LTD.[cite: 1, 3]</div>
+        <p class="text-slate-500 text-xs leading-relaxed">
+          CIN: U74999RJ2018PTC060766 &bull; India's Premier Autonomous Business Super-App & Classified Network[cite: 1].
+        </p>
+        <div class="text-sky-400 font-semibold tracking-wider text-[11px]">
+          ENTHRAL &bull; ENGAGE &bull; EXECUTE
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Platform Navigation</div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-sky-400 transition">Directory Home</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('gallery')" class="hover:text-amber-400 transition">Project Visual Gallery</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('aisuite')" class="hover:text-sky-400 transition">Autonomous AI Tools</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('packages')" class="hover:text-amber-400 transition">Startup Marketing Kit</a></div>
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Contact & Support</div>
+        <div class="text-slate-300"><strong>Customer Care:</strong> <a href="tel:+917597777897" class="text-amber-400 font-bold">+91 7597777897</a>[cite: 3]</div>
+        <div class="text-slate-300"><strong>Email:</strong> info@osgroup.in[cite: 3]</div>
+        <div class="text-slate-400"><strong>Corporate Address:</strong> Thane, Mumbai, Maharashtra, India</div>
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-2 uppercase tracking-wider text-[11px]">Corporate Office Map</div>
+        <p class="text-[11px] text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Thane, Mumbai, Maharashtra</p>
+        <div class="w-full h-32 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120562.46468428135!2d72.93124504104276!3d19.21833070494498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8fcfe76fd59%3A0xc095368a526a4b!2sThane%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-900 pt-6 text-center text-slate-600 text-[11px]">
+      &copy; 2026 OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED &bull; OS GROUP. All rights reserved. Registered Office: Thane, Mumbai, Maharashtra.
+    </div>
   </footer>
 
   <script>
-    // COMPLETE OFFICIAL PROJECT SLIDES & GALLERY (FROM ALL SUBMITTED PDFS)
     const officialPdfSlides = [
       {
         title: "Digi Grow Hub (The Digital Marketers)",
@@ -270,27 +319,6 @@
         category: "Government & School Innovation",
         image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
         specs: "Robotics, 3D Printing, Coding & App Development, IoT Sensors, Cloud Linking & Electronics Lab"
-      },
-      {
-        title: "FoSTaC (FSSAI) Food Safety Certification",
-        tagline: "Inspiring Trust, Assuring Safe & Nutritious Food Nationwide",
-        category: "Government Training & Compliance",
-        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80",
-        specs: "Mandatory Food Safety Supervisor Training across Dairy, Bakery, Meat, Oil & Water Packaging"
-      },
-      {
-        title: "Life4Help Foundation & Bandhan Foundation",
-        tagline: "Live The Life You Want - Connecting the Dots with Humanitarian Beliefs",
-        category: "Philanthropy & Social Empowerment",
-        image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80",
-        specs: "Student Counseling, Promoting Education, Food & Clothes Distribution Volunteering Programs"
-      },
-      {
-        title: "OS Mart & Commercial Vouchers",
-        tagline: "A few clicks is all it takes! Luxury Holiday, Movie & Shopping Deals",
-        category: "E-Commerce & Lifestyle Utility",
-        image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80",
-        specs: "62 Domestic & 43 International Destinations, Amazon/BigBazaar Vouchers & Preventive Health Tests"
       }
     ];
 
@@ -647,6 +675,7 @@
       link.click();
     }
 
+    // DRAW POSTER WITH EMBEDDED OFFICIAL OS LOGO
     function drawPoster() {
       const canvas = document.getElementById("posterCanvas");
       const ctx = canvas.getContext("2d");
@@ -669,22 +698,43 @@
       ctx.lineWidth = 4;
       ctx.strokeRect(40, 40, 1000, 1000);
 
+      // Render Official OS Emblem on the poster canvas
+      ctx.save();
+      ctx.translate(470, 70);
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 8;
+      ctx.beginPath();
+      ctx.arc(45, 45, 30, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(75, 45, 20, -Math.PI / 2, Math.PI);
+      ctx.stroke();
+
+      ctx.strokeStyle = "#38bdf8";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(30, 70);
+      ctx.lineTo(70, 20);
+      ctx.stroke();
+      ctx.restore();
+
       ctx.fillStyle = "#38bdf8";
-      ctx.font = "bold 32px sans-serif";
+      ctx.font = "bold 30px 'Cinzel', serif";
       ctx.textAlign = "center";
-      ctx.fillText("OS GROUP VERIFIED PARTNER", 540, 120);
+      ctx.fillText("OS GROUP VERIFIED PARTNER", 540, 195);
 
       ctx.fillStyle = "#f59e0b";
       ctx.font = "bold 26px sans-serif";
-      ctx.fillText(cat.toUpperCase(), 540, 260);
+      ctx.fillText(cat.toUpperCase(), 540, 270);
 
       ctx.fillStyle = "#ffffff";
       ctx.font = "900 64px sans-serif";
-      ctx.fillText(biz, 540, 360);
+      ctx.fillText(biz, 540, 370);
 
       ctx.fillStyle = "#94a3b8";
       ctx.font = "600 30px sans-serif";
-      ctx.fillText("📍 " + loc, 540, 420);
+      ctx.fillText("📍 " + loc, 540, 430);
 
       ctx.fillStyle = "rgba(245, 158, 11, 0.15)";
       ctx.fillRect(120, 520, 840, 200);
