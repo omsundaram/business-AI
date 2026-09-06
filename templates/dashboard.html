@@ -2,253 +2,419 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Universal Business AI - SaaS Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OS GROUP - Universal Autonomous Business AI Ecosystem</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .neon-glow { box-shadow: 0 0 35px -5px rgba(14, 165, 233, 0.3); }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
-  <div class="max-w-7xl mx-auto py-8 px-4">
-    
-    <header class="border-b border-slate-800 pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <div>
-        <h1 class="text-3xl font-extrabold text-sky-400 tracking-tight">UNIVERSAL BUSINESS AI</h1>
-        <p class="text-slate-400 text-sm">Autonomous Client Onboarding, Brand Engine & Growth Suite (4000+ Categories Ready)</p>
-      </div>
-      <div id="statusBadge" class="bg-amber-500/20 text-amber-300 text-xs px-4 py-1.5 rounded-full border border-amber-500/30 font-semibold">
-        Profile Incomplete
-      </div>
-    </header>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-sky-500 selection:text-white">
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      
-      <!-- FORM -->
-      <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl space-y-6">
-        <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-          <span>📋</span> Business Registration & Onboarding
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="text-xs font-medium text-slate-400">Owner Full Name *</label>
-            <input id="owner_name" placeholder="Kamlesh" value="Kamlesh" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">Business Name *</label>
-            <input id="business_name" placeholder="OS Group" value="OS Group" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">Mobile Number *</label>
-            <input id="mobile" placeholder="+91 9876543210" value="+91 9876543210" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">Email Address *</label>
-            <input id="email" type="email" placeholder="contact@osgroup.com" value="contact@osgroup.com" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-          </div>
-          <div class="md:col-span-2">
-            <label class="text-xs font-medium text-slate-400">WhatsApp Number for Automation *</label>
-            <input id="whatsapp" placeholder="+91 9876543210" value="+91 9876543210" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-          </div>
+  <!-- NAVBAR -->
+  <nav class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('landingSection')">
+        <div class="w-11 h-11 bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 rounded-xl flex items-center justify-center font-black text-xl text-white shadow-lg shadow-sky-500/20">
+          OS
         </div>
-
-        <!-- 4000+ Categories Searchable Autocomplete -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="text-xs font-medium text-slate-400">Main Industry / Category (Searchable) *</label>
-            <input list="category_list" id="main_category" placeholder="Type or select category..." value="Information Technology & Software" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-            <datalist id="category_list">
-              <option value="Information Technology & Software">
-              <option value="Healthcare, Clinics & Hospitals">
-              <option value="Real Estate, Builders & Properties">
-              <option value="Gym, Fitness Centers & Yoga">
-              <option value="Education, Schools & Coaching Institutes">
-              <option value="Restaurants, Cafes & Cloud Kitchens">
-              <option value="Retail, Supermarkets & FMCG">
-              <option value="Financial, CA & Legal Services">
-              <option value="Automobile Sales, Workshops & Spares">
-              <option value="Manufacturing, Industrial & Textiles">
-              <option value="Beauty Salons, Spas & Cosmetics">
-              <option value="Travel, Tourism & Hotel Stays">
-              <option value="Event Management & Wedding Planners">
-              <option value="Interior Design, Architecture & Furniture">
-              <option value="Digital Marketing, Media & Advertising">
-              <option value="Logistics, Packers & Movers">
-              <option value="Solar, Clean Energy & Electricals">
-              <option value="Jewellery, Gemstones & Luxury Retail">
-              <option value="Agriculture, Farming & Agro-Equipment">
-              <option value="Security, Surveillance & Housekeeping">
-            </datalist>
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">Subcategory / Micro-Niche (Open Search) *</label>
-            <input list="subcat_list" id="subcategory" placeholder="Type niche (e.g. AI Dev, Dental Clinic, Gym...)" value="AI Agent Development" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-            <datalist id="subcat_list">
-              <option value="AI Agent & SaaS Development">
-              <option value="Web & Mobile App Agency">
-              <option value="Dental Clinic & Orthodontics">
-              <option value="CrossFit & Strength Gym">
-              <option value="Luxury Apartments & Commercial Plots">
-              <option value="UPSC & Competitive Exam Coaching">
-              <option value="Fine Dining Restaurant & Banquet">
-              <option value="Direct Tax & GST Advisory">
-              <option value="Multi-Brand Car Service Station">
-              <option value="Bridal Makeup & Premium Spa">
-            </datalist>
-          </div>
-        </div>
-
-        <!-- Dynamic Cascading Location (Country -> State -> District) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label class="text-xs font-medium text-slate-400">Country *</label>
-            <select id="country" onchange="onCountryChange()" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-              <option value="India" selected>India</option>
-              <option value="United States">United States</option>
-              <option value="United Arab Emirates">United Arab Emirates</option>
-              <option value="United Kingdom">United Kingdom</option>
-              <option value="Canada">Canada</option>
-              <option value="Australia">Australia</option>
-            </select>
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">State *</label>
-            <select id="state" onchange="onStateChange()" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-              <!-- Dynamically populated -->
-            </select>
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">District / City *</label>
-            <select id="city" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">
-              <!-- Dynamically populated -->
-            </select>
-          </div>
-        </div>
-
-        <div class="space-y-4">
-          <div>
-            <label class="text-xs font-medium text-slate-400">Services Offered *</label>
-            <textarea id="services" rows="2" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">AI Agent Development, SaaS Platforms, Cloud Hosting</textarea>
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">Current Promotional Offers *</label>
-            <textarea id="offers" rows="2" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:border-sky-500 focus:outline-none">Flat 30% OFF on First Setup</textarea>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="text-xs font-medium text-slate-400">Facebook URL</label>
-            <input id="fb_link" placeholder="facebook.com/page" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2 text-sm text-white">
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">Instagram Handle</label>
-            <input id="insta_link" placeholder="instagram.com/handle" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2 text-sm text-white">
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">YouTube Channel</label>
-            <input id="yt_link" placeholder="youtube.com/@channel" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2 text-sm text-white">
-          </div>
-          <div>
-            <label class="text-xs font-medium text-slate-400">Website / Other</label>
-            <input id="web_link" placeholder="https://website.com" class="w-full mt-1 bg-slate-950 border border-slate-700 rounded-lg p-2 text-sm text-white">
-          </div>
-        </div>
-
-        <!-- 5-Tier Packages -->
         <div>
-          <label class="text-xs font-medium text-slate-400 block mb-2">Select Growth Package *</label>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="packageList">
-            <div onclick="selectPackage('Bronze', 3000, this)" class="package-card cursor-pointer border border-slate-700 bg-slate-950 p-3 rounded-xl text-center">
-              <div class="text-xs text-amber-600 font-bold">Bronze</div>
-              <div class="text-lg font-bold text-white mt-1">₹3,000</div>
-            </div>
-            <div onclick="selectPackage('Silver', 12000, this)" class="package-card cursor-pointer border border-slate-700 bg-slate-950 p-3 rounded-xl text-center">
-              <div class="text-xs text-slate-300 font-bold">Silver</div>
-              <div class="text-lg font-bold text-white mt-1">₹12,000</div>
-            </div>
-            <div onclick="selectPackage('Gold', 35000, this)" class="package-card cursor-pointer border-2 border-amber-400 bg-amber-400/10 p-3 rounded-xl text-center">
-              <div class="text-xs text-amber-400 font-bold">Gold</div>
-              <div class="text-lg font-bold text-white mt-1">₹35,000</div>
-            </div>
-            <div onclick="selectPackage('Platinum', 75000, this)" class="package-card cursor-pointer border border-slate-700 bg-slate-950 p-3 rounded-xl text-center">
-              <div class="text-xs text-sky-400 font-bold">Platinum</div>
-              <div class="text-lg font-bold text-white mt-1">₹75,000</div>
-            </div>
-            <div onclick="selectPackage('Diamond', 150000, this)" class="package-card cursor-pointer border border-slate-700 bg-slate-950 p-3 rounded-xl text-center">
-              <div class="text-xs text-purple-400 font-bold">Diamond</div>
-              <div class="text-lg font-bold text-white mt-1">₹1,50,000</div>
-            </div>
-          </div>
-          <input type="hidden" id="selected_pkg" value="Gold">
-          <input type="hidden" id="selected_price" value="35000">
+          <span class="text-xl font-extrabold tracking-tight text-white block">OS GROUP</span>
+          <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest block">Universal Business AI</span>
         </div>
+      </div>
 
-        <button onclick="submitFullRegistration()" class="w-full bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition">
-          🚀 Complete Registration & Activate AI Engine
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#services" onclick="showSection('landingSection')" class="hover:text-sky-400 transition">Solutions</a>
+        <a href="#packages" onclick="showSection('landingSection')" class="hover:text-sky-400 transition">Packages</a>
+        <a href="#how-it-works" onclick="showSection('landingSection')" class="hover:text-sky-400 transition">Architecture</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="showLoginModal()" class="px-5 py-2.5 rounded-xl border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-sm font-semibold transition text-slate-200">
+          Sign In
+        </button>
+        <button onclick="showSection('registerSection')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-sm font-bold shadow-lg shadow-sky-500/20 transition text-white">
+          Onboard Vendor
         </button>
       </div>
+    </div>
+  </nav>
 
-      <!-- CONSOLE -->
-      <div class="lg:col-span-5 space-y-6">
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex flex-wrap gap-2">
-          <button onclick="triggerContentGen()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-3 rounded-lg text-xs font-semibold">Generate Posts & Ads</button>
-          <button onclick="triggerLeadGen()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-2 px-3 rounded-lg text-xs font-semibold">Extract Leads</button>
+  <!-- ================= SECTION 1: OS GROUP PUBLIC LANDING PAGE ================= -->
+  <main id="landingSection" class="transition-all duration-300">
+    <!-- Hero Banner -->
+    <section class="relative py-20 lg:py-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-6">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span> Enterprise Autonomous Ecosystem
+        </div>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight max-w-5xl mx-auto leading-tight sm:leading-none">
+          One Single AI Engine To Run Your Entire <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-500">Business Model.</span>
+        </h1>
+        <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          OS Group delivers autonomous AI architecture for every vendor: Hyperlocal Marketing, Multi-channel Lead Generation, WhatsApp AI Closing Bot, Branding, and 24/7 Client Support under one unified roof.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <button onclick="showSection('registerSection')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 font-bold text-white text-base shadow-xl shadow-sky-500/25 transition">
+            🚀 Activate Your Business AI (Get Started)
+          </button>
+          <button onclick="showLoginModal()" class="px-8 py-4 rounded-xl border border-slate-700 bg-slate-900/60 hover:bg-slate-800 font-semibold text-slate-200 text-base transition">
+            Vendor Portal Login →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid: Everything OS Group Handles -->
+    <section id="services" class="py-20 border-t border-slate-900 bg-slate-950/50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Comprehensive Business AI Infrastructure</h2>
+          <p class="text-slate-400 mt-4 text-sm sm:text-base">Har vendor ke business ke har ek critical operation ko automate karne ke liye engineered system.</p>
         </div>
 
-        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl min-h-[420px] flex flex-col">
-          <div class="flex justify-between items-center mb-3">
-            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Master AI Live Output</h3>
-            <span id="activePlanLabel" class="text-[11px] bg-slate-800 text-sky-400 px-2 py-0.5 rounded">Plan: Gold (₹35,000)</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-sky-500/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-2xl mb-6 text-sky-400">📈</div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition">Autonomous Lead Generation</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Pinpoint local prospective customers, enterprises, and high-value buyers in your exact city and district on auto-pilot.</p>
           </div>
-          <div id="outputConsole" class="flex-1 text-slate-300 text-xs font-mono bg-slate-950 p-4 rounded-xl border border-slate-800 overflow-y-auto whitespace-pre-wrap">Form bhariye aur 'Complete Registration' click karein.</div>
+          <!-- Card 2 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-indigo-500/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-2xl mb-6 text-indigo-400">🎨</div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-indigo-400 transition">Branding & Content Machine</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">High-converting viral ad captions, marketing blueprints, promotional graphics copies, and hashtags generated instantly.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-purple-500/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-2xl mb-6 text-purple-400">🤖</div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition">WhatsApp & Web AI Closing Bot</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">24/7 intelligent customer negotiation, queries resolution, and order qualification in fluent Hinglish and regional tones.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-amber-500/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl mb-6 text-amber-400">⚡</div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition">4,000+ Categories Covered</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Whether you run a Clinic, Real Estate Agency, Gym, Retail Store, CA Firm or IT Hub—customized prompts tailored to your exact niche.</p>
+          </div>
+          <!-- Card 5 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-emerald-500/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-2xl mb-6 text-emerald-400">🔒</div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition">Dedicated Secure Vendor Portal</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">OTP-verified registration with instant Vendor ID and Private Access Credentials for complete peace of mind.</p>
+          </div>
+          <!-- Card 6 -->
+          <div class="glass-card p-8 rounded-2xl hover:border-rose-500/40 transition group">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-2xl mb-6 text-rose-400">📊</div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-rose-400 transition">Growth & ROI Roadmap</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Weekly action plans, campaign conversion triggers, and targeted customer outreach strategies built directly into your console.</p>
+          </div>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-3">
-          <h4 class="text-sm font-bold text-white flex items-center gap-2">
-            <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span> WhatsApp / Support AI Bot
-          </h4>
-          <div class="flex gap-2">
-            <input id="chatInput" placeholder="Type customer message..." class="flex-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white">
-            <button onclick="sendChatMessage()" class="bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 rounded-lg text-xs font-bold">Send</button>
+  <!-- ================= SECTION 2: VENDOR REGISTRATION & ONBOARDING ================= -->
+  <section id="registerSection" class="hidden max-w-5xl mx-auto py-12 px-4">
+    <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-800">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Vendor Registration & AI Onboarding</h2>
+        <p class="text-slate-400 text-sm mt-1">Apne business ki complete profile submit karein. Instant OTP verification ke baad credentials generate honge.</p>
+      </div>
+      <button onclick="showSection('landingSection')" class="text-xs text-slate-400 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900">
+        ← Back to Overview
+      </button>
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+      <!-- Owner & Contact Info -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Owner Full Name *</label>
+          <input id="owner_name" placeholder="e.g. Kamlesh Kumar" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Registered Business Name *</label>
+          <input id="business_name" placeholder="e.g. OS Group Innovations" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Mobile Number (For OTP & ID) *</label>
+          <input id="mobile" placeholder="+91 9876543210" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Email Address *</label>
+          <input id="email" type="email" placeholder="contact@business.com" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+        <div class="md:col-span-2">
+          <label class="text-xs font-semibold text-slate-400">WhatsApp Automation Number *</label>
+          <input id="whatsapp" placeholder="+91 9876543210" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+      </div>
+
+      <!-- 4000+ Categories Autocomplete Typeahead -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Main Industry / Category *</label>
+          <input list="cat_options" id="main_category" placeholder="Search across 4000+ categories..." value="Information Technology & Software" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+          <datalist id="cat_options">
+            <option value="Information Technology & AI Software">
+            <option value="Healthcare, Clinics, Dental & Hospitals">
+            <option value="Real Estate, Builders & Properties">
+            <option value="Gym, Fitness Centers & Martial Arts">
+            <option value="Education, Schools, UPSC & Coaching Centers">
+            <option value="Restaurants, Cafes, Bakeries & Cloud Kitchens">
+            <option value="Retail, Supermarkets, Fashion & FMCG">
+            <option value="Financial, Chartered Accountants & Legal Services">
+            <option value="Automobile Dealerships, Service Stations & Spares">
+            <option value="Manufacturing, Industrial, Solar & Hardware">
+            <option value="Salons, Spas, Cosmetics & Bridal Makeup">
+            <option value="Travel, Tours, Visa Agencies & Hotels">
+            <option value="Event Planners, Caterers & Wedding Decorators">
+            <option value="Interior Design, Modular Kitchen & Furniture">
+            <option value="Digital Marketing, Media Agencies & Production">
+          </datalist>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Subcategory / Micro-Niche *</label>
+          <input id="subcategory" placeholder="Type exact niche (e.g. AI Agent Agency, Dental Implant...)" value="AI Agent SaaS Platforms" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+      </div>
+
+      <!-- Cascading Location Selector -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Country *</label>
+          <select id="country" onchange="onCountryChange()" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <option value="India" selected>India</option>
+            <option value="United States">United States</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">State *</label>
+          <select id="state" onchange="onStateChange()" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none"></select>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">District / City *</label>
+          <select id="city" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none"></select>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Key Services Provided *</label>
+          <textarea id="services" rows="2" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">Autonomous AI Systems, Lead Funnels, 24/7 Support Bot</textarea>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Current Promotional Offers *</label>
+          <textarea id="offers" rows="2" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">Flat 30% Discount for First 50 Onboarded Clients</textarea>
+        </div>
+      </div>
+
+      <!-- Package Selection -->
+      <div>
+        <label class="text-xs font-semibold text-slate-400 block mb-2">Select OS Group Growth Tier *</label>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <div onclick="selectPkg('Bronze', 3000, this)" class="pkg-box cursor-pointer border border-slate-800 bg-slate-950 p-3 rounded-xl text-center">
+            <div class="text-xs text-amber-600 font-bold">Bronze</div>
+            <div class="text-base font-bold text-white mt-1">₹3,000</div>
           </div>
-          <div id="chatResponse" class="text-xs text-teal-400 font-sans p-2 bg-slate-950 rounded border border-slate-800 min-h-[40px] flex items-center">
-            Bot is ready.
+          <div onclick="selectPkg('Silver', 12000, this)" class="pkg-box cursor-pointer border border-slate-800 bg-slate-950 p-3 rounded-xl text-center">
+            <div class="text-xs text-slate-300 font-bold">Silver</div>
+            <div class="text-base font-bold text-white mt-1">₹12,000</div>
+          </div>
+          <div onclick="selectPkg('Gold', 35000, this)" class="pkg-box cursor-pointer border-2 border-amber-400 bg-amber-400/10 p-3 rounded-xl text-center">
+            <div class="text-xs text-amber-400 font-bold">Gold</div>
+            <div class="text-base font-bold text-white mt-1">₹35,000</div>
+          </div>
+          <div onclick="selectPkg('Platinum', 75000, this)" class="pkg-box cursor-pointer border border-slate-800 bg-slate-950 p-3 rounded-xl text-center">
+            <div class="text-xs text-sky-400 font-bold">Platinum</div>
+            <div class="text-base font-bold text-white mt-1">₹75,000</div>
+          </div>
+          <div onclick="selectPkg('Diamond', 150000, this)" class="pkg-box cursor-pointer border border-slate-800 bg-slate-950 p-3 rounded-xl text-center">
+            <div class="text-xs text-purple-400 font-bold">Diamond</div>
+            <div class="text-base font-bold text-white mt-1">₹1,50,000</div>
           </div>
         </div>
+        <input type="hidden" id="selected_pkg" value="Gold">
+        <input type="hidden" id="selected_price" value="35000">
+      </div>
 
+      <button onclick="requestRegistrationOTP()" class="w-full py-4 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-base shadow-xl shadow-sky-500/20 transition">
+        🔒 Verify Mobile with OTP & Generate Vendor Access
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= MODAL: OTP VERIFICATION ================= -->
+  <div id="otpModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 max-w-md w-full p-8 rounded-3xl shadow-2xl text-center">
+      <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-3xl mx-auto mb-4 text-sky-400">
+        🔑
+      </div>
+      <h3 class="text-xl font-bold text-white">Enter OTP Verification Code</h3>
+      <p class="text-xs text-slate-400 mt-2" id="otpNotice">A 4-digit code has been generated for your mobile number.</p>
+      
+      <div class="my-6">
+        <input id="otpInput" maxlength="4" placeholder="0000" class="w-36 text-center text-3xl tracking-widest font-mono bg-slate-950 border-2 border-sky-500 rounded-xl py-3 text-white focus:outline-none">
+      </div>
+
+      <div class="flex gap-3">
+        <button onclick="closeOtpModal()" class="flex-1 py-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 text-sm font-semibold hover:text-white">Cancel</button>
+        <button onclick="verifyAndGenerateCredentials()" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white text-sm font-bold shadow-lg shadow-sky-500/20">Verify & Activate</button>
       </div>
     </div>
   </div>
 
+  <!-- ================= MODAL: CREDENTIALS GENERATED ================= -->
+  <div id="credentialsModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-emerald-500/40 max-w-lg w-full p-8 rounded-3xl shadow-2xl text-center">
+      <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-3xl mx-auto mb-3 text-emerald-400">
+        ✅
+      </div>
+      <h3 class="text-2xl font-extrabold text-white">Registration Successful!</h3>
+      <p class="text-xs text-slate-400 mt-1">Vendor account activated and synchronized with OS Group Backend.</p>
+
+      <div class="my-6 p-5 bg-slate-950 border border-slate-800 rounded-2xl text-left space-y-3 font-mono text-sm">
+        <div class="flex justify-between border-b border-slate-800/80 pb-2">
+          <span class="text-slate-400">Vendor ID / Login ID:</span>
+          <span id="resVendorId" class="text-sky-400 font-bold">OSG-000000</span>
+        </div>
+        <div class="flex justify-between border-b border-slate-800/80 pb-2">
+          <span class="text-slate-400">Temporary Password:</span>
+          <span id="resPassword" class="text-emerald-400 font-bold">********</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-400">Assigned Plan:</span>
+          <span id="resPlan" class="text-amber-400 font-bold">Gold Tier</span>
+        </div>
+      </div>
+
+      <p class="text-[11px] text-slate-500 mb-6">Note: Save these credentials. You can also use your mobile number to sign in anytime.</p>
+
+      <button onclick="enterVendorDashboardDirectly()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-bold shadow-lg shadow-emerald-500/25 transition">
+        Enter AI Control Console Now →
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: LOGIN ================= -->
+  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 max-w-md w-full p-8 rounded-3xl shadow-2xl">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-white">Vendor Portal Sign In</h3>
+        <button onclick="closeLoginModal()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Vendor ID or Registered Mobile</label>
+          <input id="login_id" placeholder="OSG-XXXXXX or +91..." class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-400">Password</label>
+          <input id="login_pwd" type="password" placeholder="••••••••" class="w-full mt-1.5 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+        </div>
+        <button onclick="performVendorLogin()" class="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-sm shadow-lg shadow-sky-500/20">
+          Sign In to AI Dashboard
+        </button>
+        <p class="text-center text-xs text-slate-500 mt-3">
+          Not onboarded yet? <a href="javascript:void(0)" onclick="closeLoginModal(); showSection('registerSection');" class="text-sky-400 underline">Register Business</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION 3: VENDOR MASTER AI DASHBOARD ================= -->
+  <section id="dashboardSection" class="hidden max-w-7xl mx-auto py-8 px-4">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 pb-4 border-b border-slate-800">
+      <div>
+        <div class="flex items-center gap-3">
+          <h2 id="dashBizName" class="text-2xl sm:text-3xl font-extrabold text-white">OS Group Partner Dashboard</h2>
+          <span id="dashPlanBadge" class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-500/30 font-semibold">Gold Plan</span>
+        </div>
+        <p id="dashMeta" class="text-slate-400 text-xs mt-1">Vendor ID: <span id="dashVendorId">OSG-000000</span> | Connected to OS Group Engine</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="showSection('landingSection')" class="px-4 py-2 rounded-xl border border-slate-800 bg-slate-900 text-xs font-semibold text-slate-300 hover:text-white">Home</button>
+        <button onclick="logoutVendor()" class="px-4 py-2 rounded-xl bg-rose-500/20 border border-rose-500/30 text-rose-400 text-xs font-semibold hover:bg-rose-500/30">Logout</button>
+      </div>
+    </div>
+
+    <!-- Live Execution Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-8 space-y-6">
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex flex-wrap gap-3">
+          <button onclick="triggerContentGen()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 px-4 rounded-xl text-xs font-bold transition">🔥 Generate Posts & Ad Copies</button>
+          <button onclick="triggerLeadGen()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 px-4 rounded-xl text-xs font-bold transition">🎯 Extract Verified Leads</button>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl min-h-[480px] flex flex-col shadow-xl">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span> Autonomous Marketing & Growth Blueprint
+            </h3>
+            <span class="text-[11px] text-slate-500 font-mono">Live Sync: Active</span>
+          </div>
+          <div id="outputConsole" class="flex-1 text-slate-300 text-xs font-mono bg-slate-950 p-5 rounded-2xl border border-slate-800/80 overflow-y-auto whitespace-pre-wrap leading-relaxed">
+            Console initialized. AI Blueprint loaded.
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Bot Column -->
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-xl">
+          <h4 class="text-sm font-bold text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span> 24/7 WhatsApp / Customer Bot
+          </h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Simulates how your autonomous executive converts customer inquiries on WhatsApp.</p>
+          
+          <div class="space-y-2">
+            <input id="chatInput" placeholder="Customer: What are your pricing plans?" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-emerald-500">
+            <button onclick="sendChatMessage()" class="w-full bg-teal-600 hover:bg-teal-500 text-white py-2.5 rounded-xl text-xs font-bold transition">Send Inquiry</button>
+          </div>
+
+          <div id="chatResponse" class="text-xs text-teal-300 p-4 bg-slate-950 rounded-2xl border border-slate-800/80 min-h-[90px] flex items-center leading-relaxed">
+            Bot is online and trained on your business profile.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script>
-    // Location Data Store (States & Key Districts)
+    // Global Session Store
+    let currentVendorSession = null;
+    let pendingMobile = "";
+
+    // Cascading Location Dataset
     const locationData = {
       "India": {
         "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Bhilwara", "Alwar", "Sikar"],
-        "Delhi NCR": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Noida", "Gurugram", "Faridabad"],
-        "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad", "Solapur"],
-        "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar"],
-        "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Meerut", "Ghaziabad", "Bareilly"],
-        "Karnataka": ["Bengaluru Urban", "Mysuru", "Hubballi-Dharwad", "Mangaluru", "Belagavi"],
-        "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
-        "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar"],
-        "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain"],
-        "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Siliguri", "Asansol"],
-        "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Mohali"],
-        "Haryana": ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal"],
-        "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia"]
+        "Delhi NCR": ["New Delhi", "Noida", "Gurugram", "Faridabad", "Ghaziabad"],
+        "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad"],
+        "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"],
+        "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Noida"],
+        "Karnataka": ["Bengaluru", "Mysuru", "Hubballi", "Mangaluru"],
+        "Madhya Pradesh": ["Indore", "Bhopal", "Gwalior", "Jabalpur"]
       },
       "United States": {
-        "California": ["Los Angeles", "San Francisco", "San Diego", "San Jose"],
-        "New York": ["New York City", "Buffalo", "Rochester"],
-        "Texas": ["Houston", "Austin", "Dallas", "San Antonio"],
-        "Florida": ["Miami", "Orlando", "Tampa", "Jacksonville"]
+        "California": ["Los Angeles", "San Francisco", "San Diego"],
+        "Texas": ["Houston", "Austin", "Dallas"],
+        "New York": ["New York City", "Buffalo"]
       },
       "United Arab Emirates": {
-        "Emirates": ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah"]
+        "Emirates": ["Dubai", "Abu Dhabi", "Sharjah"]
       }
     };
 
     function initLocations() {
-      const countrySel = document.getElementById("country");
       onCountryChange();
     }
 
@@ -256,8 +422,7 @@
       const country = document.getElementById("country").value;
       const stateSel = document.getElementById("state");
       stateSel.innerHTML = "";
-
-      const states = locationData[country] ? Object.keys(locationData[country]) : ["Other / All States"];
+      const states = locationData[country] ? Object.keys(locationData[country]) : ["All States"];
       states.forEach(st => {
         const opt = document.createElement("option");
         opt.value = st;
@@ -272,14 +437,7 @@
       const state = document.getElementById("state").value;
       const citySel = document.getElementById("city");
       citySel.innerHTML = "";
-
-      let cities = [];
-      if (locationData[country] && locationData[country][state]) {
-        cities = locationData[country][state];
-      } else {
-        cities = ["Capital / Main City", "Other Region"];
-      }
-
+      const cities = (locationData[country] && locationData[country][state]) ? locationData[country][state] : ["Main City"];
       cities.forEach(ct => {
         const opt = document.createElement("option");
         opt.value = ct;
@@ -288,87 +446,197 @@
       });
     }
 
-    // Initialize dropdowns on load
     window.onload = initLocations;
 
-    function selectPackage(name, price, element) {
-      document.querySelectorAll('.package-card').forEach(c => {
-        c.className = "package-card cursor-pointer border border-slate-700 bg-slate-950 p-3 rounded-xl text-center";
-      });
-      element.className = "package-card cursor-pointer border-2 border-amber-400 bg-amber-400/10 p-3 rounded-xl text-center";
-      document.getElementById('selected_pkg').value = name;
-      document.getElementById('selected_price').value = price;
-      document.getElementById('activePlanLabel').innerText = `Plan: ${name} (₹${price.toLocaleString()})`;
+    function showSection(sectionId) {
+      document.getElementById('landingSection').classList.add('hidden');
+      document.getElementById('registerSection').classList.add('hidden');
+      document.getElementById('dashboardSection').classList.add('hidden');
+      document.getElementById(sectionId).classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    async function submitFullRegistration() {
+    function selectPkg(name, price, element) {
+      document.querySelectorAll('.pkg-box').forEach(b => {
+        b.className = "pkg-box cursor-pointer border border-slate-800 bg-slate-950 p-3 rounded-xl text-center";
+      });
+      element.className = "pkg-box cursor-pointer border-2 border-amber-400 bg-amber-400/10 p-3 rounded-xl text-center";
+      document.getElementById('selected_pkg').value = name;
+      document.getElementById('selected_price').value = price;
+    }
+
+    function showLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
+    function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
+    function closeOtpModal() { document.getElementById('otpModal').classList.add('hidden'); }
+
+    // Step 1: Submit Form -> Send OTP
+    async function requestRegistrationOTP() {
+      const owner = document.getElementById('owner_name').value.trim();
+      const biz = document.getElementById('business_name').value.trim();
+      const mob = document.getElementById('mobile').value.trim();
+
+      if (!owner || !biz || !mob) {
+        alert("Please fill in Owner Name, Business Name, and Mobile Number.");
+        return;
+      }
+
       const payload = {
-        owner_name: document.getElementById('owner_name').value || "Owner",
-        business_name: document.getElementById('business_name').value,
-        mobile: document.getElementById('mobile').value,
-        email: document.getElementById('email').value || "",
-        whatsapp: document.getElementById('whatsapp').value || "",
-        category: document.getElementById('main_category').value || "Business",
-        subcategory: document.getElementById('subcategory').value || "General",
-        country: document.getElementById('country').value || "India",
-        state: document.getElementById('state').value || "",
-        city: document.getElementById('city').value || "",
-        services: document.getElementById('services').value || "General Services",
-        offers: document.getElementById('offers').value || "Special Discount",
-        facebook: document.getElementById('fb_link').value || "",
-        instagram: document.getElementById('insta_link').value || "",
-        youtube: document.getElementById('yt_link').value || "",
-        website: document.getElementById('web_link').value || "",
-        package_name: document.getElementById('selected_pkg').value || "Gold",
-        package_price: parseInt(document.getElementById('selected_price').value) || 35000
+        owner_name: owner,
+        business_name: biz,
+        mobile: mob,
+        email: document.getElementById('email').value.trim(),
+        whatsapp: document.getElementById('whatsapp').value.trim() || mob,
+        category: document.getElementById('main_category').value,
+        subcategory: document.getElementById('subcategory').value,
+        country: document.getElementById('country').value,
+        state: document.getElementById('state').value,
+        city: document.getElementById('city').value,
+        services: document.getElementById('services').value,
+        offers: document.getElementById('offers').value,
+        package_name: document.getElementById('selected_pkg').value,
+        package_price: parseInt(document.getElementById('selected_price').value)
       };
 
-      const consoleBox = document.getElementById('outputConsole');
-      consoleBox.innerText = "🚀 AI Engine contacting Google Gemini...\nGenerating Marketing Blueprint...";
-
       try {
-        const res = await fetch('/api/register', {
+        const res = await fetch('/api/auth/send-otp', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(payload)
         });
         const data = await res.json();
-        
-        let output = (data.data && data.data.brand) ? data.data.brand : JSON.stringify(data, null, 2);
-        consoleBox.innerText = "✅ STRATEGY BLUEPRINT GENERATED:\n=================================\n\n" + output;
-
-        const badge = document.getElementById('statusBadge');
-        badge.innerText = `Active: ${payload.package_name} Plan`;
-        badge.className = "bg-emerald-500/20 text-emerald-300 text-xs px-4 py-1.5 rounded-full border border-emerald-500/30 font-semibold";
-      } catch (err) {
-        consoleBox.innerText = "Connection Error: " + err.message;
+        if (data.status === 'success') {
+          pendingMobile = data.mobile;
+          document.getElementById('otpNotice').innerText = `Verification code sent to ${data.mobile}. (Testing Code: ${data.dev_otp})`;
+          document.getElementById('otpInput').value = data.dev_otp; // Auto-filled for instant testing
+          document.getElementById('otpModal').classList.remove('hidden');
+        } else {
+          alert("Error: " + data.message);
+        }
+      } catch (e) {
+        alert("Server connection failed: " + e.message);
       }
     }
 
+    // Step 2: Verify OTP -> Receive Credentials
+    async function verifyAndGenerateCredentials() {
+      const otp = document.getElementById('otpInput').value.trim();
+      if (!otp) { alert("Enter OTP code."); return; }
+
+      try {
+        const res = await fetch('/api/auth/verify-otp', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ mobile: pendingMobile, otp: otp })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          closeOtpModal();
+          document.getElementById('resVendorId').innerText = data.credentials.vendor_id;
+          document.getElementById('resPassword').innerText = data.credentials.password;
+          document.getElementById('resPlan').innerText = `${data.credentials.business_name}`;
+          
+          currentVendorSession = {
+            vendor_id: data.credentials.vendor_id,
+            profile: { business_name: data.credentials.business_name, owner_name: data.credentials.owner_name },
+            strategy: data.strategy
+          };
+
+          document.getElementById('credentialsModal').classList.remove('hidden');
+        } else {
+          alert(data.message);
+        }
+      } catch (e) {
+        alert("Verification failed: " + e.message);
+      }
+    }
+
+    function enterVendorDashboardDirectly() {
+      document.getElementById('credentialsModal').classList.add('hidden');
+      loadDashboardWithData(currentVendorSession);
+    }
+
+    // Step 3: Login Handler
+    async function performVendorLogin() {
+      const id = document.getElementById('login_id').value.trim();
+      const pwd = document.getElementById('login_pwd').value.trim();
+      if (!id || !pwd) { alert("Enter Vendor ID/Mobile and Password."); return; }
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ login_id: id, password: pwd })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          closeLoginModal();
+          currentVendorSession = data.vendor;
+          loadDashboardWithData(data.vendor);
+        } else {
+          alert(data.message);
+        }
+      } catch (e) {
+        alert("Login failed: " + e.message);
+      }
+    }
+
+    function loadDashboardWithData(vendor) {
+      document.getElementById('dashBizName').innerText = vendor.profile.business_name || "Vendor Dashboard";
+      document.getElementById('dashVendorId').innerText = vendor.vendor_id;
+      document.getElementById('outputConsole').innerText = vendor.strategy || "Strategy active.";
+      showSection('dashboardSection');
+    }
+
+    function logoutVendor() {
+      currentVendorSession = null;
+      showSection('landingSection');
+    }
+
+    // Dashboard Execution Handlers
     async function triggerContentGen() {
+      const biz = currentVendorSession?.profile?.business_name || "Enterprise";
+      const sub = currentVendorSession?.profile?.subcategory || "Business";
+      const city = currentVendorSession?.profile?.city || "Jaipur";
+      const off = currentVendorSession?.profile?.offers || "Special Deal";
+
       const consoleBox = document.getElementById('outputConsole');
-      consoleBox.innerText = "Generating viral ad captions...";
-      const res = await fetch('/api/generate-content', { method: 'POST' });
+      consoleBox.innerText = "🚀 Generating High-Converting Post & Ad Copies...";
+
+      const form = new FormData();
+      form.append('biz_name', biz); form.append('subcat', sub); form.append('city', city); form.append('offers', off);
+
+      const res = await fetch('/api/generate-content', { method: 'POST', body: form });
       const data = await res.json();
-      consoleBox.innerText = "🔥 AD CAMPAIGN CONTENT:\n=========================\n\n" + (data.content?.caption || JSON.stringify(data));
+      consoleBox.innerText = "🔥 AD CAMPAIGN & VIRAL COPIES:\n===============================\n\n" + (data.content?.caption || JSON.stringify(data));
     }
 
     async function triggerLeadGen() {
+      const sub = currentVendorSession?.profile?.subcategory || "Business";
+      const city = currentVendorSession?.profile?.city || "Jaipur";
+
       const consoleBox = document.getElementById('outputConsole');
-      consoleBox.innerText = "Extracting verified leads...";
-      const res = await fetch('/api/find-leads', { method: 'POST' });
+      consoleBox.innerText = "🎯 Extracting Local Prospective Client Leads...";
+
+      const form = new FormData();
+      form.append('subcat', sub); form.append('city', city);
+
+      const res = await fetch('/api/find-leads', { method: 'POST', body: form });
       const data = await res.json();
-      consoleBox.innerText = "🎯 PROSPECT LEADS:\n====================\n\n" + (data.leads || JSON.stringify(data));
+      consoleBox.innerText = "🎯 PROSPECT CLIENT CATEGORIES & LEADS:\n=========================================\n\n" + (data.leads || JSON.stringify(data));
     }
 
     async function sendChatMessage() {
-      const q = document.getElementById('chatInput').value;
+      const q = document.getElementById('chatInput').value.trim();
       if (!q) return;
-      const formData = new FormData();
-      formData.append('customer_query', q);
-      const res = await fetch('/api/chat-reply', { method: 'POST', body: formData });
+      const biz = currentVendorSession?.profile?.business_name || "OS Group Partner";
+
+      const form = new FormData();
+      form.append('customer_query', q);
+      form.append('biz_name', biz);
+
+      const res = await fetch('/api/chat-reply', { method: 'POST', body: form });
       const data = await res.json();
-      document.getElementById('chatResponse').innerText = "AI Bot: " + (data.reply || "");
+      document.getElementById('chatResponse').innerText = "AI Executive: " + (data.reply || "");
     }
   </script>
 </body>
