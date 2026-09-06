@@ -14,17 +14,15 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     .brand-title { font-family: 'Cinzel', serif; letter-spacing: 0.15em; }
     .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .interactive-card { transition: all 0.2s ease; border: 1px solid rgba(56, 189, 248, 0.15); cursor: pointer; }
-    .interactive-card:hover { border-color: rgba(56, 189, 248, 0.6); transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.3); }
     .tool-active { background: #0284c7 !important; color: #ffffff !important; border-color: #38bdf8 !important; }
     select { background-color: #020617 !important; color: #f8fafc !important; }
     select option { background-color: #0f172a; color: #f8fafc; }
-    .search-flyout { max-height: 320px; overflow-y: auto; z-index: 9999; }
+    .slide-fade { transition: opacity 0.5s ease-in-out; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
 
-  <!-- TOP HELPLINE BAR -->
+  <!-- TOP BAR -->
   <div class="bg-slate-900 border-b border-slate-800 text-[12px] py-2 px-4 text-slate-400 relative z-30">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-3">
@@ -33,17 +31,17 @@
         <span class="tracking-widest text-slate-300 font-bold text-[11px]">THANE &bull; MUMBAI &bull; MAHARASHTRA</span>
       </div>
       <div class="flex items-center gap-5">
-        <a href="tel:+917597777897" class="text-amber-400 hover:text-amber-300 font-bold"><i class="fa-solid fa-phone"></i> +91 7597777897</a>
-        <a href="https://wa.me/917597777897" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold"><i class="fa-brands fa-whatsapp"></i> 24/7 AI Desk</a>
+        <a href="tel:+917597777897" class="text-amber-400 font-bold"><i class="fa-solid fa-phone"></i> +91 7597777897</a>
+        <a href="https://wa.me/917597777897" target="_blank" class="text-emerald-400 font-semibold"><i class="fa-brands fa-whatsapp"></i> 24/7 AI Desk</a>
       </div>
     </div>
   </div>
 
-  <!-- MAIN HEADER -->
+  <!-- HEADER -->
   <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
-        <div class="w-13 h-13 p-1.5 bg-slate-900 border border-sky-500/40 rounded-2xl flex items-center justify-center">
+        <div class="w-13 h-13 p-1.5 bg-slate-900 border border-sky-500/40 rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/20">
           <svg viewBox="0 0 100 100" class="w-10 h-10">
             <circle cx="42" cy="50" r="30" stroke="#38bdf8" stroke-width="9" fill="none"/>
             <path d="M 68,32 C 60,25 48,30 48,42 C 48,56 75,52 75,68 C 75,82 56,85 45,78" fill="none" stroke="#f59e0b" stroke-width="9" stroke-linecap="round"/>
@@ -55,206 +53,81 @@
         </div>
       </div>
 
-      <div class="hidden md:flex items-center gap-5 text-xs font-semibold text-slate-300">
+      <div class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
         <button onclick="navigateTo('home')" class="hover:text-sky-400">Directory Home</button>
-        <button onclick="navigateTo('dashboard')" class="text-amber-400 font-bold hover:underline"><i class="fa-solid fa-gauge-high mr-1"></i> Vendor Dashboard</button>
-        <button onclick="navigateTo('aisuite')" class="hover:text-sky-400">30+ AI Tools Console</button>
-        <button onclick="navigateTo('ventures')" class="hover:text-amber-400">OS Ventures</button>
+        <button onclick="navigateTo('gallery')" class="hover:text-amber-400 text-amber-400 font-bold">Project Visual Gallery</button>
+        <button onclick="navigateTo('aisuite')" class="hover:text-sky-400 text-sky-400 font-bold">30+ AI Tools Console</button>
         <button onclick="navigateTo('packages')" class="hover:text-amber-400">Startup Bundle</button>
         <button onclick="navigateTo('about')" class="hover:text-sky-400">About Us</button>
       </div>
 
-      <div class="flex items-center gap-3">
-        <button onclick="openLoginModal()" class="border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl text-slate-200">
-          Vendor Login
-        </button>
-        <button onclick="navigateTo('dashboard')" class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 text-xs font-black px-4 sm:px-5 py-2.5 rounded-xl shadow-lg">
-          ⚡ Open Dashboard
-        </button>
-      </div>
+      <button onclick="navigateTo('aisuite')" class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow-lg">
+        ⚡ Open AI Operations Console
+      </button>
     </div>
   </header>
 
-  <!-- ================= 1. DIRECTORY HOME ================= -->
+  <!-- ================= VIEW: DIRECTORY HOME ================= -->
   <div id="page-home" class="page-view flex-1">
-    <section class="relative py-14 px-4 border-b border-slate-900 text-center">
-      <div class="max-w-6xl mx-auto relative z-20">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold mb-6">
-          <span class="text-sky-400 font-bold">OM SUNDARAM</span>
-          <span class="text-slate-600">&bull;</span>
-          <span class="text-amber-400 font-bold tracking-wider">THANE &bull; MUMBAI &bull; GLOBAL DIRECTORY</span>
+    
+    <!-- Hero Slider Showcase (From PDF Project Assets) -->
+    <section class="relative max-w-7xl mx-auto px-4 pt-6 pb-4">
+      <div class="glass-card rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative">
+        <div id="heroSliderTrack" class="relative h-[360px] sm:h-[440px] w-full overflow-hidden">
+          <!-- Slides will rotate here dynamically -->
         </div>
 
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-          Find Any Verified Business & <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-200 to-amber-300">Instant Autonomous AI Services</span>
-        </h1>
-        <p class="text-slate-400 text-xs sm:text-base mt-4 mb-8 max-w-3xl mx-auto">
-          Filter by Country, State, and District. Direct phone calls, WhatsApp leads & instant service response.
-        </p>
+        <!-- Carousel Navigation Controls -->
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/80 border border-slate-700 text-white flex items-center justify-center hover:bg-sky-600 transition">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/80 border border-slate-700 text-white flex items-center justify-center hover:bg-sky-600 transition">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
 
-        <!-- GLOBAL CASCADING SEARCH BAR -->
-        <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-2.5 max-w-5xl mx-auto relative z-30">
-          <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
-            <i class="fa-solid fa-globe text-sky-400 mr-2 text-xs"></i>
-            <select id="mainCountry" onchange="onHeaderCountryChange()" class="w-full bg-transparent text-xs text-slate-200 font-bold focus:outline-none cursor-pointer"></select>
-          </div>
-
-          <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
-            <i class="fa-solid fa-map-location-dot text-indigo-400 mr-2 text-xs"></i>
-            <select id="mainState" onchange="onHeaderStateChange()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer"></select>
-          </div>
-
-          <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
-            <i class="fa-solid fa-location-dot text-amber-400 mr-2 text-xs"></i>
-            <select id="mainDistrict" onchange="performSearch()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer"></select>
-          </div>
-
-          <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 relative">
-            <i class="fa-solid fa-magnifying-glass text-slate-500 mr-2 text-xs"></i>
-            <input id="searchQuery" oninput="handleLocalTypeahead(this.value)" onkeypress="handleEnter(event)" placeholder="Search service..." class="w-full bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none" autocomplete="off">
-            <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-4 py-2 rounded-lg text-xs shadow-md transition whitespace-nowrap">
-              Search
-            </button>
-            <div id="typeaheadDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl search-flyout text-left"></div>
-          </div>
-        </div>
+        <!-- Slider Dots -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20" id="sliderDots"></div>
       </div>
     </section>
 
-    <!-- 30+ CATEGORIES -->
-    <section class="max-w-7xl mx-auto px-4 py-10">
-      <div class="flex justify-between items-center mb-6">
-        <div>
-          <h2 class="text-base sm:text-lg font-bold text-white">Popular Classified Sectors</h2>
-          <p class="text-xs text-slate-400">Click any sector to filter authorized listings instantly</p>
-        </div>
-        <span class="text-xs text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">30+ Verticals</span>
+    <section class="py-8 px-4 text-center">
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white">Find Verified Services in <span class="text-sky-400">Thane & Mumbai</span></h1>
+      <p class="text-slate-400 text-xs sm:text-sm mt-2 mb-6">Explore authentic service providers or use our AI Operations Suite to get leads.</p>
+      
+      <div class="max-w-4xl mx-auto flex gap-2 bg-slate-900 p-2 rounded-2xl border border-slate-800">
+        <input id="homeSearch" placeholder="Search Packers & Movers, Gym, Real Estate..." class="w-full bg-slate-950 p-3 text-xs text-white rounded-xl focus:outline-none">
+        <button onclick="navigateTo('aisuite')" class="px-6 bg-sky-600 font-bold text-xs rounded-xl">Go To AI Tools</button>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-3 text-center" id="categoryIconsGrid"></div>
     </section>
-
-    <!-- RESULTS FEED -->
-    <main class="max-w-7xl mx-auto px-4 pb-20">
-      <div class="flex justify-between items-center mb-6">
-        <div>
-          <h2 id="resultsHeading" class="text-lg sm:text-xl font-bold text-white">Verified Listings</h2>
-          <p class="text-xs text-slate-400">Direct phone calls, WhatsApp leads & verified locations</p>
-        </div>
-        <span id="resultsCount" class="text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1 rounded-full font-bold">Loading...</span>
-      </div>
-      <div id="listingsContainer" class="space-y-6"></div>
-    </main>
   </div>
 
-  <!-- ================= 2. DEDICATED VENDOR CONTROL DASHBOARD ================= -->
-  <div id="page-dashboard" class="page-view hidden flex-1 py-10 px-4">
-    <div class="max-w-7xl mx-auto space-y-6">
-      
-      <!-- Top Status Banner -->
-      <div class="glass-card p-6 rounded-3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">Active Vendor Session</span>
-          </div>
-          <h1 id="dashVendorName" class="text-2xl sm:text-3xl font-black text-white mt-1">Apex Express Logistics</h1>
-          <p id="dashVendorDetails" class="text-xs text-slate-400 mt-0.5">Category: Packers & Movers &bull; Hub: Thane, Mumbai &bull; ID: OSG-1001</p>
-        </div>
-
-        <div class="flex flex-wrap gap-2">
-          <button onclick="openLiveStorefront()" class="px-4 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-xl shadow-md transition">
-            🌐 View Public Storefront
-          </button>
-          <button onclick="logoutVendor()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs rounded-xl transition">
-            Log Out
-          </button>
-        </div>
+  <!-- ================= VIEW: OFFICIAL PROJECT VISUAL GALLERY (FROM ALL PDFS) ================= -->
+  <div id="page-gallery" class="page-view hidden flex-1 py-12 px-4">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-xs text-amber-400 font-bold uppercase tracking-widest">OFFICIAL PORTFOLIO ASSETS</span>
+        <h1 class="text-3xl sm:text-5xl font-black text-white mt-2">OS GROUP Official Projects Visuals</h1>
+        <p class="text-slate-400 text-sm mt-3">Visual showcases compiled from our corporate profile, brand portfolios, and government initiatives.</p>
       </div>
 
-      <!-- Live KPI Metrics Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="glass-card p-5 rounded-2xl border-l-4 border-sky-500">
-          <div class="text-slate-400 text-xs font-semibold">Total Verified Leads</div>
-          <div class="text-2xl font-black text-white mt-1">142</div>
-          <div class="text-[10px] text-emerald-400 mt-1">↑ 18 New Today</div>
-        </div>
-        <div class="glass-card p-5 rounded-2xl border-l-4 border-amber-500">
-          <div class="text-slate-400 text-xs font-semibold">Direct Calls Received</div>
-          <div class="text-2xl font-black text-white mt-1">84</div>
-          <div class="text-[10px] text-amber-400 mt-1">94% Answer Rate</div>
-        </div>
-        <div class="glass-card p-5 rounded-2xl border-l-4 border-emerald-500">
-          <div class="text-slate-400 text-xs font-semibold">WhatsApp Auto-Bot Chats</div>
-          <div class="text-2xl font-black text-white mt-1">56</div>
-          <div class="text-[10px] text-emerald-400 mt-1">24/7 Auto-Closer Active</div>
-        </div>
-        <div class="glass-card p-5 rounded-2xl border-l-4 border-purple-500">
-          <div class="text-slate-400 text-xs font-semibold">Marketplace Placement</div>
-          <div class="text-2xl font-black text-white mt-1">#1 Priority Rank</div>
-          <div class="text-[10px] text-purple-400 mt-1">Gold Verified Partner</div>
-        </div>
-      </div>
-
-      <!-- Control Panel & Leads Stream -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div class="lg:col-span-4 glass-card p-6 rounded-3xl space-y-4">
-          <h3 class="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">Quick Actions</h3>
-          
-          <button onclick="navigateTo('aisuite')" class="w-full p-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-xs flex items-center justify-between shadow-lg">
-            <span><i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Launch AI Poster & Tools</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-
-          <button onclick="refreshVendorLeads()" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-200 font-semibold text-xs flex items-center justify-between">
-            <span><i class="fa-solid fa-rotate mr-2 text-sky-400"></i> Sync Inbound Leads Stream</span>
-            <span class="text-xs text-emerald-400 font-bold">Refresh</span>
-          </button>
-
-          <button onclick="exportVendorLeads()" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-200 font-semibold text-xs flex items-center justify-between">
-            <span><i class="fa-solid fa-file-csv mr-2 text-amber-400"></i> Download Leads (CSV)</span>
-            <i class="fa-solid fa-download"></i>
-          </button>
-
-          <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-2 text-xs">
-            <div class="text-slate-400 font-bold">Autonomous Alerts Status</div>
-            <div class="flex items-center justify-between text-[11px] text-slate-300">
-              <span>WhatsApp Lead Alerts</span>
-              <span class="text-emerald-400 font-bold">Active (Immediate)</span>
-            </div>
-            <div class="flex items-center justify-between text-[11px] text-slate-300">
-              <span>Direct Click-to-Call</span>
-              <span class="text-emerald-400 font-bold">Active</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-8 glass-card p-6 rounded-3xl space-y-4">
-          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-            <div>
-              <h3 class="text-base font-bold text-white">Live Inbound Leads Stream</h3>
-              <p class="text-xs text-slate-400">Directly contact buyers seeking your specific services</p>
-            </div>
-            <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full font-bold">8 Hot Leads</span>
-          </div>
-
-          <div class="space-y-3 max-h-[420px] overflow-y-auto pr-1" id="dashLeadsStream"></div>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+        <!-- Rendered dynamically from official PDF images catalog -->
       </div>
     </div>
   </div>
 
-  <!-- ================= 3. 30+ AI TOOLS CONSOLE ================= -->
+  <!-- ================= VIEW: 30+ AI TOOLS CONSOLE ================= -->
   <div id="page-aisuite" class="page-view hidden flex-1 py-10 px-4">
     <div class="max-w-7xl mx-auto space-y-6">
       
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-4">
         <div>
           <span class="text-xs text-amber-400 font-bold uppercase tracking-widest">AUTONOMOUS BUSINESS OPERATIONS</span>
-          <h1 class="text-2xl sm:text-3xl font-black text-white">30+ AI Operations Suite</h1>
+          <h1 class="text-2xl sm:text-3xl font-black text-white">AI Tools & Dynamic Lead Console</h1>
         </div>
-        <button onclick="navigateTo('dashboard')" class="text-xs bg-sky-600 hover:bg-sky-500 text-white font-bold px-4 py-2 rounded-xl transition">
-          ← Back to Dashboard
-        </button>
+        <div class="text-xs text-slate-400 bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-xl">
+          Regional Hub: <strong class="text-sky-400">Thane, Mumbai</strong>
+        </div>
       </div>
 
       <!-- Segmented Tool Selection Switcher -->
@@ -266,7 +139,7 @@
       <!-- Workspace Panel -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- Left: Pure Selection Parameters -->
+        <!-- Left Column: Pure Selection Parameters -->
         <div class="lg:col-span-4 glass-card p-6 rounded-3xl space-y-4">
           <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
             <div>
@@ -281,37 +154,37 @@
               <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
                 <i class="fa-solid fa-briefcase text-sky-400"></i> Select Registered Vendor / Business *
               </label>
-              <select id="sel_vendor" onchange="onVendorChange()" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none cursor-pointer"></select>
+              <select id="sel_vendor" onchange="onVendorChange()" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer"></select>
             </div>
 
             <div>
               <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
                 <i class="fa-solid fa-layer-group text-amber-400"></i> Select Industry / Vertical *
               </label>
-              <select id="sel_category" onchange="onCategoryChange()" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none cursor-pointer"></select>
+              <select id="sel_category" onchange="onCategoryChange()" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer"></select>
             </div>
 
             <div>
               <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
                 <i class="fa-solid fa-location-dot text-indigo-400"></i> Select Operating Hub / Locality *
               </label>
-              <select id="sel_location" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none cursor-pointer"></select>
+              <select id="sel_location" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer"></select>
             </div>
 
             <div>
               <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
                 <i class="fa-solid fa-tag text-emerald-400"></i> Select Promotional Hook / Offer *
               </label>
-              <select id="sel_offer" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none cursor-pointer"></select>
+              <select id="sel_offer" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer"></select>
             </div>
 
             <button onclick="runToolExecution()" class="w-full py-3.5 mt-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2">
-              <i class="fa-solid fa-bolt"></i> Run AI Tool & Generate Results
+              <i class="fa-solid fa-bolt"></i> Run AI Tool & Generate Live Output
             </button>
           </div>
         </div>
 
-        <!-- Right: Results Workspace -->
+        <!-- Right Column: Results Workspace -->
         <div class="lg:col-span-8 glass-card p-6 rounded-3xl flex flex-col justify-between min-h-[500px]">
           <div>
             <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
@@ -319,10 +192,9 @@
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span id="outputHeading">Verified Live Leads Console</span>
               </div>
-              <span id="outputBadge" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Live Feed</span>
+              <span id="outputBadge" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Live Inquiries</span>
             </div>
 
-            <!-- 1. LIVE LEADS TABLE -->
             <div id="leadsTableContainer" class="space-y-3">
               <div class="flex flex-wrap justify-between items-center bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs gap-2">
                 <span class="text-slate-400">Selected: <strong id="leadVendorLabel" class="text-white">Vendor</strong> &bull; <strong id="leadCatLabel" class="text-sky-400">Category</strong> in <strong id="leadCityLabel" class="text-amber-400">Locality</strong></span>
@@ -330,11 +202,9 @@
                   <i class="fa-solid fa-file-csv"></i> Download Leads (CSV)
                 </button>
               </div>
-
               <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1" id="leadsList"></div>
             </div>
 
-            <!-- 2. AI GRAPHIC POSTER CANVAS -->
             <div id="posterContainer" class="hidden flex flex-col items-center justify-center p-3 bg-slate-950 rounded-2xl border border-slate-800">
               <canvas id="posterCanvas" width="1080" height="1080" class="w-full max-w-[340px] h-auto rounded-xl shadow-2xl border border-slate-700"></canvas>
               <button onclick="downloadPoster()" class="mt-4 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
@@ -342,7 +212,6 @@
               </button>
             </div>
 
-            <!-- 3. SCRIPT & SCRIPT TERMINAL -->
             <div id="scriptContainer" class="hidden">
               <pre id="scriptBox" class="text-xs text-slate-300 font-mono bg-slate-950 p-4 rounded-xl border border-slate-800 whitespace-pre-wrap min-h-[340px] max-h-[380px] overflow-y-auto leading-relaxed"></pre>
             </div>
@@ -358,294 +227,219 @@
     </div>
   </div>
 
-  <!-- ================= 4. OS VENTURES ================= -->
-  <div id="page-ventures" class="page-view hidden flex-1 py-16 px-4">
-    <div class="max-w-7xl mx-auto space-y-10">
-      <div class="text-center max-w-3xl mx-auto">
-        <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">OFFICIAL BUSINESS ECOSYSTEM</div>
-        <h1 class="text-3xl sm:text-5xl font-black text-white mt-2">OS GROUP Corporate Ventures</h1>
-        <p class="text-slate-400 text-sm mt-3">Operating from Thane, Mumbai, Maharashtra across digital media, hospitality, real estate, and public technology.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl"><i class="fa-solid fa-bullhorn"></i></div>
-              <div>
-                <h3 class="text-lg font-bold text-white">Digi Grow Hub</h3>
-                <span class="text-[10px] text-slate-400 uppercase tracking-wider">The Digital Marketers</span>
-              </div>
-            </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Complete gateway for SEO, SMO, mobile apps, web development, content writing, and bulk messaging.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span class="text-emerald-400 font-bold">Active Venture</span>
-            <button onclick="selectCategoryDirectly('Digital Media & IT')" class="text-sky-400 hover:underline">Explore Services &rarr;</button>
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl"><i class="fa-solid fa-hotel"></i></div>
-              <div>
-                <h3 class="text-lg font-bold text-white">Quiesta Hospitality</h3>
-                <span class="text-[10px] text-slate-400 uppercase tracking-wider">Yours to Discover</span>
-              </div>
-            </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              One-stop solution for banquet halls, marriage gardens, 4-star hotels, luxury resorts, farmhouses, and property leasing.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span class="text-emerald-400 font-bold">Active Venture</span>
-            <button onclick="selectCategoryDirectly('Hospitality & Properties')" class="text-sky-400 hover:underline">Explore Properties &rarr;</button>
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl"><i class="fa-solid fa-heart"></i></div>
-              <div>
-                <h3 class="text-lg font-bold text-white">Jeevan Parinay</h3>
-                <span class="text-[10px] text-slate-400 uppercase tracking-wider">Wedding &bull; Match Making &bull; Events</span>
-              </div>
-            </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Trusted matrimonial platform with verified profiles across communities, destination wedding planning, and tailored packages.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span class="text-emerald-400 font-bold">Active Venture</span>
-            <button onclick="selectCategoryDirectly('Matrimonial & Events')" class="text-sky-400 hover:underline">Explore Matrimony &rarr;</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 5. STARTUP MARKETING BUNDLE ================= -->
-  <div id="page-packages" class="page-view hidden flex-1 py-16 px-4">
-    <div class="max-w-6xl mx-auto space-y-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">OS DIGITAL STARTUP BUNDLE</div>
-        <h1 class="text-3xl sm:text-5xl font-black text-white mt-2">The 20-Point Business Marketing Kit</h1>
-        <p class="text-slate-400 text-sm mt-3">Comprehensive commercial promotion package from the official OS Startup Marketing catalog[cite: 6].</p>
-      </div>
-
-      <div class="glass-card p-8 rounded-3xl border-2 border-amber-400 bg-amber-400/5 relative shadow-2xl">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-6 mb-6">
-          <div>
-            <span class="bg-amber-400 text-slate-950 text-xs font-black px-3 py-1 rounded-full uppercase">Complete Startup Bundle</span>
-            <h2 class="text-2xl font-black text-white mt-2">All-In-One Brand Awareness & Sales Kit</h2>
-            <p class="text-xs text-slate-400 mt-1">Single one-time commercial package covering lead extraction, messaging, creative design, and static website[cite: 6].</p>
-          </div>
-          <div class="text-right">
-            <div class="text-3xl font-black text-amber-400">₹12,150 <span class="text-xs text-slate-400 font-normal">+ 18% GST</span></div>
-            <span class="text-[11px] text-emerald-400 font-bold">One-Time Package Cost[cite: 6]</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-slate-300">
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>1. Bulk SMS Pack (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>2. Bulk WhatsApp Pack (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>3. Bulk WhatsApp Business (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>4. Email Pack (500 Normal Mails)</span><span class="text-amber-400 font-bold">₹1,000[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>5. Email Pack Studio (10 Studio Mails)</span><span class="text-amber-400 font-bold">₹150[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>6. Lead Extraction (50 Targeted Leads)</span><span class="text-amber-400 font-bold">₹150[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>7. Similar Business Data (500 Data Points)</span><span class="text-amber-400 font-bold">₹250[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>8. Facebook Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>9. Instagram Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>10. Pinterest Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>11. YouTube Channel Video (4 Videos / 30s)</span><span class="text-amber-400 font-bold">₹3,200[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>12. Google AdWords Campaign Setup (10 Ads)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>13. Blog Articles Publication (4 Blogs)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>14. Graphic Library (50 High-Res Graphics)</span><span class="text-amber-400 font-bold">₹500[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>15. Festival Design Templates (50 Templates)</span><span class="text-amber-400 font-bold">₹500[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>16. Facebook Lead Extract (20 Targeted Leads)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>17. Business Listing on 4 Web Portals</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>18. Digital Banner Slide Design (5 Banners)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>19. Professional Brand Logo Design</span><span class="text-amber-400 font-bold">₹800[cite: 6]</span>
-          </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>20. Basic 1-Page Custom Website</span><span class="text-amber-400 font-bold">₹2,500[cite: 6]</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 6. ABOUT US ================= -->
-  <div id="page-about" class="page-view hidden flex-1 py-16 px-4">
-    <div class="max-w-5xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-6">
-      <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">ABOUT OMSUNDARAM ENTERTAINTMENT PVT. LTD.[cite: 1, 3]</div>
-      <h1 class="text-3xl sm:text-5xl font-black text-white">Universal Autonomous AI Directory & Conglomerate</h1>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Envisioned for long and implemented in the fall of 2017, <strong>OS GROUP (OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED)</strong> is a creative multi-business entity that deals across many channels: Event Management, Digital Marketing, Hospitality, Matrimonial Services, Real Estate, E-Commerce, Handicrafts, and Philanthropy (Life4Help Foundation & Bandhan Foundation)[cite: 1, 2, 7].
-      </p>
-
-      <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
-        <div><strong class="text-slate-400">CIN:</strong><br><span class="text-sky-400 font-bold">U74999RJ2018PTC060766</span>[cite: 1]</div>
-        <div><strong class="text-slate-400">Incorporation Date:</strong><br><span class="text-emerald-400 font-bold">02 April 2018</span>[cite: 1]</div>
-        <div><strong class="text-slate-400">PAN:</strong><br><span class="text-amber-400 font-bold">AACCO6782G</span>[cite: 1]</div>
-        <div><strong class="text-slate-400">TAN:</strong><br><span class="text-purple-400 font-bold">JPRO02582G</span>[cite: 1]</div>
-      </div>
-
-      <div class="p-5 bg-sky-500/10 border border-sky-500/20 rounded-2xl text-xs text-slate-300 space-y-2">
-        <div><strong>Corporate & Operating Address:</strong> Thane, Mumbai, Maharashtra, India</div>
-        <div><strong>Customer Care Desk:</strong> +91 7597777897 &bull; <strong>Email:</strong> info@osgroup.in[cite: 3]</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: VENDOR LOGIN -->
-  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
-      <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
-      <h3 class="text-lg font-bold text-white mb-1">Vendor Portal Sign In</h3>
-      <p class="text-xs text-slate-400 mb-4">Enter your credentials to access your control dashboard</p>
-      
-      <div class="space-y-3">
-        <input id="login_id" value="OSG-1001" placeholder="Vendor ID (e.g. OSG-1001)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-        <input id="login_pwd" type="password" value="123" placeholder="Password" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-        <button onclick="performVendorLogin()" class="w-full py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold rounded-xl text-xs shadow-lg transition">
-          Sign In to Dashboard
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
-  <footer class="border-t border-slate-900 bg-slate-950 pt-12 pb-8 text-xs text-slate-400 relative z-20">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-      <div class="space-y-3">
-        <div class="text-lg font-black text-white brand-title">OS GROUP</div>
-        <div class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">OMSUNDARAM ENTERTAINTMENT PVT. LTD.[cite: 1, 3]</div>
-        <p class="text-slate-500 text-xs leading-relaxed">
-          CIN: U74999RJ2018PTC060766 &bull; India's Premier Autonomous Business Super-App & Classified Network[cite: 1].
-        </p>
-        <div class="text-sky-400 font-semibold tracking-wider text-[11px]">
-          ENTHRAL &bull; ENGAGE &bull; EXECUTE
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Platform Navigation</div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-sky-400 transition">Directory Home</a></div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('dashboard')" class="text-amber-400 font-bold">Vendor Dashboard</a></div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('aisuite')" class="hover:text-sky-400 transition">Autonomous AI Tools</a></div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('packages')" class="hover:text-amber-400 transition">Startup Marketing Kit</a></div>
-        <div><a href="javascript:void(0)" onclick="navigateTo('about')" class="hover:text-sky-400 transition">About OS Group</a></div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Contact & Support</div>
-        <div class="text-slate-300"><strong>Customer Care:</strong> <a href="tel:+917597777897" class="text-amber-400 font-bold">+91 7597777897</a>[cite: 3]</div>
-        <div class="text-slate-300"><strong>Email:</strong> info@osgroup.in[cite: 3]</div>
-        <div class="text-slate-400"><strong>Corporate Address:</strong> Thane, Mumbai, Maharashtra, India</div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-white font-bold mb-2 uppercase tracking-wider text-[11px]">Corporate Office Map</div>
-        <p class="text-[11px] text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Thane, Mumbai, Maharashtra</p>
-        <div class="w-full h-32 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120562.46468428135!2d72.93124504104276!3d19.21833070494498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8fcfe76fd59%3A0xc095368a526a4b!2sThane%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="border-t border-slate-900 pt-6 text-center text-slate-600 text-[11px]">
-      &copy; 2026 OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED &bull; OS GROUP. All rights reserved. Registered Office: Thane, Mumbai, Maharashtra.
-    </div>
+  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-xs text-slate-500 text-center">
+    <div>OMSUNDARAM ENTERTAINTMENT PVT. LTD. &bull; OS GROUP TECHNOLOGIES</div>
+    <p class="text-[11px] text-slate-600 mt-1">&copy; 2026 OS GROUP. All rights reserved. Helpline: +91 7597777897</p>
   </footer>
 
   <script>
-    // 1. MASTER VENDORS CATALOG
-    const masterVendors = [
+    // COMPLETE OFFICIAL PROJECT SLIDES & GALLERY (FROM ALL SUBMITTED PDFS)
+    const officialPdfSlides = [
       {
-        id: "OSG-1001",
-        name: "Apex Express Logistics",
-        category: "Packers & Movers",
-        city: "Thane, Mumbai",
-        hubs: ["Ghodbunder Road, Thane", "Majiwada, Thane", "Wagle Estate, Thane", "Naupada, Thane", "Hiranandani Estate, Thane"],
-        offers: [
-          "Flat 20% OFF on Domestic Shifting",
-          "Free Packing Material & Bubble Wrap Included",
-          "Zero Damage Insurance Guarantee Voucher",
-          "Flat ₹1,500 Discount on Inter-city Moves"
-        ]
+        title: "Digi Grow Hub (The Digital Marketers)",
+        tagline: "Content is King but Engagement is Queen, and the Lady rules the House!",
+        category: "Digital Marketing & Branding",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+        specs: "SEO, SMO, Graphics, Content Writing, Bulk WhatsApp API, E-Commerce & Mobile Apps"
       },
       {
-        id: "OSG-1002",
-        name: "Digi Grow Hub (OS Digital)",
-        category: "Digital Media & IT",
-        city: "Thane, Mumbai",
-        hubs: ["Wagle Industrial Estate, Thane", "Ghodbunder Road, Thane", "Bandra Kurla Complex (BKC), Mumbai"],
-        offers: [
-          "Startup Marketing Bundle (20 Tools @ ₹12,150/-)",
-          "Free SEO Audit & Google Keyword Ranking Plan",
-          "Flat 25% OFF on Custom Mobile & Web Development"
-        ]
+        title: "Quiesta Hospitality (Yours to Discover)",
+        tagline: "We understand your needs because there is no hospitality like understanding",
+        category: "Hospitality, Banquets & Real Estate",
+        image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+        specs: "Hotels, Luxury Resorts, Banquet Halls, Marriage Gardens, Farmhouses & Property Leasing"
       },
       {
-        id: "OSG-1003",
-        name: "Quiesta Hospitality",
-        category: "Hospitality & Properties",
-        city: "Thane, Mumbai",
-        hubs: ["Ghodbunder Green Belt, Thane", "Yeoor Hills Resort Hub, Thane"],
-        offers: [
-          "Corporate & Grand Wedding Space Packages",
-          "Flat 15% OFF on Weekend Resort Stays"
-        ]
+        title: "Jeevan Parinay (Matchmaking & Events)",
+        tagline: "Every wedding is a unique package that fits you as perfectly as your engagement ring",
+        category: "Matrimonial & Destination Weddings",
+        image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+        specs: "Verified Profiles, Destination Weddings, Honeymoon Packages, Fashion Shoots & Corporate Events"
+      },
+      {
+        title: "Clever Mandy (The Finest Craftsmanship)",
+        tagline: "Masterpieces that will last for generations to come, not just souvenirs",
+        category: "Handicrafts & Bespoke Jewelry",
+        image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80",
+        specs: "Fine Arts, Divine Collection, Artifacts, Home Decor & Handcrafted Diamond/Artificial Jewelry"
+      },
+      {
+        title: "Atal Tinkering Lab (ATL) & EduTech Hub",
+        tagline: "Hands-on Minds-on STEM & Robotics Technology Education",
+        category: "Government & School Innovation",
+        image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+        specs: "Robotics, 3D Printing, Coding & App Development, IoT Sensors, Cloud Linking & Electronics Lab"
+      },
+      {
+        title: "FoSTaC (FSSAI) Food Safety Certification",
+        tagline: "Inspiring Trust, Assuring Safe & Nutritious Food Nationwide",
+        category: "Government Training & Compliance",
+        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80",
+        specs: "Mandatory Food Safety Supervisor Training across Dairy, Bakery, Meat, Oil & Water Packaging"
+      },
+      {
+        title: "Life4Help Foundation & Bandhan Foundation",
+        tagline: "Live The Life You Want - Connecting the Dots with Humanitarian Beliefs",
+        category: "Philanthropy & Social Empowerment",
+        image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80",
+        specs: "Student Counseling, Promoting Education, Food & Clothes Distribution Volunteering Programs"
+      },
+      {
+        title: "OS Mart & Commercial Vouchers",
+        tagline: "A few clicks is all it takes! Luxury Holiday, Movie & Shopping Deals",
+        category: "E-Commerce & Lifestyle Utility",
+        image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80",
+        specs: "62 Domestic & 43 International Destinations, Amazon/BigBazaar Vouchers & Preventive Health Tests"
       }
     ];
 
-    const masterCategories = ["Packers & Movers", "Digital Media & IT", "Hospitality & Properties", "Real Estate", "Gym & Fitness", "Doctors & Healthcare"];
+    let currentSlide = 0;
+    let sliderTimer = null;
 
+    function initHeroSlider() {
+      const track = document.getElementById("heroSliderTrack");
+      const dots = document.getElementById("sliderDots");
+      track.innerHTML = "";
+      dots.innerHTML = "";
+
+      officialPdfSlides.forEach((s, idx) => {
+        track.innerHTML += `
+          <div class="slide-item absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}" id="slide-${idx}">
+            <img src="${s.image}" class="w-full h-full object-cover filter brightness-[0.38]">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+            <div class="absolute bottom-10 left-6 sm:left-12 right-6 sm:right-12 max-w-4xl">
+              <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] sm:text-xs px-3 py-1 rounded-full uppercase font-bold tracking-wider">
+                ${s.category}
+              </span>
+              <h2 class="text-2xl sm:text-4xl font-black text-white mt-2">${s.title}</h2>
+              <p class="text-slate-200 text-xs sm:text-sm font-medium italic mt-1 text-sky-300">"${s.tagline}"</p>
+              <p class="text-slate-400 text-xs mt-2 hidden sm:block"><strong>Key Capabilities:</strong> ${s.specs}</p>
+            </div>
+          </div>
+        `;
+        dots.innerHTML += `<button onclick="goToSlide(${idx})" class="w-2.5 h-2.5 rounded-full transition-all ${idx === 0 ? 'bg-amber-400 w-6' : 'bg-slate-600'}" id="dot-${idx}"></button>`;
+      });
+
+      startAutoSlider();
+    }
+
+    function showSlide(idx) {
+      officialPdfSlides.forEach((_, i) => {
+        const slide = document.getElementById(`slide-${i}`);
+        const dot = document.getElementById(`dot-${i}`);
+        if (i === idx) {
+          slide.classList.remove('opacity-0', 'z-0');
+          slide.classList.add('opacity-100', 'z-10');
+          dot.className = "w-6 h-2.5 rounded-full bg-amber-400 transition-all";
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'z-0');
+          dot.className = "w-2.5 h-2.5 rounded-full bg-slate-600 transition-all";
+        }
+      });
+      currentSlide = idx;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % officialPdfSlides.length;
+      showSlide(next);
+      resetAutoSlider();
+    }
+
+    function prevSlide() {
+      const prev = (currentSlide - 1 + officialPdfSlides.length) % officialPdfSlides.length;
+      showSlide(prev);
+      resetAutoSlider();
+    }
+
+    function goToSlide(idx) {
+      showSlide(idx);
+      resetAutoSlider();
+    }
+
+    function startAutoSlider() {
+      sliderTimer = setInterval(nextSlide, 4500);
+    }
+
+    function resetAutoSlider() {
+      clearInterval(sliderTimer);
+      startAutoSlider();
+    }
+
+    function renderGalleryCards() {
+      const grid = document.getElementById("galleryGrid");
+      grid.innerHTML = officialPdfSlides.map(s => `
+        <div class="glass-card rounded-3xl overflow-hidden border border-slate-800 hover:border-amber-500/50 transition duration-300 flex flex-col justify-between">
+          <div class="h-48 relative">
+            <img src="${s.image}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 bg-slate-950/80 px-2.5 py-1 rounded-lg text-[10px] font-bold text-amber-400 border border-slate-700 uppercase">
+              ${s.category}
+            </span>
+          </div>
+          <div class="p-6 space-y-2 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-white">${s.title}</h3>
+              <p class="text-xs text-sky-400 italic mt-0.5">"${s.tagline}"</p>
+              <p class="text-xs text-slate-400 mt-2 leading-relaxed">${s.specs}</p>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 mt-4 flex justify-between items-center text-xs">
+              <span class="text-emerald-400 font-semibold">OS Verified Project</span>
+              <button onclick="navigateTo('aisuite')" class="text-amber-400 hover:underline">Launch Tool &rarr;</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // MASTER VENDORS DATA
+    const masterVendors = [
+      {
+        name: "Apex Express Logistics",
+        category: "Packers & Movers",
+        city: "Thane, Mumbai",
+        hubs: ["Ghodbunder Road, Thane", "Majiwada, Thane", "Wagle Estate, Thane", "Naupada, Thane"],
+        offers: ["Flat 20% OFF on Domestic Shifting", "Free Packing Material Included", "Zero Damage Insurance Guarantee"]
+      },
+      {
+        name: "Apex Strength & Fitness Club",
+        category: "Gym & Fitness",
+        city: "Thane, Mumbai",
+        hubs: ["Vartak Nagar, Thane", "Panchpakhadi, Thane", "Hiranandani Meadows, Thane"],
+        offers: ["Flat 30% OFF on Annual Membership", "Free 1-Month Personal Training", "Buy 1 Annual Plan Get 3 Months Free"]
+      },
+      {
+        name: "Digi Grow Hub (OS Digital)",
+        category: "Digital Media & IT",
+        city: "Thane, Mumbai",
+        hubs: ["Wagle Industrial Estate, Thane", "Ghodbunder Road, Thane", "Bandra Kurla Complex (BKC)"],
+        offers: ["Startup Marketing Bundle (20 Tools @ ₹12,150/-)", "Free SEO Audit & Keyword Ranking Plan", "Bulk WhatsApp Business API Deal"]
+      },
+      {
+        name: "Quiesta Hospitality",
+        category: "Hospitality & Properties",
+        city: "Thane, Mumbai",
+        hubs: ["Ghodbunder Green Belt, Thane", "Yeoor Hills Resort Hub, Thane", "Kalyan-Bhiwandi Road"],
+        offers: ["Corporate & Grand Wedding Space Packages", "Flat 15% OFF on Weekend Resort Stays", "Direct Long-Term Property Lease Terms"]
+      },
+      {
+        name: "OS Real Estate Developers",
+        category: "Real Estate",
+        city: "Thane, Mumbai",
+        hubs: ["Majiwada Junction, Thane", "Pokhran Road No. 2, Thane", "Kolshet Road, Thane"],
+        offers: ["Zero Brokerage & Direct Verified Developer Pricing", "Spot Booking ₹50,000 Modular Kitchen Voucher"]
+      },
+      {
+        name: "Clever Mandy Handicrafts",
+        category: "Handicrafts & Jewelry",
+        city: "Thane, Mumbai",
+        hubs: ["Naupada Market, Thane", "Viviana Mall Zone, Thane"],
+        offers: ["Handmade Masterpieces at Direct Artisan Rates", "Flat 20% OFF on Divine Brass & Marble Artifacts"]
+      }
+    ];
+
+    const masterCategories = ["Packers & Movers", "Gym & Fitness", "Digital Media & IT", "Hospitality & Properties", "Real Estate", "Handicrafts & Jewelry"];
     const tools = [
       { id: "lead_extractor", name: "B2B Lead Intelligence", icon: "fa-crosshairs" },
       { id: "poster_ai", name: "AI Poster & Ad Designer", icon: "fa-palette" },
@@ -655,161 +449,9 @@
       { id: "social_ad", name: "Social Ad Copywriter", icon: "fa-hashtag" }
     ];
 
-    const globalCountries = [
-      { name: "India", dial: "+91" }, { name: "United States", dial: "+1" }, { name: "United Arab Emirates", dial: "+971" },
-      { name: "United Kingdom", dial: "+44" }, { name: "Canada", dial: "+1" }, { name: "Australia", dial: "+61" }
-    ];
-
-    const indiaGeo = {
-      "Maharashtra": ["Thane", "Mumbai", "Pune", "Nagpur", "Nashik", "Navi Mumbai"],
-      "Delhi NCR": ["New Delhi", "Noida", "Gurugram", "Faridabad"],
-      "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
-      "Karnataka": ["Bengaluru Urban", "Mysuru", "Mangaluru"],
-      "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur"]
-    };
-
-    const coreCategories = [
-      { name: "Packers & Movers", icon: "fa-truck-fast" },
-      { name: "Digital Media & IT", icon: "fa-bullhorn" },
-      { name: "Hospitality & Properties", icon: "fa-hotel" },
-      { name: "Matrimonial & Events", icon: "fa-heart" },
-      { name: "Real Estate", icon: "fa-building" },
-      { name: "Handicrafts & Jewelry", icon: "fa-gem" },
-      { name: "Gym & Fitness", icon: "fa-dumbbell" },
-      { name: "Doctors", icon: "fa-user-doctor" },
-      { name: "Restaurants", icon: "fa-utensils" },
-      { name: "Car Service / Garage", icon: "fa-car-burst" }
-    ];
-
     let currentTool = "lead_extractor";
     let loadedLeadsData = [];
-    let vendorLeadsData = [];
-    let activeVendor = masterVendors[0];
 
-    // NAVIGATION
-    function navigateTo(pageId) {
-      document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
-      const target = document.getElementById(`page-${pageId}`);
-      if (target) {
-        target.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-      if (pageId === 'dashboard') loadVendorDashboard();
-      if (pageId === 'aisuite') drawPoster();
-    }
-
-    function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-    function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
-
-    async function performVendorLogin() {
-      const lid = document.getElementById('login_id').value.trim();
-      const pwd = document.getElementById('login_pwd').value.trim();
-
-      try {
-        const res = await fetch('/api/vendor/login', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ login_id: lid, password: pwd })
-        });
-        const data = await res.json();
-        if (data.status === 'success') {
-          activeVendor = data.vendor;
-          closeLoginModal();
-          navigateTo('dashboard');
-        } else {
-          alert(data.message);
-        }
-      } catch(e) {
-        closeLoginModal();
-        navigateTo('dashboard');
-      }
-    }
-
-    function logoutVendor() {
-      alert("Logged out successfully.");
-      navigateTo('home');
-    }
-
-    function loadVendorDashboard() {
-      document.getElementById('dashVendorName').innerText = activeVendor.name;
-      document.getElementById('dashVendorDetails').innerText = `Category: ${activeVendor.category} • Regional Hub: ${activeVendor.city} • ID: ${activeVendor.id || 'OSG-1001'}`;
-      refreshVendorLeads();
-    }
-
-    function refreshVendorLeads() {
-      const firstNames = ["Rahul", "Amit", "Pooja", "Vikram", "Neha", "Sanjay", "Rohan", "Anjali"];
-      const lastNames = ["Sharma", "Patel", "Verma", "Mehta", "Deshmukh", "Kulkarni", "Singh", "Joshi"];
-      const prefixes = ["9820", "9819", "9769", "9833", "9920", "9136", "9867"];
-      const localities = ["Ghodbunder Road, Thane", "Majiwada, Thane", "Hiranandani Estate, Thane", "Naupada, Thane", "Vartak Nagar, Thane"];
-      
-      const reqList = [
-        "Urgent 2BHK House Shifting with packing & loading",
-        "Office furniture & electronics relocation needed",
-        "1BHK Household luggage shifting to Pune/Mumbai",
-        "Vehicle (Car + Bike) transportation required",
-        "Complete villa relocation with fragile items care"
-      ];
-
-      vendorLeadsData = [];
-      const stream = document.getElementById('dashLeadsStream');
-      stream.innerHTML = "";
-
-      for (let i = 0; i < 8; i++) {
-        const name = `${firstNames[i]} ${lastNames[i]}`;
-        const mob = `+91 ${prefixes[i]}${Math.floor(100000 + Math.random() * 900000)}`;
-        const loc = localities[i % localities.length];
-        const req = reqList[i % reqList.length];
-        const budget = `₹${(Math.floor(10 + Math.random() * 25) * 1000).toLocaleString()}`;
-        const timeAgo = `${Math.floor(3 + i * 5)} mins ago`;
-
-        vendorLeadsData.push({ id: `LD-${1000 + i}`, name, mob, loc, req, budget, timeAgo });
-        const cleanMob = mob.replace("+", "").replace(" ", "");
-
-        stream.innerHTML += `
-          <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 hover:border-sky-500/50 transition">
-            <div>
-              <div class="flex items-center gap-2">
-                <strong class="text-white text-xs font-bold">${name}</strong>
-                <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold">Verified Hot Lead</span>
-                <span class="text-[10px] text-slate-500">${timeAgo}</span>
-              </div>
-              <p class="text-xs text-slate-300 mt-1">📋 <strong>Requirement:</strong> ${req}</p>
-              <div class="text-[11px] text-slate-400 mt-1 flex flex-wrap gap-3">
-                <span>📍 ${loc}</span>
-                <span>💰 Budget: <strong class="text-amber-400">${budget}</strong></span>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-2 w-full sm:w-auto">
-              <a href="tel:${mob}" class="flex-1 sm:flex-initial bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl flex items-center justify-center gap-1.5 transition whitespace-nowrap">
-                <i class="fa-solid fa-phone"></i> Call: ${mob}
-              </a>
-              <a href="https://wa.me/${cleanMob}?text=${encodeURIComponent('Hello ' + name + ', I received your requirement for ' + req + ' via OS Group.')}" target="_blank" class="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl flex items-center justify-center gap-1.5 transition whitespace-nowrap">
-                <i class="fa-brands fa-whatsapp"></i> Chat
-              </a>
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    function exportVendorLeads() {
-      let csv = "Lead ID,Customer Name,Mobile,Location,Requirement,Budget\n";
-      vendorLeadsData.forEach(l => {
-        csv += `"${l.id}","${l.name}","${l.mob}","${l.loc}","${l.req}","${l.budget}"\n`;
-      });
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = `OS_Group_${activeVendor.name.replace(/\s+/g, '_')}_Leads.csv`;
-      link.click();
-    }
-
-    function openLiveStorefront() {
-      window.open(`/biz/${activeVendor.id || 'OSG-1001'}`, '_blank');
-    }
-
-    // AI TOOLS WORKSPACE LOGIC
     function setupDynamicSelectors() {
       const vSel = document.getElementById("sel_vendor");
       const cSel = document.getElementById("sel_category");
@@ -818,6 +460,7 @@
       masterVendors.forEach((v, idx) => {
         vSel.innerHTML += `<option value="${idx}">${v.name} (${v.category})</option>`;
       });
+
       masterCategories.forEach(c => {
         cSel.innerHTML += `<option value="${c}">${c}</option>`;
       });
@@ -828,7 +471,6 @@
     function onVendorChange() {
       const vIdx = document.getElementById("sel_vendor").value;
       const v = masterVendors[vIdx];
-
       document.getElementById("sel_category").value = v.category;
       
       const lSel = document.getElementById("sel_location");
@@ -888,6 +530,41 @@
       }
     }
 
+    function generateInstantLeads(category, location) {
+      const firstNames = ["Rahul", "Amit", "Pooja", "Vikram", "Neha", "Sanjay", "Rohan", "Anjali", "Karan", "Sunil", "Priya", "Deepak", "Sachin"];
+      const lastNames = ["Sharma", "Patel", "Verma", "Mehta", "Deshmukh", "Kulkarni", "Singh", "Joshi", "Chopra", "Shah", "Shinde"];
+      const prefixes = ["9820", "9819", "9769", "9833", "9920", "9136", "9867", "9821"];
+
+      let reqList = [
+        "Urgent 2BHK House Shifting with packing & loading",
+        "Office furniture & electronics relocation enquiry",
+        "Looking for 1-Year Gym Membership with Personal Trainer",
+        "Commercial property on rent enquiry in prime area",
+        "Corporate bulk branding & WhatsApp API setup"
+      ];
+
+      const generated = [];
+      for (let i = 0; i < 8; i++) {
+        const name = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
+        const mob = `+91 ${prefixes[Math.floor(Math.random() * prefixes.length)]}${Math.floor(100000 + Math.random() * 900000)}`;
+        const req = reqList[Math.floor(Math.random() * reqList.length)];
+        const timeAgo = `${Math.floor(4 + Math.random() * 45)} mins ago`;
+        const budget = `₹${(Math.floor(5 + Math.random() * 35) * 1000).toLocaleString()}`;
+
+        generated.push({
+          lead_id: `LD-${Math.floor(10000 + Math.random() * 90000)}`,
+          name: name,
+          mobile: mob,
+          location: location,
+          requirement: req,
+          budget: budget,
+          time: timeAgo,
+          status: "Verified Hot Lead"
+        });
+      }
+      return generated;
+    }
+
     async function runToolExecution() {
       const vIdx = document.getElementById("sel_vendor").value;
       const vendorName = masterVendors[vIdx] ? masterVendors[vIdx].name : "Verified Merchant";
@@ -901,23 +578,7 @@
       }
 
       if (currentTool === "lead_extractor") {
-        const firstNames = ["Rahul", "Amit", "Pooja", "Vikram", "Neha", "Sanjay", "Rohan", "Anjali"];
-        const lastNames = ["Sharma", "Patel", "Verma", "Mehta", "Deshmukh", "Kulkarni", "Singh", "Joshi"];
-        const prefixes = ["9820", "9819", "9769", "9833", "9920", "9136", "9867"];
-        
-        const leads = [];
-        for (let i = 0; i < 8; i++) {
-          leads.push({
-            lead_id: `LD-${10000 + i}`,
-            name: `${firstNames[i]} ${lastNames[i]}`,
-            mobile: `+91 ${prefixes[i]}${Math.floor(100000 + Math.random() * 900000)}`,
-            location: loc,
-            requirement: `Verified booking requirement for ${cat}`,
-            budget: `₹${(Math.floor(10 + Math.random() * 20) * 1000).toLocaleString()}`,
-            time: `${Math.floor(4 + i * 4)} mins ago`,
-            status: "Verified Hot Lead"
-          });
-        }
+        const leads = generateInstantLeads(cat, loc);
         loadedLeadsData = leads;
         renderLeadsTable(leads, vendorName, cat, loc);
         return;
@@ -932,7 +593,7 @@
         const data = await res.json();
         document.getElementById("scriptBox").innerText = data.output || "Execution ready.";
       } catch(e) {
-        document.getElementById("scriptBox").innerText = `⚡ ${currentTool.toUpperCase()} OPERATIONAL SCRIPT\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nVendor: ${vendorName}\nCategory: ${cat}\nHub: ${loc}\nOffer: "${off}"\n\nExecution: Dispatched to official WhatsApp bot.`;
+        document.getElementById("scriptBox").innerText = `⚡ ${currentTool.toUpperCase()} OPERATIONAL SCRIPT\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nVendor: ${vendorName}\nCategory: ${cat}\nHub: ${loc}\nOffer Hook: "${off}"\n\nExecution: Dispatched to official WhatsApp bot and outbound queue.`;
       }
     }
 
@@ -964,7 +625,7 @@
               <a href="tel:${ld.mobile}" class="flex-1 sm:flex-initial bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center justify-center gap-1.5 transition whitespace-nowrap">
                 <i class="fa-solid fa-phone"></i> Call: ${ld.mobile}
               </a>
-              <a href="https://wa.me/${cleanMob}?text=${encodeURIComponent('Hello ' + ld.name + ', regarding your enquiry for ' + ld.requirement + ' in ' + ld.location)}" target="_blank" class="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center justify-center gap-1.5 transition whitespace-nowrap">
+              <a href="https://wa.me/${cleanMob}?text=${encodeURIComponent('Hello ' + ld.name + ', regarding your enquiry for ' + ld.requirement + ' in ' + ld.location + ' via OS Group')}" target="_blank" class="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center justify-center gap-1.5 transition whitespace-nowrap">
                 <i class="fa-brands fa-whatsapp"></i> Chat
               </a>
             </div>
@@ -988,13 +649,12 @@
 
     function drawPoster() {
       const canvas = document.getElementById("posterCanvas");
-      if (!canvas) return;
       const ctx = canvas.getContext("2d");
-      const vIdx = document.getElementById("sel_vendor") ? document.getElementById("sel_vendor").value : 0;
+      const vIdx = document.getElementById("sel_vendor").value;
       const biz = masterVendors[vIdx] ? masterVendors[vIdx].name : "Apex Express";
-      const cat = document.getElementById("sel_category") ? document.getElementById("sel_category").value : "Packers & Movers";
-      const loc = document.getElementById("sel_location") ? document.getElementById("sel_location").value : "Thane, Mumbai";
-      const off = document.getElementById("sel_offer") ? document.getElementById("sel_offer").value : "Flat 20% OFF";
+      const cat = document.getElementById("sel_category").value || "Packers & Movers";
+      const loc = document.getElementById("sel_location").value || "Thane, Mumbai";
+      const off = document.getElementById("sel_offer").value || "Flat 20% OFF";
 
       ctx.fillStyle = "#020617";
       ctx.fillRect(0, 0, 1080, 1080);
@@ -1019,7 +679,7 @@
       ctx.fillText(cat.toUpperCase(), 540, 260);
 
       ctx.fillStyle = "#ffffff";
-      ctx.font = "900 60px sans-serif";
+      ctx.font = "900 64px sans-serif";
       ctx.fillText(biz, 540, 360);
 
       ctx.fillStyle = "#94a3b8";
@@ -1055,151 +715,18 @@
       link.click();
     }
 
-    // DIRECTORY DIRECT SEARCH
-    function setupCountries() {
-      const mainC = document.getElementById("mainCountry");
-      mainC.innerHTML = "";
-      globalCountries.forEach(c => {
-        mainC.innerHTML += `<option value="${c.name}" ${c.name === 'India' ? 'selected' : ''}>${c.name} (${c.dial})</option>`;
-      });
-      onHeaderCountryChange();
+    function navigateTo(p) {
+      document.querySelectorAll('.page-view').forEach(x => x.classList.add('hidden'));
+      document.getElementById(`page-${p}`).classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    function onHeaderCountryChange() {
-      const c = document.getElementById("mainCountry").value;
-      const s = document.getElementById("mainState");
-      s.innerHTML = "";
-      const states = (c === "India") ? Object.keys(indiaGeo) : ["Capital State"];
-      states.forEach(st => {
-        s.innerHTML += `<option value="${st}" ${st === 'Maharashtra' ? 'selected' : ''}>${st}</option>`;
-      });
-      onHeaderStateChange();
-    }
-
-    function onHeaderStateChange() {
-      const s = document.getElementById("mainState").value;
-      const d = document.getElementById("mainDistrict");
-      d.innerHTML = `<option value="all">All Districts (${s})</option>`;
-      const districts = indiaGeo[s] || ["Thane", "Mumbai"];
-      districts.forEach(dist => {
-        d.innerHTML += `<option value="${dist}" ${dist === 'Thane' ? 'selected' : ''}>${dist}</option>`;
-      });
-      performSearch();
-    }
-
-    function setupCategories() {
-      const grid = document.getElementById("categoryIconsGrid");
-      grid.innerHTML = coreCategories.map(c => `
-        <div onclick="selectCategoryDirectly('${c.name}')" class="interactive-card glass-card p-3 rounded-2xl">
-          <div class="text-2xl mb-1 text-sky-400"><i class="fa-solid ${c.icon}"></i></div>
-          <div class="text-[11px] font-bold text-slate-300 leading-tight">${c.name}</div>
-        </div>
-      `).join('');
-    }
-
-    function selectCategoryDirectly(cat) {
-      document.getElementById("searchQuery").value = cat;
-      navigateTo('home');
-      performSearch();
-    }
-
-    function handleLocalTypeahead(val) {
-      const dd = document.getElementById("typeaheadDropdown");
-      const q = (val || "").trim().toLowerCase();
-      if (!q) { dd.classList.add("hidden"); return; }
-      const matches = coreCategories.filter(c => c.name.toLowerCase().includes(q));
-      if (matches.length > 0) {
-        dd.innerHTML = matches.map(m => `
-          <div onclick="chooseTypeahead('${m.name}')" class="px-4 py-2.5 hover:bg-slate-800 cursor-pointer flex items-center gap-3 border-b border-slate-800/80">
-            <i class="fa-solid ${m.icon} text-sky-400"></i>
-            <span class="text-xs font-bold text-white">${m.name}</span>
-          </div>
-        `).join('');
-        dd.classList.remove("hidden");
-      } else {
-        dd.classList.add("hidden");
-      }
-    }
-
-    function chooseTypeahead(name) {
-      document.getElementById("searchQuery").value = name;
-      document.getElementById("typeaheadDropdown").classList.add("hidden");
-      performSearch();
-    }
-
-    async function performSearch() {
-      const q = document.getElementById("searchQuery").value;
-      const district = document.getElementById("mainDistrict").value;
-      const state = document.getElementById("mainState").value;
-      const cityFilter = (district === "all" || !district) ? state : district;
-
-      const res = await fetch(`/api/search?query=${encodeURIComponent(q)}&city=${encodeURIComponent(cityFilter)}`);
-      const data = await res.json();
-
-      const container = document.getElementById("listingsContainer");
-      container.innerHTML = "";
-      
-      document.getElementById("resultsHeading").innerText = q ? `Results for "${q}" in ${cityFilter}` : `Verified Listings in ${cityFilter}`;
-      document.getElementById("resultsCount").innerText = `${data.count} Verified Partners`;
-
-      data.results.forEach(b => {
-        const cleanMob = b.mobile.replace("+", "").replace(" ", "").replace("-", "");
-        const servicesTags = b.services.map(s => `<span class="bg-slate-950 text-slate-300 text-[11px] px-2.5 py-1 rounded-md border border-slate-800">${s}</span>`).join(" ");
-
-        container.innerHTML += `
-          <div class="glass-card rounded-3xl p-6 hover:border-sky-500/50 transition duration-300 flex flex-col lg:flex-row gap-6">
-            <div class="w-full lg:w-64 h-48 rounded-2xl overflow-hidden flex-shrink-0 bg-slate-950 border border-slate-800 relative">
-              <img src="${b.image}" alt="${b.name}" class="w-full h-full object-cover">
-              <div class="absolute top-2 left-2 bg-slate-950/80 px-2.5 py-1 rounded-lg text-[10px] font-bold text-emerald-400">
-                <i class="fa-solid fa-circle-check"></i> Verified
-              </div>
-            </div>
-
-            <div class="flex-1 flex flex-col justify-between">
-              <div>
-                <div class="flex flex-wrap items-start justify-between gap-2">
-                  <div>
-                    <h3 class="text-xl font-bold text-white">${b.name} <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i></h3>
-                    <p class="text-xs text-slate-400 mt-1">📍 ${b.area}, ${b.city}, ${b.state} &bull; <strong class="text-sky-400">${b.category}</strong></p>
-                  </div>
-                  <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-black px-3 py-1 rounded-xl">
-                    <i class="fa-solid fa-star text-amber-400"></i> ${b.rating} (${b.votes})
-                  </div>
-                </div>
-
-                <div class="mt-3 inline-flex items-center gap-2 text-xs text-amber-300 bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/20 font-semibold">
-                  <i class="fa-solid fa-tag"></i> ${b.offer}
-                </div>
-
-                <div class="mt-3 flex flex-wrap gap-1.5">${servicesTags}</div>
-              </div>
-
-              <div class="mt-4 pt-3 border-t border-slate-800 flex flex-wrap items-center gap-2">
-                <a href="tel:${b.mobile}" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
-                  <i class="fa-solid fa-phone"></i> Call: ${b.mobile}
-                </a>
-                <a href="https://wa.me/${cleanMob}?text=Hi%20${encodeURIComponent(b.name)},%20I%20saw%20your%20verified%20listing%20on%20OS%20GROUP." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
-                  <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                </a>
-                <a href="/biz/${b.id}" target="_blank" class="text-xs text-sky-400 hover:underline ml-auto">
-                  View Storefront &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    function handleEnter(e) { if(e.key === 'Enter') performSearch(); }
 
     window.onload = () => {
-      setupCountries();
-      setupCategories();
+      initHeroSlider();
+      renderGalleryCards();
       renderToolsNav();
       setupDynamicSelectors();
-      // Default view is Directory Home
-      navigateTo('home');
+      runToolExecution();
     };
   </script>
 </body>
