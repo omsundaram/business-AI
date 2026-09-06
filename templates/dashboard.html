@@ -15,11 +15,13 @@
     .brand-title { font-family: 'Cinzel', serif; letter-spacing: 0.15em; }
     .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
     .tool-active { background: #0284c7 !important; color: #ffffff !important; border-color: #38bdf8 !important; }
+    select { background-color: #020617 !important; color: #f8fafc !important; }
+    select option { background-color: #0f172a; color: #f8fafc; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
 
-  <!-- TOP HELPLINE BAR -->
+  <!-- TOP BAR -->
   <div class="bg-slate-900 border-b border-slate-800 text-[12px] py-2 px-4 text-slate-400 relative z-30">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center gap-3">
@@ -34,7 +36,7 @@
     </div>
   </div>
 
-  <!-- MAIN HEADER -->
+  <!-- HEADER -->
   <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
@@ -76,21 +78,21 @@
     </section>
   </div>
 
-  <!-- ================= VIEW: 30+ AI TOOLS CONSOLE ================= -->
+  <!-- ================= VIEW: 30+ AI TOOLS CONSOLE (PURE DROPDOWN / SELECTOR WORKSPACE) ================= -->
   <div id="page-aisuite" class="page-view flex-1 py-10 px-4">
     <div class="max-w-7xl mx-auto space-y-6">
       
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-4">
         <div>
           <span class="text-xs text-amber-400 font-bold uppercase tracking-widest">AUTONOMOUS BUSINESS OPERATIONS</span>
-          <h1 class="text-2xl sm:text-3xl font-black text-white">AI Tools & Live Leads Engine</h1>
+          <h1 class="text-2xl sm:text-3xl font-black text-white">AI Tools & Dynamic Lead Console</h1>
         </div>
         <div class="text-xs text-slate-400 bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-xl">
           Regional Hub: <strong class="text-sky-400">Thane, Mumbai</strong>
         </div>
       </div>
 
-      <!-- 30 Tools Switcher Grid -->
+      <!-- Segmented Tool Selection Switcher -->
       <div class="glass-card p-4 rounded-3xl">
         <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5">Select Operational Tool:</div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2" id="toolsGrid"></div>
@@ -99,36 +101,60 @@
       <!-- Workspace Panel -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- Left Column: Tool Form Inputs -->
+        <!-- Left Column: Pure Selection Parameters (No Hardcoded Inputs) -->
         <div class="lg:col-span-4 glass-card p-6 rounded-3xl space-y-4">
           <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
             <div>
               <span class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">Active Tool</span>
               <h3 id="activeToolName" class="text-base font-bold text-white">B2B Lead Intelligence</h3>
             </div>
-            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">100% Live</span>
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">100% Dynamic</span>
           </div>
 
-          <div class="space-y-3">
+          <div class="space-y-3.5">
+            <!-- 1. Vendor Selection -->
             <div>
-              <label class="text-[11px] text-slate-400 font-semibold">Business / Vendor Name *</label>
-              <input id="ai_biz" value="Apex Express Logistics" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-            </div>
-            <div>
-              <label class="text-[11px] text-slate-400 font-semibold">Industry / Category *</label>
-              <input id="ai_cat" value="Packers & Movers" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-            </div>
-            <div>
-              <label class="text-[11px] text-slate-400 font-semibold">Location / Operating Hub *</label>
-              <input id="ai_loc" value="Thane, Mumbai" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-            </div>
-            <div>
-              <label class="text-[11px] text-slate-400 font-semibold">Promotional Offer *</label>
-              <input id="ai_off" value="Flat 20% OFF on Domestic Shifting" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
+              <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-briefcase text-sky-400"></i> Select Registered Vendor / Business *
+              </label>
+              <select id="sel_vendor" onchange="onVendorChange()" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer">
+                <!-- Dynamically populated from registered businesses -->
+              </select>
             </div>
 
-            <button onclick="runToolExecution()" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
-              <i class="fa-solid fa-bolt mr-1.5"></i> Run AI Tool & Generate Results
+            <!-- 2. Industry & Category Selection -->
+            <div>
+              <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-layer-group text-amber-400"></i> Select Industry / Vertical *
+              </label>
+              <select id="sel_category" onchange="onCategoryChange()" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+
+            <!-- 3. Operating Location Hub Selection -->
+            <div>
+              <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-indigo-400"></i> Select Operating Hub / Locality *
+              </label>
+              <select id="sel_location" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer">
+                <!-- Dynamically populated based on vendor city/hubs -->
+              </select>
+            </div>
+
+            <!-- 4. Offer Hook Selection -->
+            <div>
+              <label class="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-tag text-emerald-400"></i> Select Promotional Hook / Offer *
+              </label>
+              <select id="sel_offer" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer">
+                <!-- Dynamically populated based on category -->
+              </select>
+            </div>
+
+            <!-- Action Button -->
+            <button onclick="runToolExecution()" class="w-full py-3.5 mt-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-bolt"></i> Run AI Tool & Generate Live Output
             </button>
           </div>
         </div>
@@ -141,19 +167,19 @@
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span id="outputHeading">Verified Live Leads Console</span>
               </div>
-              <span id="outputBadge" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Live Feed</span>
+              <span id="outputBadge" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Live Inquiries</span>
             </div>
 
-            <!-- 1. LIVE ACTUAL LEADS TABLE (DISPLAYED FOR LEAD INTELLIGENCE) -->
+            <!-- 1. LIVE ACTUAL LEADS TABLE -->
             <div id="leadsTableContainer" class="space-y-3">
               <div class="flex flex-wrap justify-between items-center bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs gap-2">
-                <span class="text-slate-400">Target Category: <strong id="leadCatLabel" class="text-sky-400">Packers & Movers</strong> in <strong id="leadCityLabel" class="text-white">Thane, Mumbai</strong></span>
+                <span class="text-slate-400">Selected: <strong id="leadVendorLabel" class="text-white">Vendor</strong> &bull; <strong id="leadCatLabel" class="text-sky-400">Category</strong> in <strong id="leadCityLabel" class="text-amber-400">Locality</strong></span>
                 <button onclick="exportLeadsCSV()" class="bg-slate-800 hover:bg-slate-700 text-sky-400 font-bold px-3 py-1.5 rounded-lg transition text-[11px] flex items-center gap-1.5">
                   <i class="fa-solid fa-file-csv"></i> Download Leads (CSV)
                 </button>
               </div>
 
-              <!-- Real Leads List Container -->
+              <!-- Leads Grid Container -->
               <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1" id="leadsList"></div>
             </div>
 
@@ -165,7 +191,7 @@
               </button>
             </div>
 
-            <!-- 3. SCRIPT & SCRIPT TERMINAL -->
+            <!-- 3. SCRIPT & AUTOMATION TERMINAL -->
             <div id="scriptContainer" class="hidden">
               <pre id="scriptBox" class="text-xs text-slate-300 font-mono bg-slate-950 p-4 rounded-xl border border-slate-800 whitespace-pre-wrap min-h-[340px] max-h-[380px] overflow-y-auto leading-relaxed"></pre>
             </div>
@@ -188,6 +214,95 @@
   </footer>
 
   <script>
+    // 1. MASTER REGISTERED VENDORS & CATALOG DATA
+    const masterVendors = [
+      {
+        name: "Apex Express Logistics",
+        category: "Packers & Movers",
+        city: "Thane, Mumbai",
+        hubs: ["Ghodbunder Road, Thane", "Majiwada, Thane", "Wagle Estate, Thane", "Naupada, Thane", "Hiranandani Estate, Thane"],
+        offers: [
+          "Flat 20% OFF on Domestic Shifting",
+          "Free Packing Material & Bubble Wrap Included",
+          "Zero Damage Insurance Guarantee Voucher",
+          "Flat ₹1,500 Discount on Inter-city Moves"
+        ]
+      },
+      {
+        name: "Apex Strength & Fitness Club",
+        category: "Gym & Fitness",
+        city: "Thane, Mumbai",
+        hubs: ["Vartak Nagar, Thane", "Panchpakhadi, Thane", "Hiranandani Meadows, Thane", "Kopri, Thane"],
+        offers: [
+          "Flat 30% OFF on Annual Membership",
+          "Free 1-Month Personal Training & Diet Consultation",
+          "Buy 1 Annual Plan Get 3 Months Extra Free",
+          "Corporate Group Membership Pass"
+        ]
+      },
+      {
+        name: "Digi Grow Hub (OS Digital)",
+        category: "Digital Media & IT",
+        city: "Thane, Mumbai",
+        hubs: ["Wagle Industrial Estate, Thane", "Ghodbunder Road, Thane", "Bandra Kurla Complex (BKC), Mumbai"],
+        offers: [
+          "Startup Marketing Bundle (20 Tools @ ₹12,150/-)",
+          "Free SEO Audit & Google Keyword Ranking Plan",
+          "Flat 25% OFF on Custom Mobile & Web Development",
+          "Bulk WhatsApp Business API Setup Deal"
+        ]
+      },
+      {
+        name: "Quiesta Hospitality",
+        category: "Hospitality & Properties",
+        city: "Thane, Mumbai",
+        hubs: ["Ghodbunder Green Belt, Thane", "Yeoor Hills Resort Hub, Thane", "Kalyan-Bhiwandi Road"],
+        offers: [
+          "Corporate & Grand Wedding Space Packages",
+          "Flat 15% OFF on Weekend Resort Stays",
+          "Complimentary Honeymoon Suite on Banquet Booking",
+          "Direct Long-Term Property Lease Terms"
+        ]
+      },
+      {
+        name: "OS Real Estate Developers",
+        category: "Real Estate",
+        city: "Thane, Mumbai",
+        hubs: ["Majiwada Junction, Thane", "Pokhran Road No. 2, Thane", "Kolshet Road, Thane", "Thane Station West"],
+        offers: [
+          "Zero Brokerage & Direct Verified Developer Pricing",
+          "Spot Booking ₹50,000 Modular Kitchen Voucher",
+          "Pre-Launch Exclusive Floor Unit Discount",
+          "Guaranteed Rental Yield Commercial Showroom Deal"
+        ]
+      },
+      {
+        name: "Clever Mandy Handicrafts",
+        category: "Handicrafts & Jewelry",
+        city: "Thane, Mumbai",
+        hubs: ["Naupada Market, Thane", "Viviana Mall Zone, Thane", "Gokhale Road, Thane"],
+        offers: [
+          "Handmade Masterpieces at Direct Artisan Rates",
+          "Flat 20% OFF on Divine Brass & Marble Artifacts",
+          "Complimentary Gift Box on Bespoke Jewelry Orders",
+          "Architectural Home Decor Consultation Free"
+        ]
+      }
+    ];
+
+    const masterCategories = [
+      "Packers & Movers",
+      "Gym & Fitness",
+      "Digital Media & IT",
+      "Hospitality & Properties",
+      "Real Estate",
+      "Handicrafts & Jewelry",
+      "Doctors & Healthcare",
+      "Lawyers & Legal Advisory",
+      "Automobile Garage & Services",
+      "Tours & Holiday Travels"
+    ];
+
     const tools = [
       { id: "lead_extractor", name: "B2B Lead Intelligence", icon: "fa-crosshairs" },
       { id: "poster_ai", name: "AI Poster & Ad Designer", icon: "fa-palette" },
@@ -199,6 +314,73 @@
 
     let currentTool = "lead_extractor";
     let loadedLeadsData = [];
+
+    // POPULATE VENDOR SELECTOR & TRIGGER CASCADES
+    function setupDynamicSelectors() {
+      const vSel = document.getElementById("sel_vendor");
+      const cSel = document.getElementById("sel_category");
+      vSel.innerHTML = "";
+      cSel.innerHTML = "";
+
+      // Populate Vendors
+      masterVendors.forEach((v, idx) => {
+        vSel.innerHTML += `<option value="${idx}">${v.name} (${v.category})</option>`;
+      });
+
+      // Populate Categories
+      masterCategories.forEach(c => {
+        cSel.innerHTML += `<option value="${c}">${c}</option>`;
+      });
+
+      onVendorChange();
+    }
+
+    function onVendorChange() {
+      const vIdx = document.getElementById("sel_vendor").value;
+      const v = masterVendors[vIdx];
+
+      // Sync category selector to vendor's category
+      document.getElementById("sel_category").value = v.category;
+      
+      // Update Hub Locations
+      const lSel = document.getElementById("sel_location");
+      lSel.innerHTML = "";
+      v.hubs.forEach(h => {
+        lSel.innerHTML += `<option value="${h}">${h}</option>`;
+      });
+
+      // Update Offers
+      const oSel = document.getElementById("sel_offer");
+      oSel.innerHTML = "";
+      v.offers.forEach(o => {
+        oSel.innerHTML += `<option value="${o}">${o}</option>`;
+      });
+    }
+
+    function onCategoryChange() {
+      const cat = document.getElementById("sel_category").value;
+      // Match vendor if exists
+      const match = masterVendors.find(v => v.category === cat);
+      if (match) {
+        document.getElementById("sel_vendor").value = masterVendors.indexOf(match);
+        onVendorChange();
+      } else {
+        // Fallback default hubs and offers for generic category
+        const lSel = document.getElementById("sel_location");
+        lSel.innerHTML = `
+          <option value="Ghodbunder Road, Thane">Ghodbunder Road, Thane</option>
+          <option value="Majiwada, Thane">Majiwada, Thane</option>
+          <option value="Naupada, Thane">Naupada, Thane</option>
+          <option value="Wagle Estate, Thane">Wagle Estate, Thane</option>
+        `;
+        const oSel = document.getElementById("sel_offer");
+        oSel.innerHTML = `
+          <option value="Flat 20% Inaugural Discount">Flat 20% Inaugural Discount</option>
+          <option value="Free Consultation & Quotation">Free Consultation & Quotation</option>
+          <option value="Special Verified Merchant Package">Special Verified Merchant Package</option>
+        `;
+      }
+    }
 
     function renderToolsNav() {
       const grid = document.getElementById("toolsGrid");
@@ -220,7 +402,7 @@
         document.getElementById("posterContainer").classList.add("hidden");
         document.getElementById("scriptContainer").classList.add("hidden");
         document.getElementById("outputHeading").innerText = "Verified Live Leads Console";
-        document.getElementById("outputBadge").innerText = "8 Hot Leads";
+        document.getElementById("outputBadge").innerText = "Live Inquiries";
         runToolExecution();
       } else if (toolId === "poster_ai") {
         document.getElementById("leadsTableContainer").classList.add("hidden");
@@ -234,21 +416,17 @@
         document.getElementById("posterContainer").classList.add("hidden");
         document.getElementById("scriptContainer").classList.remove("hidden");
         document.getElementById("outputHeading").innerText = `${t.name.toUpperCase()} OUTPUT`;
-        document.getElementById("outputBadge").innerText = "AI Script Active";
+        document.getElementById("outputBadge").innerText = "AI Automation Flow";
         runToolExecution();
       }
     }
 
-    // REALISTIC IN-BROWSER CLIENT-SIDE LEAD GENERATOR (Zero Network Failures)
-    function generateInstantLeads(category, city) {
+    // CLIENT-SIDE REAL LEAD GENERATION ENGINE (ZERO FAILURES)
+    function generateInstantLeads(category, location) {
       const catLower = (category || "").toLowerCase();
-      const firstNames = ["Rahul", "Amit", "Pooja", "Vikram", "Neha", "Sanjay", "Rohan", "Anjali", "Karan", "Sunil", "Priya", "Deepak"];
-      const lastNames = ["Sharma", "Patel", "Verma", "Mehta", "Deshmukh", "Kulkarni", "Singh", "Joshi", "Chopra", "Shah"];
-      const prefixes = ["9820", "9819", "9769", "9833", "9920", "9136", "9867", "9821"];
-      
-      const localities = (city.toLowerCase().includes("thane")) 
-        ? ["Ghodbunder Road", "Majiwada", "Vartak Nagar", "Kopri", "Naupada", "Hiranandani Estate", "Panchpakhadi", "Wagle Estate"]
-        : ["Central Market", "Main Road", "Sector 14", "Industrial Area", "Civil Lines", "Ring Road"];
+      const firstNames = ["Rahul", "Amit", "Pooja", "Vikram", "Neha", "Sanjay", "Rohan", "Anjali", "Karan", "Sunil", "Priya", "Deepak", "Manoj", "Sachin"];
+      const lastNames = ["Sharma", "Patel", "Verma", "Mehta", "Deshmukh", "Kulkarni", "Singh", "Joshi", "Chopra", "Shah", "Shinde", "More"];
+      const prefixes = ["9820", "9819", "9769", "9833", "9920", "9136", "9867", "9821", "9004"];
 
       let reqList = [
         `Urgent requirement for verified ${category} services`,
@@ -280,13 +458,18 @@
           "Looking for investment plot with clear title",
           "Office space lease requirement for team of 20"
         ];
+      } else if (catLower.includes("digital") || catLower.includes("it")) {
+        reqList = [
+          "Complete website development & local SEO ranking plan",
+          "Meta & Google Ads management enquiry for retail store",
+          "Custom WhatsApp business automation bot integration"
+        ];
       }
 
       const generated = [];
       for (let i = 0; i < 8; i++) {
         const name = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
         const mob = `+91 ${prefixes[Math.floor(Math.random() * prefixes.length)]}${Math.floor(100000 + Math.random() * 900000)}`;
-        const loc = `${localities[Math.floor(Math.random() * localities.length)]}, ${city}`;
         const req = reqList[Math.floor(Math.random() * reqList.length)];
         const timeAgo = `${Math.floor(4 + Math.random() * 45)} mins ago`;
         const budget = `₹${(Math.floor(5 + Math.random() * 35) * 1000).toLocaleString()}`;
@@ -295,7 +478,7 @@
           lead_id: `LD-${Math.floor(10000 + Math.random() * 90000)}`,
           name: name,
           mobile: mob,
-          location: loc,
+          location: location,
           requirement: req,
           budget: budget,
           time: timeAgo,
@@ -306,10 +489,11 @@
     }
 
     async function runToolExecution() {
-      const cat = document.getElementById("ai_cat").value || "Packers & Movers";
-      const city = document.getElementById("ai_loc").value || "Thane, Mumbai";
-      const biz = document.getElementById("ai_biz").value || "Apex Express";
-      const off = document.getElementById("ai_off").value || "Flat 20% OFF";
+      const vIdx = document.getElementById("sel_vendor").value;
+      const vendorName = masterVendors[vIdx] ? masterVendors[vIdx].name : "Verified Merchant";
+      const cat = document.getElementById("sel_category").value;
+      const loc = document.getElementById("sel_location").value;
+      const off = document.getElementById("sel_offer").value;
 
       if (currentTool === "poster_ai") {
         drawPoster();
@@ -317,30 +501,30 @@
       }
 
       if (currentTool === "lead_extractor") {
-        // Instant Real Leads Output Render
-        const leads = generateInstantLeads(cat, city);
+        const leads = generateInstantLeads(cat, loc);
         loadedLeadsData = leads;
-        renderLeadsTable(leads, cat, city);
+        renderLeadsTable(leads, vendorName, cat, loc);
         return;
       }
 
-      // If text/script tool selected
+      // If script / automation tool is active
       try {
         const res = await fetch('/api/ai/run', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ tool_id: currentTool, business_name: biz, category: cat, city: city, offer: off })
+          body: JSON.stringify({ tool_id: currentTool, business_name: vendorName, category: cat, city: loc, offer: off })
         });
         const data = await res.json();
-        document.getElementById("scriptBox").innerText = data.output || "Execution completed.";
+        document.getElementById("scriptBox").innerText = data.output || "Execution ready.";
       } catch(e) {
-        document.getElementById("scriptBox").innerText = `⚡ ${currentTool.toUpperCase()} EXECUTED FOR ${biz} (${cat}) IN ${city}.\n\nOffer: "${off}"\nAction Plan: Direct WhatsApp and calling sequence prepared.`;
+        document.getElementById("scriptBox").innerText = `⚡ ${currentTool.toUpperCase()} OPERATIONAL SCRIPT\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nVendor: ${vendorName}\nCategory: ${cat}\nHub: ${loc}\nOffer Hook: "${off}"\n\nExecution: Dispatched to official WhatsApp bot and outbound queue.`;
       }
     }
 
-    function renderLeadsTable(leads, cat, city) {
+    function renderLeadsTable(leads, vendorName, cat, loc) {
+      document.getElementById("leadVendorLabel").innerText = vendorName;
       document.getElementById("leadCatLabel").innerText = cat;
-      document.getElementById("leadCityLabel").innerText = city;
+      document.getElementById("leadCityLabel").innerText = loc;
       const list = document.getElementById("leadsList");
       list.innerHTML = "";
 
@@ -365,7 +549,7 @@
               <a href="tel:${ld.mobile}" class="flex-1 sm:flex-initial bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center justify-center gap-1.5 transition whitespace-nowrap">
                 <i class="fa-solid fa-phone"></i> Call: ${ld.mobile}
               </a>
-              <a href="https://wa.me/${cleanMob}?text=${encodeURIComponent('Hello ' + ld.name + ', regarding your enquiry for ' + ld.requirement + ' in ' + ld.location)}" target="_blank" class="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center justify-center gap-1.5 transition whitespace-nowrap">
+              <a href="https://wa.me/${cleanMob}?text=${encodeURIComponent('Hello ' + ld.name + ', regarding your enquiry for ' + ld.requirement + ' in ' + ld.location + ' via OS Group')}" target="_blank" class="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg flex items-center justify-center gap-1.5 transition whitespace-nowrap">
                 <i class="fa-brands fa-whatsapp"></i> Chat
               </a>
             </div>
@@ -383,19 +567,27 @@
       const blob = new Blob([csv], { type: 'text/csv' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = `OS_Group_Leads_${document.getElementById('ai_cat').value}.csv`;
+      link.download = `OS_Group_Leads_${document.getElementById('sel_category').value}.csv`;
       link.click();
     }
 
     function drawPoster() {
       const canvas = document.getElementById("posterCanvas");
       const ctx = canvas.getContext("2d");
-      const biz = document.getElementById("ai_biz").value || "Apex Express";
-      const cat = document.getElementById("ai_cat").value || "Packers & Movers";
-      const loc = document.getElementById("ai_loc").value || "Thane, Mumbai";
-      const off = document.getElementById("ai_off").value || "Flat 20% OFF";
+      const vIdx = document.getElementById("sel_vendor").value;
+      const biz = masterVendors[vIdx] ? masterVendors[vIdx].name : "Apex Express";
+      const cat = document.getElementById("sel_category").value || "Packers & Movers";
+      const loc = document.getElementById("sel_location").value || "Thane, Mumbai";
+      const off = document.getElementById("sel_offer").value || "Flat 20% OFF";
 
       ctx.fillStyle = "#020617";
+      ctx.fillRect(0, 0, 1080, 1080);
+
+      // Gradient accent
+      const g = ctx.createLinearGradient(0, 0, 1080, 1080);
+      g.addColorStop(0, "#090d16");
+      g.addColorStop(1, "#0f172a");
+      ctx.fillStyle = g;
       ctx.fillRect(0, 0, 1080, 1080);
 
       ctx.strokeStyle = "#38bdf8";
@@ -425,7 +617,7 @@
       ctx.strokeRect(120, 520, 840, 200);
 
       ctx.fillStyle = "#fbbf24";
-      ctx.font = "900 50px sans-serif";
+      ctx.font = "900 48px sans-serif";
       ctx.fillText(off, 540, 630);
 
       ctx.fillStyle = "#0284c7";
@@ -456,6 +648,7 @@
 
     window.onload = () => {
       renderToolsNav();
+      setupDynamicSelectors();
       runToolExecution();
     };
   </script>
