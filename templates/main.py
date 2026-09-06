@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import os, json, random, string, urllib.request, urllib.error
 from pathlib import Path
 
-app = FastAPI(title="OS GROUP (OM SUNDARAM) - Global Autonomous Platform")
+app = FastAPI(title="OS GROUP (OM SUNDARAM) - Global Autonomous AI Platform")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,7 +28,7 @@ def get_html_content():
         if p.exists():
             with open(p, "r", encoding="utf-8") as f:
                 return f.read()
-    return "<h1>OS GROUP Core Loading...</h1>"
+    return "<h1>OS GROUP Core Initializing...</h1>"
 
 OS_PROJECTS_DATABASE = [
     {
@@ -245,7 +245,7 @@ async def execute_tool(data: AIExecutePayload):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🎯 STRATEGIC DELIVERABLE:
-- Generated high-converting campaign assets tailored for {data.city}.
+- High-converting campaign assets tailored for {data.city}.
 - Verified conversion hook: "{data.offer}" deployed to outbound queue.
 - Ready for automated call-desk dispatch & WhatsApp closing."""
 
