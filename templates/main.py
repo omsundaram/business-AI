@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import os, json, random, string, urllib.request, urllib.error
 from pathlib import Path
 
-app = FastAPI(title="OS GROUP - Global AI Directory & Marketplace Super-App")
+app = FastAPI(title="OS GROUP (OM SUNDARAM) - Super-App Platform")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,144 +28,227 @@ def get_html_content():
         if p.exists():
             with open(p, "r", encoding="utf-8") as f:
                 return f.read()
-    return "<h1>OS Group Dynamic Engine Loading...</h1>"
+    return "<h1>OS GROUP Engine Loading...</h1>"
 
-# 4000+ Categories Master Dictionary Engine
-MASTER_CATEGORIES = [
-    {"name": "Doctors & Physicians", "icon": "fa-user-doctor", "group": "Healthcare"},
-    {"name": "Dentists & Dental Care", "icon": "fa-tooth", "group": "Healthcare"},
-    {"name": "Hospitals & Emergency Care", "icon": "fa-hospital", "group": "Healthcare"},
-    {"name": "Gym & Strength Fitness", "icon": "fa-dumbbell", "group": "Fitness"},
-    {"name": "Yoga & Wellness Centers", "icon": "fa-spa", "group": "Fitness"},
-    {"name": "Real Estate & Builders", "icon": "fa-building", "group": "Properties"},
-    {"name": "Commercial Plots & Shops", "icon": "fa-city", "group": "Properties"},
-    {"name": "Restaurants & Fine Dining", "icon": "fa-utensils", "group": "Food"},
-    {"name": "Cafes & Cloud Kitchens", "icon": "fa-mug-hot", "group": "Food"},
-    {"name": "Beauty Salons & Bridal Studio", "icon": "fa-scissors", "group": "Lifestyle"},
-    {"name": "IT, Software & AI Agents", "icon": "fa-laptop-code", "group": "Technology"},
-    {"name": "Chartered Accountants & GST", "icon": "fa-file-invoice-dollar", "group": "Finance"},
-    {"name": "Lawyers & Legal Advocates", "icon": "fa-scale-balanced", "group": "Legal"},
-    {"name": "Packers & Movers Logistics", "icon": "fa-truck-fast", "group": "Logistics"},
-    {"name": "Coaching & Competitive Exams", "icon": "fa-graduation-cap", "group": "Education"},
-    {"name": "Hotels & Luxury Resorts", "icon": "fa-hotel", "group": "Hospitality"},
-    {"name": "Wedding Banquets & Decors", "icon": "fa-champagne-glasses", "group": "Events"},
-    {"name": "Car Service, Spares & Garage", "icon": "fa-car-burst", "group": "Automobile"},
-    {"name": "Interior Designers & Modular", "icon": "fa-couch", "group": "Home"},
-    {"name": "Solar Energy & Inverters", "icon": "fa-solar-panel", "group": "Energy"},
-    {"name": "Jewelry, Diamond & Gold", "icon": "fa-gem", "group": "Retail"},
-    {"name": "Electricians & Home Wiring", "icon": "fa-bolt", "group": "Repairs"},
-    {"name": "Plumbers & Sanitation", "icon": "fa-wrench", "group": "Repairs"},
-    {"name": "CCTV & Security Solutions", "icon": "fa-video", "group": "Security"},
-    {"name": "Deep Cleaning & Housekeeping", "icon": "fa-broom", "group": "Services"},
-    {"name": "Pest Control Services", "icon": "fa-bug", "group": "Services"},
-    {"name": "Tours, Travels & Visa Help", "icon": "fa-plane-departure", "group": "Travel"},
-    {"name": "Architects & Civil Engineers", "icon": "fa-compass-drafting", "group": "Construction"},
-    {"name": "Insurance Advisors", "icon": "fa-shield-halved", "group": "Finance"},
-    {"name": "Advertising & PR Agencies", "icon": "fa-bullhorn", "group": "Marketing"}
-]
-
-BUSINESS_DATABASE = [
+# OFFICIAL OS GROUP VENTURES & PROJECTS DIRECTORY
+OS_PROJECTS_DATABASE = [
     {
-        "id": "OSG-1001",
-        "name": "Apex Strength & Fitness Gym",
-        "category": "Gym & Strength Fitness",
+        "id": "OS-VENTURE-01",
+        "name": "Digi Grow Hub (OS Digital Media)",
+        "brand": "Digi Grow Hub",
+        "category": "Digital Media & IT",
         "city": "Jaipur",
-        "area": "Malviya Nagar",
+        "state": "Rajasthan",
+        "area": "Marudhar Nagar, Ajmer Road",
         "rating": 4.9,
-        "votes": 142,
-        "mobile": "+91 9829012345",
-        "whatsapp": "+91 9829012345",
-        "services": ["CrossFit Training", "Weight Loss Program", "Personal Coaching", "Diet Consultation"],
-        "offer": "Flat 20% OFF on Annual Membership",
-        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
+        "votes": 340,
+        "mobile": "+91 7597777897",
+        "whatsapp": "+91 7597777897",
+        "services": ["SEO & SMO", "Web & App Development", "Bulk WhatsApp API", "Branding & Video Ads"],
+        "offer": "Startup Marketing Bundle (20 Tools @ INR 12,150/-)",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+        "description": "One-stop gateway for full-stack marketing, digital promotions, and media campaigns."
     },
     {
-        "id": "OSG-1002",
-        "name": "Dr. Sharma Multispeciality Dental Clinic",
-        "category": "Dentists & Dental Care",
+        "id": "OS-VENTURE-02",
+        "name": "Quiesta Hospitality",
+        "brand": "Quiesta",
+        "category": "Hospitality & Properties",
         "city": "Jaipur",
-        "area": "Vaishali Nagar",
+        "state": "Rajasthan",
+        "area": "Marudhar Nagar, Ajmer Road",
         "rating": 4.8,
-        "votes": 98,
-        "mobile": "+91 9829054321",
-        "whatsapp": "+91 9829054321",
-        "services": ["Root Canal Treatment", "Teeth Whitening", "Dental Implants", "Invisible Braces"],
-        "offer": "Free First Consultation & X-Ray",
-        "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80"
+        "votes": 280,
+        "mobile": "+91 7597777897",
+        "whatsapp": "+91 7597777897",
+        "services": ["Hotels & Resorts", "Banquet Halls", "Marriage Gardens", "Property Leasing & Sale"],
+        "offer": "Corporate & Grand Wedding Space Packages",
+        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "description": "Premium properties, marriage gardens, farmhouses, and revenue-sharing resort chains."
     },
     {
-        "id": "OSG-1003",
-        "name": "Royal Heritage Real Estate Developers",
-        "category": "Real Estate & Builders",
+        "id": "OS-VENTURE-03",
+        "name": "Jeevan Parinay (Jeewanparinay)",
+        "brand": "Jeevan Parinay",
+        "category": "Matrimonial & Events",
         "city": "Jaipur",
-        "area": "Mansarovar",
+        "state": "Rajasthan",
+        "area": "Ajmer Road",
+        "rating": 4.9,
+        "votes": 512,
+        "mobile": "+91 7597777897",
+        "whatsapp": "+91 7597777897",
+        "services": ["Match Making", "Destination Weddings", "Honeymoon Packages", "Wedding Gifts & Fashion"],
+        "offer": "100% Verified Community Profiles",
+        "image": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+        "description": "Trusted matchmaking network linking personal care with professional wedding execution."
+    },
+    {
+        "id": "OS-VENTURE-04",
+        "name": "OS Real Estate",
+        "brand": "OS Real Estate",
+        "category": "Real Estate",
+        "city": "Jodhpur",
+        "state": "Rajasthan",
+        "area": "Bombay Motor Circle",
         "rating": 4.7,
-        "votes": 215,
-        "mobile": "+91 9829098765",
-        "whatsapp": "+91 9829098765",
-        "services": ["Luxury 3BHK Flats", "Commercial Retail Shops", "Villa Plots", "Property Valuation"],
-        "offer": "Zero Brokerage & Free Registry",
-        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
+        "votes": 190,
+        "mobile": "+91 7597777897",
+        "whatsapp": "+91 7597777897",
+        "services": ["Residential Villas", "Commercial Land", "Industrial Plots", "Rent & Lease Property"],
+        "offer": "Zero Brokerage Direct Verified Units",
+        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+        "description": "Authentic property matchmaking helping businesses and families make the right choice."
     },
     {
-        "id": "OSG-1004",
-        "name": "CyberTech AI & Software Labs",
-        "category": "IT, Software & AI Agents",
+        "id": "OS-VENTURE-05",
+        "name": "Clever Mandy Handicrafts",
+        "brand": "Clever Mandy",
+        "category": "Handicrafts & Jewelry",
         "city": "Jaipur",
-        "area": "C-Scheme",
+        "state": "Rajasthan",
+        "area": "Chitrakoot Yojna",
+        "rating": 4.9,
+        "votes": 165,
+        "mobile": "+91 7597777897",
+        "whatsapp": "+91 7597777897",
+        "services": ["Fine Arts", "Divine Artifacts", "Home Decor", "Bespoke Artificial & Diamond Jewelry"],
+        "offer": "Handmade Masterpieces at Direct Artisan Rates",
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
+        "description": "Preserving traditional craftsmanship with modern design aesthetics."
+    },
+    {
+        "id": "OS-VENTURE-06",
+        "name": "OS Government & EduTech Hub",
+        "brand": "OS EduTech",
+        "category": "Government & EduTech",
+        "city": "Jaipur",
+        "state": "Rajasthan",
+        "area": "Chitrakoot Yojna",
         "rating": 5.0,
-        "votes": 88,
-        "mobile": "+91 9829011223",
-        "whatsapp": "+91 9829011223",
-        "services": ["Custom AI Agent Development", "SaaS Platforms", "Mobile Apps", "Cloud Automation"],
-        "offer": "Flat 30% Discount for Startups",
-        "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        "votes": 410,
+        "mobile": "+91 7597777897",
+        "whatsapp": "+91 7597777897",
+        "services": ["Atal Tinkering Labs (ATL)", "FoSTaC FSSAI Training", "Smart Metering", "PM-JAY Support"],
+        "offer": "CBSE STEM/Robotics Integration",
+        "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+        "description": "Pioneering technological education, robotics labs, 3D printing, and public welfare utilities."
     }
 ]
 
 PENDING_OTP_DB = {}
 VENDOR_ACCOUNTS = {}
 
+# Fallback AI Generator
+def run_ai_generator(task: str, context: dict) -> str:
+    biz = context.get("business_name", "OS Partner")
+    sub = context.get("category", "Services")
+    city = context.get("city", "Jaipur")
+    off = context.get("offer", "Exclusive Deal")
+
+    if task == "graphics":
+        return f"""🎨 AI GRAPHIC & BANNER CONCEPTS ({biz}):
+Banner 1: "Scale Your {sub} with Confidence in {city}"
+- Color Palette: Neon Cyber Blue & Gold (#38bdf8 & #f59e0b)
+- Focal Text: "{off}"
+- Layout: Modern split card with dual action buttons (Call + WhatsApp).
+
+Banner 2: "Verified Authority & Trusted Service"
+- Badge: OS Group Verified Emblem
+- Tagline: ENTHRAL | ENGAGE | EXECUTE"""
+
+    elif task == "video":
+        return f"""🎬 30-SECOND REEL / VIDEO SCRIPT ({biz}):
+[0:00 - 0:05] Hook: "Looking for top-tier {sub} in {city}?" (Dynamic kinetic text)
+[0:05 - 0:15] Problem/Solution: Showcase rapid turnaround & "{off}"
+[0:15 - 0:25] Authority: "Officially certified by OS GROUP Network."
+[0:25 - 0:30] CTA: "Tap the link below to chat on WhatsApp or call instantly!"""
+
+    elif task == "voice":
+        return f"""📞 AI VOICE ATTENDANT & AUTO-DIALER PITCH:
+"Namaste! Thank you for calling {biz}, your certified {sub} partner in {city}. We are currently running our exclusive promotion: '{off}'. Press 1 to speak with an executive, or press 2 to receive our brochure directly on your WhatsApp. Have a wonderful day!\""""
+
+    elif task == "leads":
+        return f"""🎯 HYPER-LOCAL CLIENT LEADS FOR {sub} IN {city}:
+1. Commercial Corporate Accounts & Local Retailers in {city} Central Hub
+2. High-Intent Walk-in Prospects seeking "{off}"
+3. Premium B2B Referrals through OS Group Marketplace Network
+4. Inbound Direct WhatsApp Leads channeled through your Storefront"""
+
+    else:
+        return f"""🤖 24/7 WHATSAPP & SUPPORT BOT SCRIPT:
+"Namaste! Welcome to {biz}. We specialize in {sub} in {city}. Current Offer: {off}. How may we assist your requirement today?\""""
+
 @app.get("/", response_class=HTMLResponse)
 async def serve_home():
     return HTMLResponse(content=get_html_content())
 
-# Instant Typeahead API
-@app.get("/api/categories/suggest")
-async def suggest_categories(q: str = ""):
-    query = (q or "").strip().lower()
-    if not query:
-        return JSONResponse(content={"suggestions": MASTER_CATEGORIES[:10]})
-    matches = [c for c in MASTER_CATEGORIES if query in c["name"].lower() or query in c["group"].lower()]
-    return JSONResponse(content={"suggestions": matches})
-
-# Dynamic Search
 @app.get("/api/search")
 async def search_listings(query: str = "", city: str = ""):
     q = (query or "").strip().lower()
     c = (city or "").strip().lower()
 
     results = []
-    for b in BUSINESS_DATABASE:
-        match_city = not c or (c == "all") or (c in b["city"].lower())
+    for b in OS_PROJECTS_DATABASE:
+        match_city = not c or (c == "all") or (c in b["city"].lower()) or (c in b["state"].lower())
         match_query = not q or (q in b["name"].lower()) or (q in b["category"].lower()) or any(q in s.lower() for s in b.get("services", []))
         if match_city and match_query:
             results.append(b)
 
     return JSONResponse(content={"status": "success", "count": len(results), "results": results})
 
+# AI Suite Execution Endpoint
+class AIRequestPayload(BaseModel):
+    tool: str
+    business_name: str
+    category: str
+    city: str
+    offer: str = ""
+
+@app.post("/api/ai/execute")
+async def execute_ai_suite(data: AIRequestPayload):
+    prompt = f"Act as an Elite AI Marketing Director. Generate {data.tool} for {data.business_name} ({data.category}) in {data.city} with offer {data.offer}."
+    
+    api_key = os.getenv("GEMINI_API_KEY", "").strip()
+    result_text = ""
+    if api_key:
+        for m in ["models/gemini-2.5-flash", "models/gemini-1.5-flash"]:
+            url = f"https://generativelanguage.googleapis.com/v1beta/{m}:generateContent?key={api_key}"
+            headers = {"Content-Type": "application/json"}
+            payload = {"contents": [{"parts": [{"text": prompt}]}]}
+            try:
+                req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+                with urllib.request.urlopen(req, timeout=12) as response:
+                    res_data = json.loads(response.read().decode("utf-8"))
+                    candidates = res_data.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        if parts and parts[0].get("text"):
+                            result_text = parts[0].get("text")
+                            break
+            except Exception:
+                continue
+
+    if not result_text:
+        result_text = run_ai_generator(data.tool, data.dict())
+
+    return JSONResponse(content={"status": "success", "tool": data.tool, "output": result_text})
+
+# Vendor Registration
 class VendorRegisterPayload(BaseModel):
     owner_name: str
     business_name: str
     country_code: str = "+91"
     mobile: str
     category: str
-    country: str
-    state: str
-    city: str
+    country: str = "India"
+    state: str = "Rajasthan"
+    city: str = "Jaipur"
     area: str = ""
     services: str = ""
     offer: str = ""
+    package_name: str = "Gold"
+    package_price: int = 35000
 
 @app.post("/api/vendor/send-otp")
 async def send_vendor_otp(data: VendorRegisterPayload):
@@ -182,46 +265,49 @@ class VerifyPayload(BaseModel):
 async def verify_vendor_otp(data: VerifyPayload):
     clean_mob = data.mobile.strip()
     if clean_mob not in PENDING_OTP_DB:
-        return JSONResponse(status_code=400, content={"status": "error", "message": "OTP expired."})
-    
+        return JSONResponse(status_code=400, content={"status": "error", "message": "OTP session expired."})
+
     record = PENDING_OTP_DB[clean_mob]
     if record["otp"] != data.otp.strip():
-        return JSONResponse(status_code=400, content={"status": "error", "message": "Invalid OTP code."})
+        return JSONResponse(status_code=400, content={"status": "error", "message": "Incorrect OTP."})
 
     d = record["data"]
     vendor_id = f"OSG-{random.randint(2000, 9999)}"
-    pwd = f"pass{random.randint(100, 999)}"
-    
-    new_biz = {
+    pwd = f"osg@{random.randint(100, 999)}"
+
+    new_entry = {
         "id": vendor_id,
         "name": d["business_name"],
+        "brand": d["business_name"],
         "category": d["category"],
         "city": d["city"],
+        "state": d["state"],
         "area": d.get("area") or d["city"],
         "rating": 5.0,
         "votes": 1,
         "mobile": f"{d.get('country_code', '+91')} {d['mobile']}",
         "whatsapp": f"{d.get('country_code', '+91')} {d['mobile']}",
-        "services": [s.strip() for s in d["services"].split(",") if s.strip()] or ["Enterprise Quality Solutions"],
-        "offer": d.get("offer") or "Special Verified Discount via OS Group",
-        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+        "services": [s.strip() for s in d["services"].split(",") if s.strip()] or ["Enterprise Solutions"],
+        "offer": d.get("offer") or "Verified Partnership Benefit",
+        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+        "description": f"Authorized service provider onboarded under OS GROUP network. Managed by {d['owner_name']}."
     }
 
-    BUSINESS_DATABASE.insert(0, new_biz)
-    VENDOR_ACCOUNTS[vendor_id] = {"password": pwd, "biz": new_biz}
+    OS_PROJECTS_DATABASE.insert(0, new_entry)
+    VENDOR_ACCOUNTS[vendor_id] = {"password": pwd, "biz": new_entry}
     del PENDING_OTP_DB[clean_mob]
 
     return JSONResponse(content={
         "status": "success",
-        "message": "Business profile verified & listed!",
+        "message": "Vendor verified & listed!",
         "vendor_id": vendor_id,
         "password": pwd,
-        "business": new_biz
+        "business": new_entry
     })
 
 @app.get("/biz/{biz_id}", response_class=HTMLResponse)
-async def serve_business_storefront(biz_id: str):
-    biz = next((b for b in BUSINESS_DATABASE if b["id"] == biz_id), BUSINESS_DATABASE[0])
+async def serve_storefront(biz_id: str):
+    biz = next((b for b in OS_PROJECTS_DATABASE if b["id"] == biz_id), OS_PROJECTS_DATABASE[0])
     services_html = "".join([f'<li class="flex items-center gap-2 text-slate-300 text-sm py-1.5"><i class="fa-solid fa-circle-check text-sky-400"></i> {s}</li>' for s in biz["services"]])
 
     return HTMLResponse(content=f"""
@@ -244,7 +330,7 @@ async def serve_business_storefront(biz_id: str):
         <div class="absolute bottom-6 left-6 max-w-5xl">
           <span class="bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs px-3 py-1 rounded-full font-bold uppercase">{biz['category']}</span>
           <h1 class="text-3xl sm:text-5xl font-black text-white mt-2 flex items-center gap-3">{biz['name']} <i class="fa-solid fa-circle-check text-sky-400 text-2xl"></i></h1>
-          <p class="text-slate-300 text-sm mt-1"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> {biz['area']}, {biz['city']} &bull; Rating: ★ {biz['rating']} ({biz['votes']} Verified Reviews)</p>
+          <p class="text-slate-300 text-sm mt-1"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> {biz['area']}, {biz['city']}, {biz['state']} &bull; Rating: ★ {biz['rating']} ({biz['votes']} Verified Reviews)</p>
         </div>
       </div>
       <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -267,9 +353,9 @@ async def serve_business_storefront(biz_id: str):
             <h4 class="font-bold text-white border-b border-slate-800 pb-2">Merchant Verification</h4>
             <div class="text-xs text-slate-400 space-y-2">
               <div><strong>Vendor ID:</strong> <span class="text-sky-400">{biz['id']}</span></div>
-              <div><strong>City:</strong> {biz['city']}</div>
+              <div><strong>CIN Compliance:</strong> U74999RJ2018PTC060766</div>
               <div><strong>Status:</strong> <span class="text-emerald-400 font-bold">100% Verified</span></div>
-              <div><strong>Response SLA:</strong> Under 15 Minutes</div>
+              <div><strong>Autonomous AI Suite:</strong> Active</div>
             </div>
           </div>
         </div>
