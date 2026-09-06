@@ -6,17 +6,21 @@
   <title>OS GROUP (OM SUNDARAM) - Global Autonomous AI Directory & Super-App</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='42' cy='50' r='32' stroke='%2338bdf8' stroke-width='10' fill='none'/%3E%3Cpath d='M 68,32 C 60,25 48,30 48,42 C 48,56 75,52 75,68 C 75,82 56,85 45,78' fill='none' stroke='%23f59e0b' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; }
     .brand-title { font-family: 'Cinzel', serif; letter-spacing: 0.15em; }
+    .syne-font { font-family: 'Syne', sans-serif; }
     .glass-card { background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
     .tool-active { background: #0284c7 !important; color: #ffffff !important; border-color: #38bdf8 !important; }
     select { background-color: #020617 !important; color: #f8fafc !important; }
     select option { background-color: #0f172a; color: #f8fafc; }
+    .interactive-card { transition: all 0.2s ease; border: 1px solid rgba(56, 189, 248, 0.15); cursor: pointer; }
+    .interactive-card:hover { border-color: rgba(56, 189, 248, 0.6); transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.3); }
+    .search-flyout { max-height: 320px; overflow-y: auto; z-index: 9999; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
@@ -53,11 +57,13 @@
       </div>
 
       <div class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
-        <button onclick="navigateTo('home')" class="hover:text-sky-400">Directory Home</button>
-        <button onclick="navigateTo('gallery')" class="hover:text-amber-400 text-amber-400 font-bold">Project Visual Gallery</button>
-        <button onclick="navigateTo('aisuite')" class="hover:text-sky-400 text-sky-400 font-bold">30+ AI Tools Console</button>
-        <button onclick="navigateTo('packages')" class="hover:text-amber-400">Startup Bundle</button>
-        <button onclick="navigateTo('about')" class="hover:text-sky-400">About Us</button>
+        <button onclick="navigateTo('home')" class="hover:text-sky-400 transition">Directory Home</button>
+        <button onclick="navigateTo('gallery')" class="hover:text-amber-400 transition">Project Gallery</button>
+        <button onclick="navigateTo('aisuite')" class="hover:text-sky-400 text-sky-400 font-bold transition">30+ AI Tools Console</button>
+        <button onclick="navigateTo('packages')" class="hover:text-amber-400 transition">Startup Bundle</button>
+        <button onclick="navigateTo('about')" class="hover:text-sky-400 transition">About Us</button>
+        <button onclick="navigateTo('terms')" class="hover:text-sky-400 transition">Terms</button>
+        <button onclick="navigateTo('policy')" class="hover:text-sky-400 transition">Privacy</button>
       </div>
 
       <button onclick="navigateTo('aisuite')" class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow-lg">
@@ -84,15 +90,63 @@
       </div>
     </section>
 
-    <section class="py-8 px-4 text-center">
+    <!-- Global Cascading Search Bar -->
+    <section class="py-6 px-4 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold mb-4">
+        <span class="text-sky-400 font-bold">OM SUNDARAM</span>
+        <span class="text-slate-600">&bull;</span>
+        <span class="text-amber-400 font-bold tracking-wider">THANE &bull; MUMBAI &bull; GLOBAL CLASSIFIED DIRECTORY</span>
+      </div>
       <h1 class="text-3xl sm:text-5xl font-extrabold text-white">Find Verified Services in <span class="text-sky-400">Thane & Mumbai</span></h1>
-      <p class="text-slate-400 text-xs sm:text-sm mt-2 mb-6">Explore authentic service providers or use our AI Operations Suite to get leads.</p>
+      <p class="text-slate-400 text-xs sm:text-sm mt-2 mb-6">Filter by Country, State, and District. Instant phone calls, WhatsApp leads & verified locations.</p>
       
-      <div class="max-w-4xl mx-auto flex gap-2 bg-slate-900 p-2 rounded-2xl border border-slate-800">
-        <input id="homeSearch" placeholder="Search Packers & Movers, Gym, Real Estate..." class="w-full bg-slate-950 p-3 text-xs text-white rounded-xl focus:outline-none">
-        <button onclick="navigateTo('aisuite')" class="px-6 bg-sky-600 font-bold text-xs rounded-xl">Go To AI Tools</button>
+      <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-2.5 max-w-5xl mx-auto relative z-30">
+        <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
+          <i class="fa-solid fa-globe text-sky-400 mr-2 text-xs"></i>
+          <select id="mainCountry" onchange="onHeaderCountryChange()" class="w-full bg-transparent text-xs text-slate-200 font-bold focus:outline-none cursor-pointer"></select>
+        </div>
+        <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
+          <i class="fa-solid fa-map-location-dot text-indigo-400 mr-2 text-xs"></i>
+          <select id="mainState" onchange="onHeaderStateChange()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer"></select>
+        </div>
+        <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
+          <i class="fa-solid fa-location-dot text-amber-400 mr-2 text-xs"></i>
+          <select id="mainDistrict" onchange="performSearchHome()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer"></select>
+        </div>
+        <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 relative">
+          <i class="fa-solid fa-magnifying-glass text-slate-500 mr-2 text-xs"></i>
+          <input id="searchQueryHome" oninput="handleLocalTypeahead(this.value)" onkeypress="if(event.key==='Enter') performSearchHome()" placeholder="Search service..." class="w-full bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none" autocomplete="off">
+          <button onclick="performSearchHome()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-4 py-2 rounded-lg text-xs shadow-md transition whitespace-nowrap">
+            Search
+          </button>
+          <div id="typeaheadDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl search-flyout text-left"></div>
+        </div>
       </div>
     </section>
+
+    <!-- 30+ Core Classified Verticals Grid -->
+    <section class="max-w-7xl mx-auto px-4 py-8 relative z-10">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white">Popular Classified Sectors</h2>
+          <p class="text-xs text-slate-400">Click any sector to filter authorized listings instantly</p>
+        </div>
+        <span class="text-xs text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">30+ Verticals</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-3 text-center" id="categoryIconsGrid"></div>
+    </section>
+
+    <!-- Directory Listings Feed -->
+    <main class="max-w-7xl mx-auto px-4 pb-16 relative z-10">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 id="resultsHeading" class="text-lg sm:text-xl font-bold text-white">Verified Listings</h2>
+          <p class="text-xs text-slate-400">Direct phone calls, WhatsApp leads & verified locations</p>
+        </div>
+        <span id="resultsCount" class="text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1 rounded-full font-bold">Loading...</span>
+      </div>
+      <div id="homeListings" class="space-y-6"></div>
+    </main>
   </div>
 
   <!-- ================= VIEW 2: PROJECT VISUAL GALLERY ================= -->
@@ -107,7 +161,7 @@
     </div>
   </div>
 
-  <!-- ================= VIEW 3: 30+ AI TOOLS CONSOLE (ALL 30 TOOLS LIVE) ================= -->
+  <!-- ================= VIEW 3: 30+ AI TOOLS CONSOLE ================= -->
   <div id="page-aisuite" class="page-view hidden flex-1 py-10 px-4">
     <div class="max-w-7xl mx-auto space-y-6">
       
@@ -183,6 +237,17 @@
               <select id="sel_offer" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none focus:border-sky-500 cursor-pointer"></select>
             </div>
 
+            <!-- Poster Style Theme Selector -->
+            <div id="posterThemeBox" class="hidden">
+              <label class="text-[11px] text-amber-400 font-bold">Poster Visual Theme</label>
+              <select id="posterVisualTheme" onchange="drawPoster()" class="w-full mt-1.5 border border-slate-800 rounded-xl p-3 text-xs focus:outline-none cursor-pointer">
+                <option value="cyber">Cyber Neon Dark (High Impact)</option>
+                <option value="luxury">Royal Gold & Navy (Premium B2B)</option>
+                <option value="ruby">Ruby Velvet (Energetic & Gym/Food)</option>
+                <option value="emerald">Emerald Growth (Health & Real Estate)</option>
+              </select>
+            </div>
+
             <button onclick="runToolExecution()" class="w-full py-3.5 mt-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2">
               <i class="fa-solid fa-bolt"></i> Run AI Tool & Generate Live Output
             </button>
@@ -213,9 +278,9 @@
 
             <!-- 2. GRAPHIC POSTER CANVAS -->
             <div id="posterContainer" class="hidden flex flex-col items-center justify-center p-3 bg-slate-950 rounded-2xl border border-slate-800">
-              <canvas id="posterCanvas" width="1080" height="1080" class="w-full max-w-[340px] h-auto rounded-xl shadow-2xl border border-slate-700"></canvas>
-              <button onclick="downloadPoster()" class="mt-4 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
-                <i class="fa-solid fa-download mr-1"></i> Download HD Poster (PNG)
+              <canvas id="posterCanvas" width="1080" height="1080" class="w-full max-w-[340px] sm:max-w-[380px] h-auto rounded-2xl shadow-2xl border border-slate-700"></canvas>
+              <button onclick="downloadPoster()" class="mt-4 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center gap-2">
+                <i class="fa-solid fa-download"></i> Download HD Poster (PNG)
               </button>
             </div>
 
@@ -288,6 +353,21 @@
         <div><strong class="text-slate-400">TAN:</strong><br><span class="text-purple-400 font-bold">JPRO02582G</span>[cite: 1]</div>
       </div>
 
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+          <div class="text-xl font-bold text-sky-400"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> ENTHRAL</div>
+          <p class="text-xs text-slate-400 mt-2">Verified interactive storefronts that captivate customer trust instantly.</p>
+        </div>
+        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+          <div class="text-xl font-bold text-amber-400"><i class="fa-solid fa-comments mr-1"></i> ENGAGE</div>
+          <p class="text-xs text-slate-400 mt-2">Autonomous WhatsApp bots, voice attendants, and real-time lead qualification.</p>
+        </div>
+        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+          <div class="text-xl font-bold text-emerald-400"><i class="fa-solid fa-bolt mr-1"></i> EXECUTE</div>
+          <p class="text-xs text-slate-400 mt-2">Direct call connection, localized Google map routing, and customer acquisition.</p>
+        </div>
+      </div>
+
       <div class="p-5 bg-sky-500/10 border border-sky-500/20 rounded-2xl text-xs text-slate-300 space-y-2">
         <div><strong>Corporate & Operating Address:</strong> Thane, Mumbai, Maharashtra, India</div>
         <div><strong>Customer Care Desk:</strong> +91 7597777897 &bull; <strong>Email:</strong> info@osgroup.in[cite: 3]</div>
@@ -295,24 +375,96 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-xs text-slate-500 text-center">
-    <div>OMSUNDARAM ENTERTAINTMENT PVT. LTD. &bull; OS GROUP TECHNOLOGIES</div>
-    <p class="text-[11px] text-slate-600 mt-1">&copy; 2026 OS GROUP. All rights reserved. Helpline: +91 7597777897</p>
+  <!-- ================= VIEW 6: TERMS & CONDITIONS ================= -->
+  <div id="page-terms" class="page-view hidden flex-1 py-16 px-4">
+    <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-4 text-xs text-slate-300 leading-relaxed">
+      <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">LEGAL COMPLIANCE</div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white">Terms and Conditions</h1>
+      <p>As per the official Vendor Application Form of OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED[cite: 3]:</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Commercial Terms:</strong> All Cheques/DDs must be drawn in favor of <em>OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED</em>[cite: 3]. Overwritten fields in the order form must be verified and signed.</li>
+        <li><strong>TRAI/DND Compliance:</strong> Vendors and customers agree to receive transactional SMS, WhatsApp updates, and phone calls related to orders and directory listings regardless of NDNC / DND registration status[cite: 3].</li>
+        <li><strong>Jurisdiction:</strong> Corporate operations administered from Thane, Mumbai, Maharashtra.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= VIEW 7: PRIVACY POLICY ================= -->
+  <div id="page-policy" class="page-view hidden flex-1 py-16 px-4">
+    <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-4 text-xs text-slate-300 leading-relaxed">
+      <div class="text-xs font-bold text-emerald-400 uppercase tracking-widest">DATA PRIVACY & PROTECTION</div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white">Privacy and Security Policy</h1>
+      <p>At OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED (Thane, Mumbai, Maharashtra), user confidentiality and vendor coordinates are protected under Indian IT laws. We never sell phone numbers or corporate data to unauthorized third parties.</p>
+    </div>
+  </div>
+
+  <!-- ================= UNIVERSAL COMPLETE FOOTER WITH THANE, MUMBAI GOOGLE MAP ================= -->
+  <footer class="border-t border-slate-900 bg-slate-950 pt-12 pb-8 text-xs text-slate-400 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      
+      <!-- Col 1 -->
+      <div class="space-y-3">
+        <div class="text-lg font-black text-white brand-title">OS GROUP</div>
+        <div class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">OMSUNDARAM ENTERTAINTMENT PVT. LTD.[cite: 1, 3]</div>
+        <p class="text-slate-500 text-xs leading-relaxed">
+          CIN: U74999RJ2018PTC060766 &bull; India's Premier Autonomous Business Super-App & Classified Network[cite: 1].
+        </p>
+        <div class="text-sky-400 font-semibold tracking-wider text-[11px]">
+          ENTHRAL &bull; ENGAGE &bull; EXECUTE
+        </div>
+      </div>
+
+      <!-- Col 2 -->
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Platform Navigation</div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-sky-400 transition">Directory Home</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('gallery')" class="hover:text-amber-400 transition">Project Gallery</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('aisuite')" class="hover:text-sky-400 transition">30+ AI Tools Console</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('packages')" class="hover:text-amber-400 transition">Startup Marketing Kit</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('about')" class="hover:text-sky-400 transition">About OS Group</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('terms')" class="hover:text-sky-400 transition">Terms & Legal</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('policy')" class="hover:text-sky-400 transition">Privacy Policy</a></div>
+      </div>
+
+      <!-- Col 3 -->
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Contact & Support</div>
+        <div class="text-slate-300"><strong>Customer Care:</strong> <a href="tel:+917597777897" class="text-amber-400 font-bold">+91 7597777897</a>[cite: 3]</div>
+        <div class="text-slate-300"><strong>Email:</strong> info@osgroup.in[cite: 3]</div>
+        <div class="text-slate-400"><strong>Corporate Address:</strong> Thane, Mumbai, Maharashtra, India</div>
+        <div class="text-slate-400"><strong>Working Hours:</strong> Mon - Sun (24/7 AI Desk)</div>
+      </div>
+
+      <!-- Col 4: Thane, Mumbai Interactive Map -->
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-2 uppercase tracking-wider text-[11px]">Corporate Office Map</div>
+        <p class="text-[11px] text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Thane, Mumbai, Maharashtra</p>
+        <div class="w-full h-32 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120562.46468428135!2d72.93124504104276!3d19.21833070494498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8fcfe76fd59%3A0xc095368a526a4b!2sThane%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-900 pt-6 text-center text-slate-600 text-[11px]">
+      &copy; 2026 OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED &bull; OS GROUP. All rights reserved. Registered Office: Thane, Mumbai, Maharashtra.
+    </div>
   </footer>
 
   <script>
-    // FULL COMPLETE LIST OF 30 ENTERPRISE AI TOOLS
+    // FULL 30 ENTERPRISE AI TOOLS REGISTRY
     const all30AITools = [
       // Marketing & Ads (6)
-      { id: "poster_ai", name: "AI Poster & Ad Designer", cat: "creative", icon: "fa-palette", desc: "Multi-style graphics" },
+      { id: "poster_ai", name: "AI Poster & Ad Designer", cat: "creative", icon: "fa-palette", desc: "Multi-theme graphics" },
       { id: "social_ad", name: "Social Ad Copywriter", cat: "marketing", icon: "fa-hashtag", desc: "Meta/Insta viral ads" },
       { id: "seo_meta", name: "SEO Meta & Keywords", cat: "marketing", icon: "fa-magnifying-glass-chart", desc: "Search ranking tags" },
       { id: "google_ads", name: "Google PPC Ads Maker", cat: "marketing", icon: "fa-rectangle-ad", desc: "High CTR ad sets" },
       { id: "email_pitch", name: "Cold Email Sequence", cat: "marketing", icon: "fa-envelope-open-text", desc: "B2B client outreach" },
       { id: "blog_writer", name: "Thought Leadership Blog", cat: "marketing", icon: "fa-pen-nib", desc: "600-word SEO articles" },
 
-      // Automation & WhatsApp (6)
+      // WhatsApp & Bots (6)
       { id: "whatsapp_bot", name: "WhatsApp Auto-Closer", cat: "automation", icon: "fa-brands fa-whatsapp", desc: "24/7 lead booking" },
       { id: "voice_dialer", name: "AI Voice Auto-Dialer", cat: "automation", icon: "fa-headset", desc: "Automated calling pitch" },
       { id: "review_responder", name: "Google Review Resolver", cat: "automation", icon: "fa-star-half-stroke", desc: "5-star reputation bot" },
@@ -381,6 +533,9 @@
       document.getElementById("activeToolName").innerText = t.name;
       document.getElementById("activeToolCatBadge").innerText = t.cat.toUpperCase();
 
+      const isGraphic = (toolId === "poster_ai" || toolId === "festival_banner");
+      document.getElementById("posterThemeBox").className = isGraphic ? "block" : "hidden";
+
       if (toolId === "lead_extractor") {
         document.getElementById("leadsTableContainer").classList.remove("hidden");
         document.getElementById("posterContainer").classList.add("hidden");
@@ -388,7 +543,7 @@
         document.getElementById("outputHeading").innerText = "Verified Live Leads Console";
         document.getElementById("outputBadge").innerText = "Live Inquiries";
         runToolExecution();
-      } else if (toolId === "poster_ai" || toolId === "festival_banner") {
+      } else if (isGraphic) {
         document.getElementById("leadsTableContainer").classList.add("hidden");
         document.getElementById("posterContainer").classList.remove("hidden");
         document.getElementById("scriptContainer").classList.add("hidden");
@@ -542,6 +697,46 @@
           </div>
         </div>
       `).join('');
+    }
+
+    // 30 CORE VERTICALS CATEGORY ICONS
+    const coreCategories = [
+      { name: "Digital Media & IT", icon: "fa-bullhorn" },
+      { name: "Hospitality & Properties", icon: "fa-hotel" },
+      { name: "Matrimonial & Events", icon: "fa-heart" },
+      { name: "Real Estate", icon: "fa-building" },
+      { name: "Handicrafts & Jewelry", icon: "fa-gem" },
+      { name: "Government & EduTech", icon: "fa-landmark" },
+      { name: "Doctors", icon: "fa-user-doctor" },
+      { name: "Dentists", icon: "fa-tooth" },
+      { name: "Gym & Fitness", icon: "fa-dumbbell" },
+      { name: "Restaurants", icon: "fa-utensils" },
+      { name: "Beauty & Salons", icon: "fa-scissors" },
+      { name: "Lawyers & Legal", icon: "fa-scale-balanced" },
+      { name: "CA & Tax", icon: "fa-file-invoice-dollar" },
+      { name: "Packers & Movers", icon: "fa-truck-fast" },
+      { name: "Car Service / Garage", icon: "fa-car-burst" },
+      { name: "Solar Energy", icon: "fa-solar-panel" },
+      { name: "CCTV & Security", icon: "fa-video" },
+      { name: "Deep Cleaning", icon: "fa-broom" },
+      { name: "Tours & Travels", icon: "fa-plane-departure" },
+      { name: "Event Planners", icon: "fa-calendar-check" }
+    ];
+
+    function setupCategories() {
+      const grid = document.getElementById("categoryIconsGrid");
+      grid.innerHTML = coreCategories.map(c => `
+        <div onclick="selectCategoryDirectly('${c.name}')" class="interactive-card glass-card p-3 rounded-2xl">
+          <div class="text-2xl mb-1 text-sky-400"><i class="fa-solid ${c.icon}"></i></div>
+          <div class="text-[11px] font-bold text-slate-300 leading-tight">${c.name}</div>
+        </div>
+      `).join('');
+    }
+
+    function selectCategoryDirectly(cat) {
+      document.getElementById("searchQueryHome").value = cat;
+      navigateTo('home');
+      performSearchHome();
     }
 
     // MASTER VENDORS DATA
@@ -748,6 +943,7 @@
       link.click();
     }
 
+    // MULTI-THEME 1080x1080 GRAPHIC POSTER ENGINE
     function drawPoster() {
       const canvas = document.getElementById("posterCanvas");
       const ctx = canvas.getContext("2d");
@@ -756,64 +952,234 @@
       const cat = document.getElementById("sel_category").value || "Packers & Movers";
       const loc = document.getElementById("sel_location").value || "Thane, Mumbai";
       const off = document.getElementById("sel_offer").value || "Flat 20% OFF";
+      const theme = document.getElementById("posterVisualTheme").value || "cyber";
 
-      ctx.fillStyle = "#020617";
-      ctx.fillRect(0, 0, 1080, 1080);
+      let bg1 = "#020617", bg2 = "#0f172a", accent1 = "#38bdf8", accent2 = "#f59e0b", badgeBg = "rgba(56, 189, 248, 0.15)";
+      if (theme === "luxury") {
+        bg1 = "#0a0f1d"; bg2 = "#1e1b4b"; accent1 = "#fbbf24"; accent2 = "#f59e0b"; badgeBg = "rgba(251, 191, 36, 0.15)";
+      } else if (theme === "ruby") {
+        bg1 = "#180509"; bg2 = "#450a0a"; accent1 = "#f43f5e"; accent2 = "#fbbf24"; badgeBg = "rgba(244, 63, 94, 0.15)";
+      } else if (theme === "emerald") {
+        bg1 = "#021a12"; bg2 = "#064e3b"; accent1 = "#34d399"; accent2 = "#fbbf24"; badgeBg = "rgba(52, 211, 153, 0.15)";
+      }
 
+      // Background
       const g = ctx.createLinearGradient(0, 0, 1080, 1080);
-      g.addColorStop(0, "#090d16");
-      g.addColorStop(1, "#0f172a");
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, 1080, 1080);
+      g.addColorStop(0, bg1); g.addColorStop(0.5, bg2); g.addColorStop(1, "#000000");
+      ctx.fillStyle = g; ctx.fillRect(0, 0, 1080, 1080);
 
-      ctx.strokeStyle = "#38bdf8";
-      ctx.lineWidth = 4;
-      ctx.strokeRect(40, 40, 1000, 1000);
+      // Tech Grid Lines
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 1080; i += 60) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1080); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(1080, i); ctx.stroke();
+      }
 
-      ctx.fillStyle = "#38bdf8";
-      ctx.font = "bold 32px sans-serif";
+      // Dual Glow Spheres
+      const rad1 = ctx.createRadialGradient(200, 250, 20, 200, 250, 450);
+      rad1.addColorStop(0, accent1 + "33"); rad1.addColorStop(1, "transparent");
+      ctx.fillStyle = rad1; ctx.fillRect(0, 0, 1080, 1080);
+
+      // Frame
+      ctx.strokeStyle = accent1 + "66"; ctx.lineWidth = 4; ctx.strokeRect(40, 40, 1000, 1000);
+      ctx.strokeStyle = accent2 + "44"; ctx.lineWidth = 2; ctx.strokeRect(55, 55, 970, 970);
+
+      // Official OS Header Seal
+      ctx.fillStyle = "rgba(15, 23, 42, 0.85)"; ctx.fillRect(75, 75, 930, 120);
+      ctx.strokeStyle = accent1 + "44"; ctx.strokeRect(75, 75, 930, 120);
+
+      ctx.strokeStyle = accent1; ctx.lineWidth = 7;
+      ctx.beginPath(); ctx.arc(140, 135, 28, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = accent2; ctx.beginPath(); ctx.arc(155, 135, 20, -Math.PI/2, Math.PI); ctx.stroke();
+
+      ctx.fillStyle = "#ffffff"; ctx.font = "900 28px 'Cinzel', serif"; ctx.textAlign = "left";
+      ctx.fillText("OS GROUP VERIFIED PARTNER", 200, 125);
+      ctx.fillStyle = "#94a3b8"; ctx.font = "700 18px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("OM SUNDARAM • ENTHRAL | ENGAGE | EXECUTE", 200, 160);
+      ctx.fillStyle = "#10b981"; ctx.font = "900 22px 'Plus Jakarta Sans', sans-serif"; ctx.textAlign = "right";
+      ctx.fillText("✔ 100% VERIFIED", 960, 142);
+
+      // Center Brand Card
       ctx.textAlign = "center";
-      ctx.fillText("OS GROUP VERIFIED PARTNER", 540, 120);
-
-      ctx.fillStyle = "#f59e0b";
-      ctx.font = "bold 26px sans-serif";
-      ctx.fillText(cat.toUpperCase(), 540, 260);
+      ctx.fillStyle = badgeBg; ctx.fillRect(360, 240, 360, 48);
+      ctx.strokeStyle = accent1; ctx.lineWidth = 2; ctx.strokeRect(360, 240, 360, 48);
+      ctx.fillStyle = accent1; ctx.font = "800 20px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText(cat.toUpperCase(), 540, 272);
 
       ctx.fillStyle = "#ffffff";
-      ctx.font = "900 64px sans-serif";
-      ctx.fillText(biz, 540, 360);
+      let fontSize = (biz.length > 20) ? ((biz.length > 30) ? 42 : 52) : 66;
+      ctx.font = `900 ${fontSize}px 'Plus Jakarta Sans', sans-serif`;
+      ctx.fillText(biz, 540, 370);
 
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "600 30px sans-serif";
-      ctx.fillText("📍 " + loc, 540, 420);
+      ctx.fillStyle = "#cbd5e1"; ctx.font = "600 26px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText(`📍 ${loc} • Authorized Commercial Centre`, 540, 420);
 
-      ctx.fillStyle = "rgba(245, 158, 11, 0.15)";
-      ctx.fillRect(120, 520, 840, 200);
-      ctx.strokeStyle = "#f59e0b";
-      ctx.strokeRect(120, 520, 840, 200);
+      // High-Impact Offer Glass Box
+      ctx.fillStyle = "rgba(15, 23, 42, 0.75)"; ctx.fillRect(110, 480, 860, 250);
+      ctx.strokeStyle = accent2; ctx.lineWidth = 3; ctx.strokeRect(110, 480, 860, 250);
+      ctx.fillStyle = accent1; ctx.font = "800 24px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("★ SPECIAL EXCLUSIVE INAUGURAL PROMOTION ★", 540, 540);
 
-      ctx.fillStyle = "#fbbf24";
-      ctx.font = "900 48px sans-serif";
-      ctx.fillText(off, 540, 630);
+      ctx.fillStyle = accent2;
+      let offSize = (off.length > 25) ? 40 : 50;
+      ctx.font = `900 ${offSize}px 'Plus Jakarta Sans', sans-serif`;
+      ctx.fillText(off, 540, 620);
 
-      ctx.fillStyle = "#0284c7";
-      ctx.fillRect(160, 800, 360, 80);
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 28px sans-serif";
-      ctx.fillText("📞 CALL NOW", 340, 850);
+      ctx.fillStyle = "#94a3b8"; ctx.font = "500 22px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("Direct Booking Guarantee • Instant Priority Confirmation", 540, 680);
 
-      ctx.fillStyle = "#059669";
-      ctx.fillRect(560, 800, 360, 80);
-      ctx.fillStyle = "#ffffff";
-      ctx.fillText("💬 WHATSAPP", 740, 850);
+      // Action Buttons
+      ctx.fillStyle = "#0284c7"; ctx.fillRect(140, 770, 380, 85);
+      ctx.fillStyle = "#ffffff"; ctx.font = "900 26px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("📞 CALL DIRECTLY", 330, 822);
+
+      ctx.fillStyle = "#059669"; ctx.fillRect(560, 770, 380, 85);
+      ctx.fillStyle = "#ffffff"; ctx.font = "900 26px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("💬 WHATSAPP CHAT", 750, 822);
+
+      // Footer
+      ctx.fillStyle = "#64748b"; ctx.font = "600 20px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("Corporate Office: Thane, Mumbai, Maharashtra | Helpline: +91 7597777897 | www.osgroup.in", 540, 930);
+      ctx.font = "500 16px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("OMSUNDARAM ENTERTAINTMENT PVT. LTD. (CIN: U74999RJ2018PTC060766)", 540, 970);
     }
 
     function downloadPoster() {
       const canvas = document.getElementById("posterCanvas");
       const link = document.createElement("a");
       link.download = `OS_Promo_Poster.png`;
-      link.href = canvas.toDataURL();
+      link.href = canvas.toDataURL("image/png");
       link.click();
+    }
+
+    // DIRECTORY ENGINE & HOMEPAGE SEARCH
+    const globalCountries = [
+      { name: "India", dial: "+91" }, { name: "United States", dial: "+1" }, { name: "United Arab Emirates", dial: "+971" },
+      { name: "United Kingdom", dial: "+44" }, { name: "Canada", dial: "+1" }, { name: "Australia", dial: "+61" },
+      { name: "Singapore", dial: "+65" }, { name: "Saudi Arabia", dial: "+966" }, { name: "Qatar", dial: "+974" }
+    ];
+
+    const indiaGeo = {
+      "Maharashtra": ["Thane", "Mumbai", "Pune", "Nagpur", "Nashik", "Navi Mumbai", "Aurangabad", "Solapur"],
+      "Delhi NCR": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Noida", "Gurugram"],
+      "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"],
+      "Karnataka": ["Bengaluru Urban", "Mysuru", "Hubballi-Dharwad", "Mangaluru"],
+      "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"],
+      "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Noida"]
+    };
+
+    function setupCountries() {
+      const mainC = document.getElementById("mainCountry");
+      mainC.innerHTML = "";
+      globalCountries.forEach(c => {
+        mainC.innerHTML += `<option value="${c.name}" ${c.name === 'India' ? 'selected' : ''}>${c.name} (${c.dial})</option>`;
+      });
+      onHeaderCountryChange();
+    }
+
+    function onHeaderCountryChange() {
+      const c = document.getElementById("mainCountry").value;
+      const s = document.getElementById("mainState");
+      s.innerHTML = "";
+      const states = (c === "India") ? Object.keys(indiaGeo) : ["Capital State"];
+      states.forEach(st => {
+        s.innerHTML += `<option value="${st}" ${st === 'Maharashtra' ? 'selected' : ''}>${st}</option>`;
+      });
+      onHeaderStateChange();
+    }
+
+    function onHeaderStateChange() {
+      const s = document.getElementById("mainState").value;
+      const d = document.getElementById("mainDistrict");
+      d.innerHTML = `<option value="all">All Districts (${s})</option>`;
+      const districts = indiaGeo[s] || ["Thane", "Mumbai"];
+      districts.forEach(dist => {
+        d.innerHTML += `<option value="${dist}" ${dist === 'Thane' ? 'selected' : ''}>${dist}</option>`;
+      });
+      performSearchHome();
+    }
+
+    async function performSearchHome() {
+      const q = document.getElementById("searchQueryHome").value;
+      const district = document.getElementById("mainDistrict").value;
+      const state = document.getElementById("mainState").value;
+      const cityFilter = (district === "all" || !district) ? state : district;
+
+      const res = await fetch(`/api/search?query=${encodeURIComponent(q)}&city=${encodeURIComponent(cityFilter)}`);
+      const data = await res.json();
+
+      const container = document.getElementById("homeListings");
+      container.innerHTML = "";
+      
+      document.getElementById("resultsHeading").innerText = q ? `Results for "${q}" in ${cityFilter}` : `Verified Listings in ${cityFilter}`;
+      document.getElementById("resultsCount").innerText = `${data.count} Verified Partners`;
+
+      data.results.forEach(b => {
+        const cleanMob = b.mobile.replace("+", "").replace(" ", "").replace("-", "");
+        const servicesTags = b.services.map(s => `<span class="bg-slate-950 text-slate-300 text-[11px] px-2.5 py-1 rounded-md border border-slate-800">${s}</span>`).join(" ");
+
+        container.innerHTML += `
+          <div class="glass-card rounded-3xl p-6 hover:border-sky-500/50 transition duration-300 flex flex-col lg:flex-row gap-6">
+            <div class="w-full lg:w-64 h-48 rounded-2xl overflow-hidden flex-shrink-0 bg-slate-950 border border-slate-800 relative">
+              <img src="${b.image}" alt="${b.name}" class="w-full h-full object-cover">
+              <div class="absolute top-2 left-2 bg-slate-950/80 px-2.5 py-1 rounded-lg text-[10px] font-bold text-emerald-400">
+                <i class="fa-solid fa-circle-check"></i> Verified
+              </div>
+            </div>
+
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <h3 class="text-xl font-bold text-white">${b.name} <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i></h3>
+                    <p class="text-xs text-slate-400 mt-1">📍 ${b.area}, ${b.city}, ${b.state} &bull; <strong class="text-sky-400">${b.category}</strong></p>
+                  </div>
+                  <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-black px-3 py-1 rounded-xl">
+                    <i class="fa-solid fa-star text-amber-400"></i> ${b.rating} (${b.votes})
+                  </div>
+                </div>
+
+                <div class="mt-3 inline-flex items-center gap-2 text-xs text-amber-300 bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/20 font-semibold">
+                  <i class="fa-solid fa-tag"></i> ${b.offer}
+                </div>
+
+                <div class="mt-3 flex flex-wrap gap-1.5">${servicesTags}</div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-slate-800 flex flex-wrap items-center gap-2">
+                <a href="tel:${b.mobile}" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
+                  <i class="fa-solid fa-phone"></i> Call: ${b.mobile}
+                </a>
+                <a href="https://wa.me/${cleanMob}?text=Hi%20${encodeURIComponent(b.name)},%20I%20saw%20your%20verified%20listing%20on%20OS%20GROUP." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">
+                  <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="/biz/${b.id}" target="_blank" class="text-xs text-sky-400 hover:underline ml-auto">
+                  View Storefront &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function handleLocalTypeahead(val) {
+      const dd = document.getElementById("typeaheadDropdown");
+      const q = (val || "").trim().toLowerCase();
+      if (!q) { dd.classList.add("hidden"); return; }
+      const matches = coreCategories.filter(c => c.name.toLowerCase().includes(q));
+      if (matches.length > 0) {
+        dd.innerHTML = matches.map(m => `
+          <div onclick="document.getElementById('searchQueryHome').value='${m.name}'; document.getElementById('typeaheadDropdown').classList.add('hidden'); performSearchHome();" class="px-4 py-2.5 hover:bg-slate-800 cursor-pointer flex items-center gap-3 border-b border-slate-800/80">
+            <i class="fa-solid ${m.icon} text-sky-400"></i>
+            <span class="text-xs font-bold text-white">${m.name}</span>
+          </div>
+        `).join('');
+        dd.classList.remove("hidden");
+      } else {
+        dd.classList.add("hidden");
+      }
     }
 
     function navigateTo(p) {
@@ -825,6 +1191,8 @@
     window.onload = () => {
       initHeroSlider();
       renderGalleryCards();
+      setupCategories();
+      setupCountries();
       renderToolsNav("all");
       setupDynamicSelectors();
       runToolExecution();
