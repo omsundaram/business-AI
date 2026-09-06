@@ -3,57 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OS GROUP - Universal Business AI Directory & Growth Engine</title>
+  <title>OS GROUP (OM SUNDARAM) - ENTHRAL | ENGAGE | EXECUTE</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .glow-border { border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.15); }
+    .brand-font { font-family: 'Cinzel', serif; }
+    .glass-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glow-border { border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.2); }
+    .logo-dark-mode { filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(56, 189, 248, 0.35)); }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-sky-500 selection:text-white">
 
-  <!-- TOP HEADER (Dark Theme) -->
-  <header class="bg-slate-950/90 border-b border-slate-800/80 sticky top-0 z-50 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-      <!-- Logo -->
-      <div class="flex items-center gap-3 cursor-pointer" onclick="resetToHome()">
-        <div class="w-11 h-11 bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 rounded-xl flex items-center justify-center font-black text-xl text-white shadow-lg shadow-sky-500/20">
-          OS
-        </div>
-        <div>
-          <span class="text-xl font-extrabold tracking-tight text-white block">OS GROUP</span>
-          <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest block">AI Directory & SaaS Engine</span>
+  <!-- TOP HEADER WITH OFFICIAL OS GROUP BRANDING -->
+  <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
+      
+      <!-- Official Logo + Tagline Container -->
+      <div class="flex items-center gap-4 cursor-pointer" onclick="resetToHome()">
+        <img src="https://i.ibb.co/3sS1832/OS-GROUP.png" alt="OS GROUP Logo" class="h-16 w-auto object-contain logo-dark-mode transition-transform hover:scale-105 duration-200">
+        <div class="hidden sm:block border-l border-slate-800 pl-4">
+          <div class="text-[11px] tracking-[0.25em] text-slate-400 font-semibold uppercase">OM SUNDARAM</div>
+          <div class="text-xs font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-200 to-amber-300 tracking-[0.18em]">
+            ENTHRAL | ENGAGE | EXECUTE
+          </div>
         </div>
       </div>
 
       <!-- Right Action Controls -->
       <div class="flex items-center gap-3">
-        <button onclick="openListingModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs sm:text-sm font-extrabold px-4 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition flex items-center gap-1.5">
+        <button onclick="openListingModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs sm:text-sm font-black px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition flex items-center gap-1.5">
           <span>+</span> List Business Free
         </button>
-        <button onclick="openLoginModal()" class="border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl text-slate-200 transition">
+        <button onclick="openLoginModal()" class="border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl text-slate-200 transition">
           Vendor Sign In
         </button>
       </div>
     </div>
   </header>
 
-  <!-- SEARCH HERO SECTION (Dark Glowing Justdial Search) -->
+  <!-- HERO SECTION WITH OFFICIAL SLOGAN -->
   <section class="relative py-12 px-4 border-b border-slate-900 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-slate-950/50 to-slate-950 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-slate-950/60 to-slate-950 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4">
-        <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span> 4,000+ Verified Business Categories
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold mb-5 shadow-inner">
+        <span class="text-sky-400 tracking-widest font-bold">OM SUNDARAM</span>
+        <span class="text-slate-600">&bull;</span>
+        <span class="text-amber-400 font-bold uppercase tracking-wider">ENTHRAL &bull; ENGAGE &bull; EXECUTE</span>
       </div>
+
       <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        Discover Verified Local Businesses & <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400">Autonomous Services</span>
+        Universal Local Directory & <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400">Autonomous Business AI</span>
       </h1>
-      <p class="text-slate-400 text-xs sm:text-sm mt-3 mb-8">Direct Phone, WhatsApp, Instant Lead Booking & AI Solutions across your city.</p>
+      <p class="text-slate-400 text-xs sm:text-sm mt-3 mb-8 max-w-2xl mx-auto">
+        Search across 4,000+ verified service providers or list your business to activate automated client booking and growth blueprints.
+      </p>
 
       <!-- Search Box with City & Keyword -->
-      <div class="bg-slate-900/90 border border-slate-800 p-2 sm:p-2.5 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2.5 glow-border">
+      <div class="bg-slate-900/95 border border-slate-800 p-2.5 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2.5 glow-border">
         <div class="sm:w-1/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5">
           <span class="text-sky-400 mr-2 text-sm">📍</span>
           <select id="searchCity" class="w-full bg-transparent text-sm text-slate-200 font-medium focus:outline-none cursor-pointer">
@@ -68,7 +77,7 @@
         <div class="sm:w-2/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5">
           <span class="text-slate-500 mr-2 text-sm">🔍</span>
           <input id="searchQuery" onkeypress="handleEnter(event)" placeholder="Search Gym, Dental Clinic, Real Estate, AI Dev..." class="w-full bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none">
-          <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-5 py-2 rounded-lg text-xs shadow-md transition whitespace-nowrap">
+          <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-6 py-2.5 rounded-lg text-xs shadow-md transition whitespace-nowrap">
             Search
           </button>
         </div>
@@ -76,11 +85,11 @@
     </div>
   </section>
 
-  <!-- QUICK CATEGORIES (Dark Cards) -->
+  <!-- QUICK CATEGORIES -->
   <section class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Explore Top Categories</h2>
-      <span class="text-xs text-slate-500">Instant One-Click Filter</span>
+      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Top Industries</h2>
+      <span class="text-xs text-slate-500">4,000+ Categories Covered</span>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 text-center">
       <div onclick="filterByCat('Gym')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
@@ -118,30 +127,30 @@
     </div>
   </section>
 
-  <!-- LISTINGS FEED SECTION (Justdial Style Results in Dark Theme) -->
+  <!-- LISTINGS FEED -->
   <main class="max-w-7xl mx-auto px-4 pb-20">
     <div class="flex justify-between items-center mb-5">
       <h2 id="resultsHeading" class="text-base sm:text-lg font-bold text-white">Verified Business Listings</h2>
       <span id="resultsCount" class="text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full font-semibold">Loading...</span>
     </div>
 
-    <div id="listingsContainer" class="space-y-4">
-      <!-- Dynamically generated dark Justdial cards -->
-    </div>
+    <div id="listingsContainer" class="space-y-4"></div>
   </main>
 
-  <!-- MODAL: FREE LISTING & OTP VERIFICATION -->
-  <div id="listingModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+  <!-- MODAL: FREE LISTING WITH OTP -->
+  <div id="listingModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative my-8">
       <button onclick="closeListingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">✕</button>
       
       <div class="border-b border-slate-800 pb-4 mb-6">
-        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Free Business Onboarding</span>
-        <h3 class="text-2xl font-extrabold text-white mt-1">List Your Business on OS Group</h3>
-        <p class="text-xs text-slate-400 mt-1">Get verified instantly, activate your public directory microsite, and access autonomous AI tools.</p>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-[10px] tracking-widest text-sky-400 font-bold uppercase">OM SUNDARAM &bull; OS GROUP</span>
+        </div>
+        <h3 class="text-2xl font-extrabold text-white">List Your Business Free</h3>
+        <p class="text-xs text-slate-400 mt-1">Get verified with OTP, unlock direct customer calls, and activate your custom AI suite.</p>
       </div>
 
-      <!-- Step 1: Form -->
+      <!-- Step 1: Input Form -->
       <div id="formStep1" class="space-y-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -156,7 +165,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="text-xs font-semibold text-slate-400">Mobile Number (For OTP Verification) *</label>
+            <label class="text-xs font-semibold text-slate-400">Mobile Number (For Verification OTP) *</label>
             <input id="new_mob" placeholder="+91 9829012345" value="+91 9829012345" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
           </div>
           <div>
@@ -182,13 +191,13 @@
           </div>
           <div>
             <label class="text-xs font-semibold text-slate-400">Area / Locality *</label>
-            <input id="new_area" placeholder="e.g. Vaishali Nagar" value="Malviya Nagar" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <input id="new_area" placeholder="e.g. Malviya Nagar" value="Malviya Nagar" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
           </div>
         </div>
 
         <div>
           <label class="text-xs font-semibold text-slate-400">Services Offered (Comma Separated) *</label>
-          <input id="new_services" placeholder="CrossFit, Personal Coaching, Diet Plan" value="CrossFit, Weight Loss, Personal Coaching" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+          <input id="new_services" placeholder="CrossFit, Personal Training, Diet Plan" value="CrossFit, Weight Loss, Personal Coaching" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
         </div>
 
         <div>
@@ -197,28 +206,28 @@
         </div>
 
         <button onclick="triggerVendorOTP()" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-sky-500/20 transition">
-          🔒 Verify Mobile via OTP & Activate Listing →
+          🔒 Verify Mobile with OTP & Publish
         </button>
       </div>
 
-      <!-- Step 2: OTP Verification -->
+      <!-- Step 2: OTP Entry -->
       <div id="formStep2" class="hidden text-center py-8 space-y-4">
         <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-3xl mx-auto text-sky-400">🔑</div>
-        <h4 class="text-xl font-bold text-white">Enter 4-Digit Verification OTP</h4>
+        <h4 class="text-xl font-bold text-white">Enter 4-Digit OTP Code</h4>
         <p class="text-xs text-slate-400" id="otpText">We have sent a verification code to your mobile number.</p>
         <div class="my-4">
           <input id="vendorOtpInput" maxlength="4" placeholder="0000" class="w-36 text-center text-3xl tracking-widest font-mono bg-slate-950 border-2 border-sky-500 rounded-xl p-2.5 text-white focus:outline-none">
         </div>
         <button onclick="verifyVendorAndList()" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-500/20 transition">
-          Confirm OTP & Publish Listing Now
+          Confirm OTP & Activate Listing
         </button>
       </div>
 
-      <!-- Step 3: Success with Instant Page & Credentials -->
+      <!-- Step 3: Success View -->
       <div id="formStep3" class="hidden text-center py-8 space-y-4">
         <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-4xl mx-auto text-emerald-400">🎉</div>
-        <h4 class="text-2xl font-extrabold text-white">Your Business Is Officially Live!</h4>
-        <p class="text-xs text-slate-400">Your profile has been indexed on OS Group search and your AI Engine is activated.</p>
+        <h4 class="text-2xl font-extrabold text-white">Business Listed Successfully!</h4>
+        <p class="text-xs text-slate-400">Indexed under OS GROUP directory with verified credentials.</p>
         
         <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl text-left text-xs font-mono space-y-2 my-4">
           <div class="flex justify-between border-b border-slate-800 pb-1.5">
@@ -230,14 +239,14 @@
             <span id="outVendorPwd" class="text-emerald-400 font-bold">passXXX</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-slate-400">Live Business URL:</span>
+            <span class="text-slate-400">Public Page:</span>
             <span id="outVendorUrl" class="text-amber-400 font-bold">/biz/OSG-XXXX</span>
           </div>
         </div>
 
         <div class="flex gap-3">
           <button onclick="openLiveStorefront()" class="flex-1 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl text-xs transition">
-            🌐 View Justdial Public Page
+            🌐 View Public Profile
           </button>
           <button onclick="closeListingModal(); performSearch();" class="flex-1 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs transition">
             Explore Listings
@@ -252,7 +261,7 @@
     <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
       <button onclick="closeEnquiryModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
       <div class="mb-4">
-        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Fast Lead Connect</span>
+        <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest">OM SUNDARAM &bull; LEAD CONNECT</span>
         <h3 id="enqBizTitle" class="text-lg font-bold text-white mt-0.5">Send Enquiry</h3>
         <p class="text-xs text-slate-400">Get lowest quotes and direct callback from this verified business.</p>
       </div>
@@ -261,30 +270,40 @@
         <input id="enq_mob" required placeholder="Your Mobile Number" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
         <textarea id="enq_req" rows="3" placeholder="Tell us your requirement..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500"></textarea>
         <button type="submit" class="w-full py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-xs rounded-xl shadow-lg transition">
-          🚀 Send Enquiry to Vendor Desk
+          🚀 Send Enquiry
         </button>
       </form>
       <div id="enq_success" class="hidden mt-3 p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs rounded-xl text-center">
-        ✓ Requirement forwarded! Vendor and WhatsApp bot will contact you shortly.
+        ✓ Forwarded directly to business WhatsApp!
       </div>
     </div>
   </div>
 
-  <!-- MODAL: VENDOR SIGN IN -->
+  <!-- MODAL: VENDOR LOGIN -->
   <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
       <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+      <div class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">OM SUNDARAM</div>
       <h3 class="text-lg font-bold text-white mb-1">Vendor Portal Sign In</h3>
-      <p class="text-xs text-slate-400 mb-4">Manage your listing, leads, and AI growth blueprints</p>
+      <p class="text-xs text-slate-400 mb-4">Access leads & autonomous AI engine</p>
       <div class="space-y-3">
         <input id="login_id" placeholder="Vendor ID or Mobile" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
         <input id="login_pwd" type="password" placeholder="Password" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
         <button onclick="performVendorLogin()" class="w-full py-3 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold rounded-xl text-xs transition">
-          Enter Vendor Dashboard
+          Enter Dashboard
         </button>
       </div>
     </div>
   </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <div class="text-sm font-bold text-slate-300">OM SUNDARAM &bull; OS GROUP</div>
+      <div class="tracking-[0.2em] text-sky-400 font-semibold uppercase">ENTHRAL | ENGAGE | EXECUTE</div>
+      <p class="text-[11px] text-slate-600 mt-2">&copy; 2026 OS GROUP Technologies. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
     let activeMobile = "";
@@ -310,7 +329,6 @@
       performSearch();
     }
 
-    // Lead Enquiry Handlers
     function openEnquiryModal(bizObj) {
       targetBizForEnquiry = bizObj;
       document.getElementById('enqBizTitle').innerText = "Enquiry for " + bizObj.name;
@@ -326,11 +344,10 @@
       const cleanMob = (targetBizForEnquiry.whatsapp || targetBizForEnquiry.mobile).replace("+", "").replace(" ", "").replace("-", "");
       setTimeout(() => {
         closeEnquiryModal();
-        window.open(`https://wa.me/${cleanMob}?text=${encodeURIComponent("New Lead Inquiry from OS Group: " + req)}`, '_blank');
+        window.open(`https://wa.me/${cleanMob}?text=${encodeURIComponent("New Lead Inquiry via OS GROUP: " + req)}`, '_blank');
       }, 1000);
     }
 
-    // Live Search Execution (Dark Justdial Result Cards)
     async function performSearch() {
       const q = document.getElementById('searchQuery').value;
       const city = document.getElementById('searchCity').value;
@@ -340,7 +357,7 @@
       const container = document.getElementById('listingsContainer');
       container.innerHTML = "";
       
-      document.getElementById('resultsHeading').innerText = q ? `Results for "${q}" in ${city}` : `Verified Businesses in ${city}`;
+      document.getElementById('resultsHeading').innerText = q ? `Results for "${q}" in ${city}` : `Verified Listings in ${city}`;
       document.getElementById('resultsCount').innerText = `${data.count} Businesses Active`;
 
       if (data.results.length === 0) {
@@ -361,12 +378,10 @@
 
         const card = `
           <div class="glass-card rounded-2xl p-5 hover:border-sky-500/40 transition duration-200 flex flex-col sm:flex-row gap-5">
-            <!-- Business Image -->
             <div class="w-full sm:w-56 h-44 rounded-xl overflow-hidden flex-shrink-0 bg-slate-900 border border-slate-800">
               <img src="${b.image}" alt="${b.name}" class="w-full h-full object-cover">
             </div>
 
-            <!-- Details -->
             <div class="flex-1 flex flex-col justify-between">
               <div>
                 <div class="flex items-start justify-between gap-2">
@@ -382,18 +397,15 @@
                   </div>
                 </div>
 
-                <!-- Offer Badge -->
                 <div class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-amber-300 bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20 font-medium">
                   <span>🏷️</span> ${b.offer}
                 </div>
 
-                <!-- Services List -->
                 <div class="mt-3 flex flex-wrap gap-1.5">
                   ${servicesTags}
                 </div>
               </div>
 
-              <!-- Practical Action Buttons -->
               <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-2">
                 <a href="tel:${b.mobile}" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
                   <span>📞</span> Call: ${b.mobile}
@@ -405,7 +417,7 @@
                   ⚡ Send Enquiry
                 </button>
                 <a href="/biz/${b.id}" target="_blank" class="text-xs text-sky-400 hover:underline ml-auto flex items-center gap-1">
-                  View Full Profile &rarr;
+                  View Profile &rarr;
                 </a>
               </div>
             </div>
@@ -415,7 +427,6 @@
       });
     }
 
-    // Step 1: Send OTP
     async function triggerVendorOTP() {
       const payload = {
         owner_name: document.getElementById('new_owner').value.trim(),
@@ -448,7 +459,6 @@
       }
     }
 
-    // Step 2: Verify OTP
     async function verifyVendorAndList() {
       const otp = document.getElementById('vendorOtpInput').value.trim();
       const res = await fetch('/api/vendor/verify-otp', {
