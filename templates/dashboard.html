@@ -1,141 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OS GROUP (OM SUNDARAM) - ENTHRAL | ENGAGE | EXECUTE</title>
+  <title>OS GROUP (OM SUNDARAM) - India's 1st Autonomous AI Business Directory & Growth Engine</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .brand-font { font-family: 'Cinzel', serif; }
-    .glass-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .glow-border { border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.2); }
-    .logo-dark-mode { filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(56, 189, 248, 0.35)); }
+    .brand-title { font-family: 'Cinzel', serif; letter-spacing: 0.15em; }
+    .glass-panel { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .neon-card { border: 1px solid rgba(56, 189, 248, 0.15); transition: all 0.25s ease; }
+    .neon-card:hover { border-color: rgba(56, 189, 248, 0.5); transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.2); }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-sky-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-sky-500 selection:text-white flex flex-col justify-between">
 
-  <!-- TOP HEADER WITH OFFICIAL OS GROUP BRANDING -->
-  <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between">
+  <!-- TOP HELPLINE UTILITY BAR -->
+  <div class="bg-slate-900 border-b border-slate-800 text-[12px] py-2 px-4 text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-4">
+        <span class="text-sky-400 font-semibold tracking-wider flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> OM SUNDARAM ENTERPRISE NETWORK
+        </span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:inline tracking-widest text-slate-300 font-bold">ENTHRAL &bull; ENGAGE &bull; EXECUTE</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+917597777897" class="text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1.5 transition">
+          <span>📞 Helpline:</span> +91 7597777897
+        </a>
+        <a href="https://wa.me/917597777897?text=Hi%20OS%20Group,%20I%20need%20business%20support." target="_blank" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 transition">
+          <span>💬 WhatsApp Support</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN BRAND HEADER -->
+  <header class="bg-slate-950/90 border-b border-slate-800/90 sticky top-0 z-50 backdrop-blur-lg">
+    <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between gap-4">
       
-      <!-- Official Logo + Tagline Container -->
-      <div class="flex items-center gap-4 cursor-pointer" onclick="resetToHome()">
-        <img src="https://i.ibb.co/3sS1832/OS-GROUP.png" alt="OS GROUP Logo" class="h-16 w-auto object-contain logo-dark-mode transition-transform hover:scale-105 duration-200">
-        <div class="hidden sm:block border-l border-slate-800 pl-4">
-          <div class="text-[11px] tracking-[0.25em] text-slate-400 font-semibold uppercase">OM SUNDARAM</div>
-          <div class="text-xs font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-200 to-amber-300 tracking-[0.18em]">
-            ENTHRAL | ENGAGE | EXECUTE
+      <!-- Brand Identity with Inlined Crisp Logo -->
+      <div class="flex items-center gap-4 cursor-pointer" onclick="navigateTo('home')">
+        <div class="flex items-center gap-3">
+          <div class="w-14 h-14 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-sky-500/30 rounded-2xl flex items-center justify-center p-2 shadow-lg shadow-sky-500/10">
+            <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow">
+              <circle cx="42" cy="50" r="32" stroke="#38bdf8" stroke-width="8" fill="none" opacity="0.9"/>
+              <path d="M 68,32 C 60,25 48,30 48,42 C 48,56 75,52 75,68 C 75,82 56,85 45,78" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-black text-white tracking-wider brand-title">OS GROUP</span>
+              <span class="text-[10px] bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2 py-0.5 rounded font-bold uppercase">AI Ecosystem</span>
+            </div>
+            <div class="text-[10px] text-slate-400 tracking-[0.25em] uppercase font-bold">OM SUNDARAM</div>
+            <div class="text-[11px] text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-amber-400 font-extrabold tracking-widest uppercase">
+              ENTHRAL | ENGAGE | EXECUTE
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Right Action Controls -->
+      <!-- Navigation & Action Buttons -->
       <div class="flex items-center gap-3">
-        <button onclick="openListingModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs sm:text-sm font-black px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition flex items-center gap-1.5">
+        <button onclick="navigateTo('about')" class="hidden lg:block text-xs font-semibold text-slate-300 hover:text-white px-3 py-2 transition">About Us</button>
+        <button onclick="navigateTo('terms')" class="hidden lg:block text-xs font-semibold text-slate-300 hover:text-white px-3 py-2 transition">Terms</button>
+        <button onclick="navigateTo('policy')" class="hidden lg:block text-xs font-semibold text-slate-300 hover:text-white px-3 py-2 transition">Privacy</button>
+
+        <button onclick="openListingModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs sm:text-sm font-black px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition flex items-center gap-1.5 whitespace-nowrap">
           <span>+</span> List Business Free
         </button>
-        <button onclick="openLoginModal()" class="border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl text-slate-200 transition">
-          Vendor Sign In
+        <button onclick="openLoginModal()" class="border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl text-slate-200 transition whitespace-nowrap">
+          Vendor Login
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION WITH OFFICIAL SLOGAN -->
-  <section class="relative py-12 px-4 border-b border-slate-900 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-slate-950/60 to-slate-950 pointer-events-none"></div>
-    <div class="max-w-4xl mx-auto text-center relative z-10">
-      
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold mb-5 shadow-inner">
-        <span class="text-sky-400 tracking-widest font-bold">OM SUNDARAM</span>
-        <span class="text-slate-600">&bull;</span>
-        <span class="text-amber-400 font-bold uppercase tracking-wider">ENTHRAL &bull; ENGAGE &bull; EXECUTE</span>
+  <!-- ================= SECTION: HOME (DIRECTORY & SEARCH) ================= -->
+  <div id="page-home" class="page-view flex-1">
+    <!-- Hero Search Section -->
+    <section class="relative py-14 px-4 border-b border-slate-900 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-slate-950/60 to-slate-950 pointer-events-none"></div>
+      <div class="max-w-5xl mx-auto text-center relative z-10">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold mb-6 shadow-inner">
+          <span class="text-sky-400 font-bold">OM SUNDARAM</span>
+          <span class="text-slate-600">&bull;</span>
+          <span class="text-amber-400 font-bold tracking-wider">4,000+ CLASSIFIED CATEGORIES ON AI AUTO-PILOT</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+          India's Ultimate AI-Powered <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-200 to-amber-300">Local Search & Business Ecosystem</span>
+        </h1>
+        <p class="text-slate-400 text-xs sm:text-base mt-4 mb-8 max-w-3xl mx-auto">
+          Find top-rated doctors, fitness centers, legal firms, luxury properties, and emergency services with verified reviews, instant calls, and direct WhatsApp routing.
+        </p>
+
+        <!-- Big Dual Search Box -->
+        <div class="bg-slate-900/95 border border-slate-800 p-2 sm:p-3 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2.5 max-w-4xl mx-auto border-sky-500/20">
+          <div class="sm:w-1/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3">
+            <span class="text-sky-400 mr-2">📍</span>
+            <select id="searchCity" class="w-full bg-transparent text-sm text-slate-200 font-medium focus:outline-none cursor-pointer">
+              <option value="Jaipur" selected class="bg-slate-900">Jaipur, Rajasthan</option>
+              <option value="Delhi NCR" class="bg-slate-900">Delhi NCR</option>
+              <option value="Mumbai" class="bg-slate-900">Mumbai</option>
+              <option value="Bangalore" class="bg-slate-900">Bangalore</option>
+              <option value="Ahmedabad" class="bg-slate-900">Ahmedabad</option>
+              <option value="all" class="bg-slate-900">All India</option>
+            </select>
+          </div>
+
+          <div class="sm:w-2/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3">
+            <span class="text-slate-500 mr-2">🔍</span>
+            <input id="searchQuery" onkeypress="handleEnter(event)" placeholder="Search Doctors, Real Estate, Gym, IT, Packers, CA..." class="w-full bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none">
+            <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-6 py-2.5 rounded-lg text-xs shadow-md transition whitespace-nowrap">
+              Find Services
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 30+ COMPREHENSIVE JUSTDIAL CATEGORIES -->
+    <section class="max-w-7xl mx-auto px-4 py-10">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold text-white tracking-wide">Popular Classified Verticals</h2>
+          <p class="text-xs text-slate-400">Click any sector to filter top verified listings instantly</p>
+        </div>
+        <span class="text-xs text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">30+ Core Verticals</span>
       </div>
 
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        Universal Local Directory & <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400">Autonomous Business AI</span>
-      </h1>
-      <p class="text-slate-400 text-xs sm:text-sm mt-3 mb-8 max-w-2xl mx-auto">
-        Search across 4,000+ verified service providers or list your business to activate automated client booking and growth blueprints.
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-3 text-center">
+        <!-- 1 to 10 -->
+        <div onclick="filterByCat('Doctors')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">👨‍⚕️</div>
+          <div class="text-[11px] font-bold text-slate-300">Doctors</div>
+        </div>
+        <div onclick="filterByCat('Dental')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🦷</div>
+          <div class="text-[11px] font-bold text-slate-300">Dentists</div>
+        </div>
+        <div onclick="filterByCat('Hospitals')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🏥</div>
+          <div class="text-[11px] font-bold text-slate-300">Hospitals</div>
+        </div>
+        <div onclick="filterByCat('Gym')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🏋️</div>
+          <div class="text-[11px] font-bold text-slate-300">Gym & Fitness</div>
+        </div>
+        <div onclick="filterByCat('Real Estate')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🏢</div>
+          <div class="text-[11px] font-bold text-slate-300">Real Estate</div>
+        </div>
+        <div onclick="filterByCat('Restaurants')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🍽️</div>
+          <div class="text-[11px] font-bold text-slate-300">Restaurants</div>
+        </div>
+        <div onclick="filterByCat('Cafes')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">☕</div>
+          <div class="text-[11px] font-bold text-slate-300">Cafes & Bakeries</div>
+        </div>
+        <div onclick="filterByCat('Salons')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">✂️</div>
+          <div class="text-[11px] font-bold text-slate-300">Beauty & Salon</div>
+        </div>
+        <div onclick="filterByCat('Spa')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">💆</div>
+          <div class="text-[11px] font-bold text-slate-300">Spa & Wellness</div>
+        </div>
+        <div onclick="filterByCat('IT & Software')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">💻</div>
+          <div class="text-[11px] font-bold text-slate-300">IT & AI Dev</div>
+        </div>
+
+        <!-- 11 to 20 -->
+        <div onclick="filterByCat('Lawyers')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">⚖️</div>
+          <div class="text-[11px] font-bold text-slate-300">Lawyers & Legal</div>
+        </div>
+        <div onclick="filterByCat('CA & Tax')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="text-[11px] font-bold text-slate-300">CA & GST</div>
+        </div>
+        <div onclick="filterByCat('Packers')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">📦</div>
+          <div class="text-[11px] font-bold text-slate-300">Packers & Movers</div>
+        </div>
+        <div onclick="filterByCat('Education')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🎓</div>
+          <div class="text-[11px] font-bold text-slate-300">Coaching / Tutors</div>
+        </div>
+        <div onclick="filterByCat('Hotels')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🏨</div>
+          <div class="text-[11px] font-bold text-slate-300">Hotels & Resorts</div>
+        </div>
+        <div onclick="filterByCat('Banquets')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🎉</div>
+          <div class="text-[11px] font-bold text-slate-300">Wedding Banquets</div>
+        </div>
+        <div onclick="filterByCat('Car Service')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🚗</div>
+          <div class="text-[11px] font-bold text-slate-300">Car Care / Garage</div>
+        </div>
+        <div onclick="filterByCat('Interior')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🛋️</div>
+          <div class="text-[11px] font-bold text-slate-300">Interior Designers</div>
+        </div>
+        <div onclick="filterByCat('Solar')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">☀️</div>
+          <div class="text-[11px] font-bold text-slate-300">Solar Energy</div>
+        </div>
+        <div onclick="filterByCat('Jewelry')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">💎</div>
+          <div class="text-[11px] font-bold text-slate-300">Jewelry & Gold</div>
+        </div>
+
+        <!-- 21 to 30 -->
+        <div onclick="filterByCat('Electrician')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">⚡</div>
+          <div class="text-[11px] font-bold text-slate-300">Electricians</div>
+        </div>
+        <div onclick="filterByCat('Plumber')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🔧</div>
+          <div class="text-[11px] font-bold text-slate-300">Plumbers</div>
+        </div>
+        <div onclick="filterByCat('CCTV')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">📹</div>
+          <div class="text-[11px] font-bold text-slate-300">CCTV & Security</div>
+        </div>
+        <div onclick="filterByCat('Cleaning')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🧹</div>
+          <div class="text-[11px] font-bold text-slate-300">Deep Cleaning</div>
+        </div>
+        <div onclick="filterByCat('Pest Control')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🐜</div>
+          <div class="text-[11px] font-bold text-slate-300">Pest Control</div>
+        </div>
+        <div onclick="filterByCat('Travel')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">✈️</div>
+          <div class="text-[11px] font-bold text-slate-300">Tours & Travels</div>
+        </div>
+        <div onclick="filterByCat('Event Planners')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🎪</div>
+          <div class="text-[11px] font-bold text-slate-300">Event Planners</div>
+        </div>
+        <div onclick="filterByCat('Architects')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">📐</div>
+          <div class="text-[11px] font-bold text-slate-300">Architects</div>
+        </div>
+        <div onclick="filterByCat('Insurance')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🛡️</div>
+          <div class="text-[11px] font-bold text-slate-300">Insurance Agents</div>
+        </div>
+        <div onclick="filterByCat('Logistics')" class="neon-card glass-panel p-3 rounded-2xl cursor-pointer">
+          <div class="text-2xl mb-1">🚚</div>
+          <div class="text-[11px] font-bold text-slate-300">Transport & Cargo</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTINGS FEED SECTION WITH DYNAMIC MAP VIEW -->
+    <main class="max-w-7xl mx-auto px-4 pb-20">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-6">
+        <div>
+          <h2 id="resultsHeading" class="text-lg sm:text-xl font-bold text-white">Verified Listings</h2>
+          <p class="text-xs text-slate-400">Directly connect with authorized owners and service heads</p>
+        </div>
+        <span id="resultsCount" class="text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1 rounded-full font-bold">Loading...</span>
+      </div>
+
+      <div id="listingsContainer" class="space-y-6"></div>
+    </main>
+  </div>
+
+  <!-- ================= SECTION: ABOUT US ================= -->
+  <div id="page-about" class="page-view hidden flex-1 py-16 px-4">
+    <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl space-y-6">
+      <div class="text-xs font-bold text-amber-400 tracking-widest uppercase">ABOUT OS GROUP & OM SUNDARAM</div>
+      <h1 class="text-3xl sm:text-4xl font-black text-white">Universal Autonomous AI Directory & Business Infrastructure</h1>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        <strong>OS GROUP (OM SUNDARAM)</strong> is an Indian business conglomerate established with the mission to build an autonomous bridge between local vendors and modern consumers. Under the philosophy of <strong>ENTHRAL | ENGAGE | EXECUTE</strong>, OS Group unifies 4,000+ business categories under a singular intelligent digital canopy.
       </p>
-
-      <!-- Search Box with City & Keyword -->
-      <div class="bg-slate-900/95 border border-slate-800 p-2.5 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2.5 glow-border">
-        <div class="sm:w-1/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5">
-          <span class="text-sky-400 mr-2 text-sm">📍</span>
-          <select id="searchCity" class="w-full bg-transparent text-sm text-slate-200 font-medium focus:outline-none cursor-pointer">
-            <option value="Jaipur" selected class="bg-slate-900">Jaipur</option>
-            <option value="Delhi NCR" class="bg-slate-900">Delhi NCR</option>
-            <option value="Mumbai" class="bg-slate-900">Mumbai</option>
-            <option value="Bangalore" class="bg-slate-900">Bangalore</option>
-            <option value="all" class="bg-slate-900">All Cities</option>
-          </select>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+          <div class="text-xl font-bold text-sky-400">ENTHRAL</div>
+          <p class="text-xs text-slate-400 mt-1">Stunning storefronts and verified authority to captivate targeted customers instantly.</p>
         </div>
-
-        <div class="sm:w-2/3 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5">
-          <span class="text-slate-500 mr-2 text-sm">🔍</span>
-          <input id="searchQuery" onkeypress="handleEnter(event)" placeholder="Search Gym, Dental Clinic, Real Estate, AI Dev..." class="w-full bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none">
-          <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-6 py-2.5 rounded-lg text-xs shadow-md transition whitespace-nowrap">
-            Search
-          </button>
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+          <div class="text-xl font-bold text-amber-400">ENGAGE</div>
+          <p class="text-xs text-slate-400 mt-1">24/7 autonomous WhatsApp bots and smart lead discovery algorithms that never sleep.</p>
+        </div>
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+          <div class="text-xl font-bold text-emerald-400">EXECUTE</div>
+          <p class="text-xs text-slate-400 mt-1">Flawless lead delivery, marketing blueprints, and localized market dominance.</p>
         </div>
       </div>
+      <div class="p-4 bg-sky-500/10 border border-sky-500/20 rounded-2xl text-xs text-slate-300">
+        <strong>Headquarters & Operations:</strong> Jaipur, Rajasthan, India &bull; <strong>Support Line:</strong> +91 7597777897 &bull; <strong>Email:</strong> support@osgroup.in
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- QUICK CATEGORIES -->
-  <section class="max-w-7xl mx-auto px-4 py-8">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Top Industries</h2>
-      <span class="text-xs text-slate-500">4,000+ Categories Covered</span>
+  <!-- ================= SECTION: TERMS & CONDITIONS ================= -->
+  <div id="page-terms" class="page-view hidden flex-1 py-16 px-4">
+    <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl space-y-5 text-xs text-slate-300 leading-relaxed">
+      <div class="text-xs font-bold text-amber-400 tracking-widest uppercase">LEGAL COMPLIANCE</div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white">Terms and Conditions</h1>
+      <p>Last Updated: September 2026</p>
+      <p>Welcome to <strong>osgroup.in</strong> operated by <strong>OM SUNDARAM (OS GROUP)</strong>. By listing your enterprise or using our search tools, you agree to the following terms:</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Vendor Authenticity:</strong> All businesses must verify their phone numbers via OTP. False listings or misrepresentation will lead to instant suspension.</li>
+        <li><strong>Customer Inquiries:</strong> Leads submitted through the directory are forwarded directly to the designated business phone/WhatsApp. OS Group acts as an autonomous marketplace facilitator.</li>
+        <li><strong>AI Output & Strategies:</strong> AI blueprints, ad captions, and lead insights are algorithmic recommendations designed to accelerate business growth.</li>
+        <li><strong>Fair Use Policy:</strong> Bulk crawling, automated spamming, or fraudulent customer reviews are strictly barred under Indian IT regulations.</li>
+      </ul>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 text-center">
-      <div onclick="filterByCat('Gym')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">🏋️</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">Gym & Fitness</div>
-      </div>
-      <div onclick="filterByCat('Clinic')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">👨‍⚕️</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">Doctors & Clinics</div>
-      </div>
-      <div onclick="filterByCat('Real Estate')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">🏢</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">Real Estate</div>
-      </div>
-      <div onclick="filterByCat('IT')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">💻</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">IT & AI Dev</div>
-      </div>
-      <div onclick="filterByCat('Restaurant')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">🍽️</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">Restaurants</div>
-      </div>
-      <div onclick="filterByCat('Salon')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">✂️</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">Beauty & Salon</div>
-      </div>
-      <div onclick="filterByCat('Packers')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">📦</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">Packers & Movers</div>
-      </div>
-      <div onclick="filterByCat('Education')" class="glass-card p-3.5 rounded-xl hover:border-sky-500/50 cursor-pointer transition group">
-        <div class="text-2xl mb-1 group-hover:scale-110 transition duration-200">🎓</div>
-        <div class="text-xs font-semibold text-slate-300 group-hover:text-sky-400">Coaching & Tutors</div>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- LISTINGS FEED -->
-  <main class="max-w-7xl mx-auto px-4 pb-20">
-    <div class="flex justify-between items-center mb-5">
-      <h2 id="resultsHeading" class="text-base sm:text-lg font-bold text-white">Verified Business Listings</h2>
-      <span id="resultsCount" class="text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3 py-1 rounded-full font-semibold">Loading...</span>
+  <!-- ================= SECTION: PRIVACY POLICY ================= -->
+  <div id="page-policy" class="page-view hidden flex-1 py-16 px-4">
+    <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl space-y-5 text-xs text-slate-300 leading-relaxed">
+      <div class="text-xs font-bold text-emerald-400 tracking-widest uppercase">DATA PRIVACY & PROTECTION</div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white">Terms and Privacy Policy</h1>
+      <p>Last Updated: September 2026</p>
+      <p>At <strong>OM SUNDARAM (OS GROUP)</strong>, protecting our users' and merchant partners' data is fundamental:</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Information Collection:</strong> We collect contact coordinates (Name, Phone Number, Business Category, and Location) solely for verification, public listing, and lead delivery.</li>
+        <li><strong>Data Protection:</strong> Passwords and merchant credentials are encrypted. We never sell vendor or visitor phone numbers to third-party telemarketers.</li>
+        <li><strong>Customer-to-Business Handoff:</strong> When a user clicks "WhatsApp" or submits an inquiry, their message is transmitted securely to the vendor.</li>
+        <li><strong>Data Rights:</strong> Any vendor can update or de-list their business by calling our dedicated helpdesk at +91 7597777897.</li>
+      </ul>
     </div>
-
-    <div id="listingsContainer" class="space-y-4"></div>
-  </main>
+  </div>
 
   <!-- MODAL: FREE LISTING WITH OTP -->
   <div id="listingModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
@@ -143,10 +343,8 @@
       <button onclick="closeListingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">✕</button>
       
       <div class="border-b border-slate-800 pb-4 mb-6">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-[10px] tracking-widest text-sky-400 font-bold uppercase">OM SUNDARAM &bull; OS GROUP</span>
-        </div>
-        <h3 class="text-2xl font-extrabold text-white">List Your Business Free</h3>
+        <div class="text-[10px] tracking-widest text-sky-400 font-bold uppercase">OM SUNDARAM &bull; OS GROUP</div>
+        <h3 class="text-2xl font-extrabold text-white mt-1">List Your Business Free</h3>
         <p class="text-xs text-slate-400 mt-1">Get verified with OTP, unlock direct customer calls, and activate your custom AI suite.</p>
       </div>
 
@@ -170,16 +368,21 @@
           </div>
           <div>
             <label class="text-xs font-semibold text-slate-400">Industry / Category *</label>
-            <input list="cat_options" id="new_cat" placeholder="Select or type..." value="Gym & Fitness" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
-            <datalist id="cat_options">
-              <option value="Gym & Fitness">
+            <input list="all_cats" id="new_cat" placeholder="Select or type..." value="Gym & Fitness" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+            <datalist id="all_cats">
               <option value="Doctors & Clinics">
+              <option value="Gym & Fitness">
               <option value="Real Estate">
               <option value="IT & Software">
               <option value="Restaurants & Cafes">
               <option value="Beauty & Salon">
               <option value="Packers & Movers">
+              <option value="Lawyers & Legal">
+              <option value="CA & Tax Consultancy">
               <option value="Education & Coaching">
+              <option value="Hotels & Resorts">
+              <option value="Car Service & Detailing">
+              <option value="Solar Energy Solutions">
             </datalist>
           </div>
         </div>
@@ -202,11 +405,11 @@
 
         <div>
           <label class="text-xs font-semibold text-slate-400">Current Promotional Offer *</label>
-          <input id="new_offer" placeholder="e.g. Flat 30% OFF on Annual Plan" value="Flat 30% OFF on First Membership" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
+          <input id="new_offer" placeholder="e.g. Flat 30% OFF on First Membership" value="Flat 30% OFF on Annual Membership" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:border-sky-500 focus:outline-none">
         </div>
 
         <button onclick="triggerVendorOTP()" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-sky-500/20 transition">
-          🔒 Verify Mobile with OTP & Publish
+          🔒 Verify Mobile with OTP & Publish Listing
         </button>
       </div>
 
@@ -279,7 +482,7 @@
     </div>
   </div>
 
-  <!-- MODAL: VENDOR LOGIN -->
+  <!-- MODAL: VENDOR SIGN IN -->
   <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
       <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
@@ -296,12 +499,57 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 space-y-2">
-      <div class="text-sm font-bold text-slate-300">OM SUNDARAM &bull; OS GROUP</div>
-      <div class="tracking-[0.2em] text-sky-400 font-semibold uppercase">ENTHRAL | ENGAGE | EXECUTE</div>
-      <p class="text-[11px] text-slate-600 mt-2">&copy; 2026 OS GROUP Technologies. All rights reserved.</p>
+  <!-- MULTIPAGE FOOTER WITH COMPLETE CREDENTIALS -->
+  <footer class="border-t border-slate-900 bg-slate-950 pt-12 pb-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      
+      <!-- Col 1: About Brand -->
+      <div class="space-y-3">
+        <div class="text-lg font-black text-white brand-title">OS GROUP</div>
+        <div class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">OM SUNDARAM ENTERPRISE</div>
+        <p class="text-slate-500 text-xs leading-relaxed">
+          India's 1st Autonomous Business Ecosystem uniting classified listings, AI marketing blueprints, and direct customer connectivity.
+        </p>
+        <div class="text-sky-400 font-semibold tracking-wider text-[11px]">
+          ENTHRAL &bull; ENGAGE &bull; EXECUTE
+        </div>
+      </div>
+
+      <!-- Col 2: Fast Navigation -->
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Company & Legal</div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('about')" class="hover:text-sky-400 transition">About OS Group</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('terms')" class="hover:text-sky-400 transition">Terms & Conditions</a></div>
+        <div><a href="javascript:void(0)" onclick="navigateTo('policy')" class="hover:text-sky-400 transition">Privacy & Security Policy</a></div>
+        <div><a href="javascript:void(0)" onclick="openListingModal()" class="text-amber-400 hover:underline">Free Merchant Registration</a></div>
+      </div>
+
+      <!-- Col 3: Direct Customer Support Desk -->
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Helpdesk & Support</div>
+        <div class="text-slate-300"><strong>Customer Care:</strong> <a href="tel:+917597777897" class="text-amber-400 font-bold">+91 7597777897</a></div>
+        <div class="text-slate-300"><strong>WhatsApp Desk:</strong> <a href="https://wa.me/917597777897" target="_blank" class="text-emerald-400 font-bold">+91 7597777897</a></div>
+        <div class="text-slate-300"><strong>Email:</strong> support@osgroup.in</div>
+        <div class="text-slate-400"><strong>Working Hours:</strong> Mon - Sun (24/7 AI Desk)</div>
+      </div>
+
+      <!-- Col 4: Interactive Headquarters Google Map -->
+      <div class="space-y-2">
+        <div class="text-white font-bold mb-2 uppercase tracking-wider text-[11px]">Corporate Office & Map</div>
+        <p class="text-[11px] text-slate-400 mb-2">📍 OS Group Headquarters, Jaipur, Rajasthan, India</p>
+        <div class="w-full h-32 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113911.1969695679!2d75.71960251702845!3d26.88514167909381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Subfooter -->
+    <div class="border-t border-slate-900 pt-6 text-center text-slate-600 text-[11px]">
+      &copy; 2026 OM SUNDARAM &bull; OS GROUP Technologies. All rights reserved. Registered Indian Digital Corporation.
     </div>
   </footer>
 
@@ -309,6 +557,16 @@
     let activeMobile = "";
     let newlyCreatedVendorId = "";
     let targetBizForEnquiry = null;
+
+    // Multipage Routing Engine
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(`page-${pageId}`);
+      if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
 
     function openListingModal() {
       document.getElementById('formStep1').classList.remove('hidden');
@@ -320,11 +578,14 @@
     function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
     function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
     function handleEnter(e) { if(e.key === 'Enter') performSearch(); }
+    
     function resetToHome() {
       document.getElementById('searchQuery').value = "";
+      navigateTo('home');
       performSearch();
     }
     function filterByCat(cat) {
+      navigateTo('home');
       document.getElementById('searchQuery').value = cat;
       performSearch();
     }
@@ -348,6 +609,7 @@
       }, 1000);
     }
 
+    // Dynamic Search & Listing Render with Google Map Location Triggers
     async function performSearch() {
       const q = document.getElementById('searchQuery').value;
       const city = document.getElementById('searchCity').value;
@@ -357,15 +619,15 @@
       const container = document.getElementById('listingsContainer');
       container.innerHTML = "";
       
-      document.getElementById('resultsHeading').innerText = q ? `Results for "${q}" in ${city}` : `Verified Listings in ${city}`;
-      document.getElementById('resultsCount').innerText = `${data.count} Businesses Active`;
+      document.getElementById('resultsHeading').innerText = q ? `Results for "${q}" in ${city}` : `Verified Service Providers in ${city}`;
+      document.getElementById('resultsCount').innerText = `${data.count} Verified Partners`;
 
       if (data.results.length === 0) {
         container.innerHTML = `
-          <div class="glass-card p-10 rounded-2xl text-center border border-slate-800">
-            <p class="text-slate-400 text-sm">No businesses found matching your criteria in this area.</p>
-            <button onclick="openListingModal()" class="mt-4 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg">
-              List This Business First
+          <div class="glass-panel p-12 rounded-3xl text-center border border-slate-800 space-y-3">
+            <p class="text-slate-400 text-sm">No verified listings found matching "${q}" in ${city} yet.</p>
+            <button onclick="openListingModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black text-xs px-6 py-3 rounded-xl shadow-lg">
+              + Be The First To List In This Category
             </button>
           </div>
         `;
@@ -374,50 +636,67 @@
 
       data.results.forEach(b => {
         const cleanMob = b.mobile.replace("+", "").replace(" ", "").replace("-", "");
-        const servicesTags = b.services.map(s => `<span class="bg-slate-800/80 text-slate-300 text-[11px] px-2.5 py-0.5 rounded-md border border-slate-700/60">${s}</span>`).join(" ");
+        const servicesTags = b.services.map(s => `<span class="bg-slate-950 text-slate-300 text-[11px] px-2.5 py-1 rounded-md border border-slate-800">${s}</span>`).join(" ");
+        const mapSearchQuery = encodeURIComponent(`${b.name}, ${b.area}, ${b.city}`);
 
         const card = `
-          <div class="glass-card rounded-2xl p-5 hover:border-sky-500/40 transition duration-200 flex flex-col sm:flex-row gap-5">
-            <div class="w-full sm:w-56 h-44 rounded-xl overflow-hidden flex-shrink-0 bg-slate-900 border border-slate-800">
-              <img src="${b.image}" alt="${b.name}" class="w-full h-full object-cover">
+          <div class="glass-panel rounded-3xl p-6 hover:border-sky-500/50 transition duration-300 flex flex-col lg:flex-row gap-6">
+            <!-- Business Visual Banner -->
+            <div class="w-full lg:w-64 h-48 rounded-2xl overflow-hidden flex-shrink-0 bg-slate-950 border border-slate-800 relative group">
+              <img src="${b.image}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+              <div class="absolute top-2 left-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-800 text-[10px] font-bold text-emerald-400 flex items-center gap-1">
+                <span>✔</span> Verified
+              </div>
             </div>
 
+            <!-- Business Intelligence Details -->
             <div class="flex-1 flex flex-col justify-between">
               <div>
-                <div class="flex items-start justify-between gap-2">
+                <div class="flex flex-wrap items-start justify-between gap-2">
                   <div>
-                    <h3 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
                       ${b.name}
-                      <span class="text-sky-400 text-sm" title="OS Group Verified">☑</span>
+                      <span class="text-sky-400 text-sm" title="OS Group Certified">☑</span>
                     </h3>
-                    <p class="text-xs text-slate-400 mt-1">📍 ${b.area}, ${b.city} &bull; <strong class="text-sky-400/90">${b.category}</strong></p>
+                    <p class="text-xs text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
+                      <span>📍 ${b.area}, ${b.city}</span>
+                      <span>&bull;</span>
+                      <strong class="text-sky-400">${b.category}</strong>
+                      <span>&bull;</span>
+                      <a href="https://maps.google.com/?q=${mapSearchQuery}" target="_blank" class="text-amber-400 hover:underline flex items-center gap-1">
+                        🗺️ View on Google Map
+                      </a>
+                    </p>
                   </div>
-                  <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold px-2.5 py-1 rounded-lg flex items-center gap-1">
-                    <span>★</span> ${b.rating}
+                  <div class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-black px-3 py-1.5 rounded-xl flex items-center gap-1">
+                    <span>★</span> ${b.rating} (${b.votes} Reviews)
                   </div>
                 </div>
 
-                <div class="mt-2.5 inline-flex items-center gap-1.5 text-xs text-amber-300 bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20 font-medium">
-                  <span>🏷️</span> ${b.offer}
+                <!-- Launch Promotional Deal -->
+                <div class="mt-3 inline-flex items-center gap-2 text-xs text-amber-300 bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/20 font-semibold">
+                  <span>🏷️ Exclusive Offer:</span> ${b.offer}
                 </div>
 
-                <div class="mt-3 flex flex-wrap gap-1.5">
+                <!-- Key Capabilities List -->
+                <div class="mt-3.5 flex flex-wrap gap-1.5">
                   ${servicesTags}
                 </div>
               </div>
 
-              <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-2">
-                <a href="tel:${b.mobile}" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
+              <!-- High-Converting Multi-CTA Bar -->
+              <div class="mt-5 pt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-2.5">
+                <a href="tel:${b.mobile}" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-sky-600/20 transition">
                   <span>📞</span> Call: ${b.mobile}
                 </a>
-                <a href="https://wa.me/${cleanMob}?text=Hi%20${encodeURIComponent(b.name)},%20I%20saw%20your%20listing%20on%20OS%20Group.%20Please%20share%20details." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
-                  <span>💬</span> WhatsApp
+                <a href="https://wa.me/${cleanMob}?text=Hi%20${encodeURIComponent(b.name)},%20I%20saw%20your%20verified%20listing%20on%20OS%20GROUP.%20Please%20share%20details." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition">
+                  <span>💬</span> WhatsApp Direct
                 </a>
-                <button onclick='openEnquiryModal(${JSON.stringify(b)})' class="border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-slate-200 text-xs font-semibold px-3.5 py-2 rounded-xl transition">
+                <button onclick='openEnquiryModal(${JSON.stringify(b)})' class="border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl transition">
                   ⚡ Send Enquiry
                 </button>
                 <a href="/biz/${b.id}" target="_blank" class="text-xs text-sky-400 hover:underline ml-auto flex items-center gap-1">
-                  View Profile &rarr;
+                  Full Storefront & AI Specs &rarr;
                 </a>
               </div>
             </div>
@@ -486,7 +765,7 @@
     }
 
     function performVendorLogin() {
-      alert("Sign in verified. Dashboard analytics and AI modules activated.");
+      alert("Sign in verified. Welcome to OS GROUP Partner Control Console.");
       closeLoginModal();
     }
 
