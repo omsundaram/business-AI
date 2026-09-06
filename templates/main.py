@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import os, json, random, string, urllib.request, urllib.error
 from pathlib import Path
 
-app = FastAPI(title="OS GROUP (OM SUNDARAM) - Super-App Platform")
+app = FastAPI(title="OS GROUP - Autonomous Business Engine & Directory")
 
 app.add_middleware(
     CORSMiddleware,
@@ -30,11 +30,53 @@ def get_html_content():
                 return f.read()
     return "<h1>OS GROUP Engine Loading...</h1>"
 
+# 30 Comprehensive Autonomous AI Tools
+AI_TOOLS_REGISTRY = {
+    # 1. Marketing & Copywriting
+    "social_ad": "Generate high-converting Facebook/Instagram ad captions with 20 targeted hashtags",
+    "poster_ai": "Dynamic multi-layout visual advertising poster generator with custom themes",
+    "seo_meta": "Generate Google SEO Title, Meta Descriptions, and primary keyword strategy",
+    "google_ads": "Generate 5 Google Search Ad headlines, descriptions, and callout extensions",
+    "email_pitch": "Craft a high-open-rate B2B cold email sequence with persuasive follow-ups",
+    "blog_writer": "Generate an SEO-optimized 600-word business thought-leadership article",
+    
+    # 2. Automation & Communication
+    "whatsapp_bot": "Build 24/7 automated WhatsApp inquiry-handling script and flow logic",
+    "voice_dialer": "Compose a natural, humanized conversational AI auto-dialer sales pitch",
+    "review_responder": "Generate automated 5-star & negative Google review resolution replies",
+    "sms_campaign": "Generate high-urgency promotional Bulk SMS variations under 160 characters",
+    "lead_qualifier": "AI prompt sequence to ask qualifying budget/timeline questions to prospects",
+    "crm_followup": "Automated 3-day, 7-day, and 15-day client re-engagement follow-up sequences",
+
+    # 3. Media, Creative & Video
+    "reel_script": "30-second viral Instagram Reel & YouTube Short kinetic video script",
+    "product_mockup": "Creative visual banner concepts with lighting, angles, and color palettes",
+    "logo_concept": "Corporate brand identity guidelines, font pairings, and color hex codes",
+    "festival_banner": "Festive and seasonal promotional offer poster creative blueprint",
+    "voiceover_copy": "Professional voiceover narration script for business commercials",
+    "influencer_brief": "Direct pitch briefing template for local influencer outreach",
+
+    # 4. Sales & Lead Intelligence
+    "lead_extractor": "Hyper-local B2B prospective customer segments and buyer persona roadmap",
+    "competitor_spy": "Competitive positioning analysis highlighting strengths over market rivals",
+    "pricing_engine": "Dynamic pricing and bundle discount strategy tailored to city tier",
+    "proposal_writer": "Executive commercial business proposal with scope of work and ROI pitch",
+    "closer_script": "Objection-handling scripts for closing deals over call and WhatsApp",
+    "referral_system": "Customer referral program blueprint with incentive structures",
+
+    # 5. Business Operations & Growth
+    "growth_blueprint": "30-day customer acquisition roadmap with actionable milestones",
+    "market_expansion": "State-wide franchise and branch expansion feasibility blueprint",
+    "hiring_spec": "Job descriptions and candidate screening questionnaire for sales staff",
+    "faq_generator": "Comprehensive 10-point customer FAQ guide addressing buying hesitation",
+    "legal_disclaimer": "Standard Indian commercial service contract clauses and terms outline",
+    "pitch_deck": "10-slide startup investor and partner presentation slide-by-slide structure"
+}
+
 OS_PROJECTS_DATABASE = [
     {
         "id": "OS-VENTURE-01",
         "name": "Digi Grow Hub (OS Digital Media)",
-        "brand": "Digi Grow Hub",
         "category": "Digital Media & IT",
         "city": "Thane",
         "state": "Maharashtra",
@@ -45,13 +87,11 @@ OS_PROJECTS_DATABASE = [
         "whatsapp": "+91 7597777897",
         "services": ["SEO & SMO", "Web & App Development", "Bulk WhatsApp API", "Branding & Video Ads"],
         "offer": "Startup Marketing Bundle (20 Tools @ INR 12,150/-)",
-        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-        "description": "One-stop gateway for full-stack marketing, digital promotions, and media campaigns."
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": "OS-VENTURE-02",
         "name": "Quiesta Hospitality",
-        "brand": "Quiesta",
         "category": "Hospitality & Properties",
         "city": "Thane",
         "state": "Maharashtra",
@@ -62,13 +102,11 @@ OS_PROJECTS_DATABASE = [
         "whatsapp": "+91 7597777897",
         "services": ["Hotels & Resorts", "Banquet Halls", "Marriage Gardens", "Property Leasing & Sale"],
         "offer": "Corporate & Grand Wedding Space Packages",
-        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
-        "description": "Premium properties, marriage gardens, farmhouses, and revenue-sharing resort chains."
+        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": "OS-VENTURE-03",
-        "name": "Jeevan Parinay (Jeewanparinay)",
-        "brand": "Jeevan Parinay",
+        "name": "Jeevan Parinay",
         "category": "Matrimonial & Events",
         "city": "Thane",
         "state": "Maharashtra",
@@ -77,15 +115,13 @@ OS_PROJECTS_DATABASE = [
         "votes": 512,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Match Making", "Destination Weddings", "Honeymoon Packages", "Wedding Gifts & Fashion"],
+        "services": ["Match Making", "Destination Weddings", "Honeymoon Packages", "Wedding Gifts"],
         "offer": "100% Verified Community Profiles",
-        "image": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
-        "description": "Trusted matchmaking network linking personal care with professional wedding execution."
+        "image": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": "OS-VENTURE-04",
         "name": "OS Real Estate",
-        "brand": "OS Real Estate",
         "category": "Real Estate",
         "city": "Thane",
         "state": "Maharashtra",
@@ -94,15 +130,13 @@ OS_PROJECTS_DATABASE = [
         "votes": 190,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Residential Villas", "Commercial Land", "Industrial Plots", "Rent & Lease Property"],
+        "services": ["Residential Villas", "Commercial Land", "Industrial Plots", "Rent & Lease"],
         "offer": "Zero Brokerage Direct Verified Units",
-        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-        "description": "Authentic property matchmaking helping businesses and families make the right choice."
+        "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": "OS-VENTURE-05",
         "name": "Clever Mandy Handicrafts",
-        "brand": "Clever Mandy",
         "category": "Handicrafts & Jewelry",
         "city": "Thane",
         "state": "Maharashtra",
@@ -111,15 +145,13 @@ OS_PROJECTS_DATABASE = [
         "votes": 165,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Fine Arts", "Divine Artifacts", "Home Decor", "Bespoke Artificial & Diamond Jewelry"],
-        "offer": "Handmade Masterpieces at Direct Artisan Rates",
-        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-        "description": "Preserving traditional craftsmanship with modern design aesthetics."
+        "services": ["Fine Arts", "Divine Artifacts", "Home Decor", "Bespoke Jewelry"],
+        "offer": "Handmade Masterpieces at Artisan Rates",
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": "OS-VENTURE-06",
         "name": "OS Government & EduTech Hub",
-        "brand": "OS EduTech",
         "category": "Government & EduTech",
         "city": "Thane",
         "state": "Maharashtra",
@@ -128,54 +160,43 @@ OS_PROJECTS_DATABASE = [
         "votes": 410,
         "mobile": "+91 7597777897",
         "whatsapp": "+91 7597777897",
-        "services": ["Atal Tinkering Labs (ATL)", "FoSTaC FSSAI Training", "Smart Metering", "PM-JAY Support"],
-        "offer": "CBSE STEM/Robotics Integration",
-        "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-        "description": "Pioneering technological education, robotics labs, 3D printing, and public welfare utilities."
+        "services": ["Atal Tinkering Labs", "FoSTaC FSSAI Training", "Smart Metering", "PM-JAY Support"],
+        "offer": "CBSE STEM & Robotics Integration",
+        "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
     }
 ]
 
 PENDING_OTP_DB = {}
 VENDOR_ACCOUNTS = {}
 
-def run_ai_generator(task: str, context: dict) -> str:
+def fallback_generator(tool_id: str, context: dict) -> str:
     biz = context.get("business_name", "OS Partner")
     sub = context.get("category", "Services")
     city = context.get("city", "Thane, Mumbai")
-    off = context.get("offer", "Exclusive Deal")
+    off = context.get("offer", "Exclusive Promotion")
+    task_desc = AI_TOOLS_REGISTRY.get(tool_id, "Business Solution")
 
-    if task == "graphics":
-        return f"""🎨 AI GRAPHIC & BANNER CONCEPTS ({biz}):
-Banner 1: "Scale Your {sub} with Confidence in {city}"
-- Color Palette: Neon Cyber Blue & Gold (#38bdf8 & #f59e0b)
-- Focal Text: "{off}"
-- Layout: Modern split card with dual action buttons (Call + WhatsApp).
+    return f"""⚡ OS GROUP AUTONOMOUS AI ENGINE: {tool_id.upper()}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🏢 Business Target: {biz} ({sub})
+📍 Regional Hub: {city}
+🏷️ Active Hook/Offer: "{off}"
+⚙️ Operational Objective: {task_desc}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Banner 2: "Verified Authority & Trusted Service"
-- Badge: OS Group Verified Emblem
-- Tagline: ENTHRAL | ENGAGE | EXECUTE"""
+🎯 1. STRATEGIC DELIVERABLE & ACTION SPECIFICATION:
+- Executive Summary: Engineered to generate instant lead acquisition for {biz} across {city}.
+- Positioning Statement: "Redefining {sub} with verified excellence and unmatched value."
 
-    elif task == "video":
-        return f"""🎬 30-SECOND REEL / VIDEO SCRIPT ({biz}):
-[0:00 - 0:05] Hook: "Looking for top-tier {sub} in {city}?" (Dynamic kinetic text)
-[0:05 - 0:15] Problem/Solution: Showcase rapid turnaround & "{off}"
-[0:15 - 0:25] Authority: "Officially certified by OS GROUP Network."
-[0:25 - 0:30] CTA: "Tap the link below to chat on WhatsApp or call instantly!"""
+📋 2. EXECUTION CONTENT & OPERATIONAL FLOW:
+- Primary Hook: "Don't settle for average {sub} in {city}. Benefit from our verified guarantee!"
+- Core Conversion Pitch: Avail "{off}" exclusively when booking through OS Group.
+- Call to Action: Direct WhatsApp dispatch and automated call desk confirmation active.
 
-    elif task == "voice":
-        return f"""📞 AI VOICE ATTENDANT & AUTO-DIALER PITCH:
-"Namaste! Thank you for calling {biz}, your certified {sub} partner in {city}. We are currently running our exclusive promotion: '{off}'. Press 1 to speak with an executive, or press 2 to receive our brochure directly on your WhatsApp. Have a wonderful day!\""""
-
-    elif task == "leads":
-        return f"""🎯 HYPER-LOCAL CLIENT LEADS FOR {sub} IN {city}:
-1. Commercial Corporate Accounts & Local Retailers in {city} Hub
-2. High-Intent Walk-in Prospects seeking "{off}"
-3. Premium B2B Referrals through OS Group Marketplace Network
-4. Inbound Direct WhatsApp Leads channeled through your Storefront"""
-
-    else:
-        return f"""🤖 24/7 WHATSAPP & SUPPORT BOT SCRIPT:
-"Namaste! Welcome to {biz}. We specialize in {sub} in {city}. Current Offer: {off}. How may we assist your requirement today?\""""
+🚀 3. DEPLOYMENT PROTOCOL:
+- Status: 100% Ready for live broadcast.
+- Multi-Channel Sync: Synced with your OS GROUP verified merchant profile.
+"""
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_home():
@@ -188,24 +209,24 @@ async def search_listings(query: str = "", city: str = ""):
 
     results = []
     for b in OS_PROJECTS_DATABASE:
-        match_city = not c or (c == "all") or (c in b["city"].lower()) or (c in b["state"].lower()) or (c in b["area"].lower())
+        match_city = not c or (c == "all") or (c in b["city"].lower()) or (c in b["state"].lower()) or (c in b.get("area", "").lower())
         match_query = not q or (q in b["name"].lower()) or (q in b["category"].lower()) or any(q in s.lower() for s in b.get("services", []))
         if match_city and match_query:
             results.append(b)
 
     return JSONResponse(content={"status": "success", "count": len(results), "results": results})
 
-class AIRequestPayload(BaseModel):
-    tool: str
+class AIExecutePayload(BaseModel):
+    tool_id: str
     business_name: str
     category: str
     city: str
     offer: str = ""
 
-@app.post("/api/ai/execute")
-async def execute_ai_suite(data: AIRequestPayload):
-    prompt = f"Act as an Elite AI Marketing Director. Generate {data.tool} for {data.business_name} ({data.category}) in {data.city} with offer {data.offer}."
-    
+@app.post("/api/ai/run")
+async def execute_tool(data: AIExecutePayload):
+    prompt = f"Act as an expert Chief Marketing Officer and Business Architect. Execute tool '{data.tool_id}' ({AI_TOOLS_REGISTRY.get(data.tool_id, '')}) for '{data.business_name}' ({data.category}) in '{data.city}'. Incorporate current offer '{data.offer}'. Format cleanly with actionable sections."
+
     api_key = os.getenv("GEMINI_API_KEY", "").strip()
     result_text = ""
     if api_key:
@@ -227,9 +248,9 @@ async def execute_ai_suite(data: AIRequestPayload):
                 continue
 
     if not result_text:
-        result_text = run_ai_generator(data.tool, data.dict())
+        result_text = fallback_generator(data.tool_id, data.dict())
 
-    return JSONResponse(content={"status": "success", "tool": data.tool, "output": result_text})
+    return JSONResponse(content={"status": "success", "tool_id": data.tool_id, "output": result_text})
 
 class VendorRegisterPayload(BaseModel):
     owner_name: str
@@ -274,7 +295,6 @@ async def verify_vendor_otp(data: VerifyPayload):
     new_entry = {
         "id": vendor_id,
         "name": d["business_name"],
-        "brand": d["business_name"],
         "category": d["category"],
         "city": d["city"],
         "state": d["state"],
@@ -285,8 +305,7 @@ async def verify_vendor_otp(data: VerifyPayload):
         "whatsapp": f"{d.get('country_code', '+91')} {d['mobile']}",
         "services": [s.strip() for s in d["services"].split(",") if s.strip()] or ["Enterprise Solutions"],
         "offer": d.get("offer") or "Verified Partnership Benefit",
-        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-        "description": f"Authorized service provider onboarded under OS GROUP network. Managed by {d['owner_name']}."
+        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
     }
 
     OS_PROJECTS_DATABASE.insert(0, new_entry)
@@ -314,6 +333,7 @@ async def serve_storefront(biz_id: str):
       <title>{biz['name']} - Verified OS GROUP Storefront</title>
       <script src="https://cdn.tailwindcss.com"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+      <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='42' cy='50' r='32' stroke='%2338bdf8' stroke-width='10' fill='none'/%3E%3Cpath d='M 68,32 C 60,25 48,30 48,42 C 48,56 75,52 75,68 C 75,82 56,85 45,78' fill='none' stroke='%23f59e0b' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
     </head>
     <body class="bg-slate-950 text-slate-100 min-h-screen">
       <header class="border-b border-slate-800 p-4 bg-slate-900 flex justify-between items-center">
@@ -349,7 +369,7 @@ async def serve_storefront(biz_id: str):
             <h4 class="font-bold text-white border-b border-slate-800 pb-2">Merchant Verification</h4>
             <div class="text-xs text-slate-400 space-y-2">
               <div><strong>Vendor ID:</strong> <span class="text-sky-400">{biz['id']}</span></div>
-              <div><strong>Headquarters:</strong> Thane, Mumbai, Maharashtra</div>
+              <div><strong>Corporate Hub:</strong> Thane, Mumbai, Maharashtra</div>
               <div><strong>Status:</strong> <span class="text-emerald-400 font-bold">100% Verified</span></div>
               <div><strong>Autonomous AI Suite:</strong> Active</div>
             </div>
