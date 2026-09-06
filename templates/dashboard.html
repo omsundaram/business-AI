@@ -42,8 +42,6 @@
   <!-- MAIN HEADER -->
   <header class="bg-slate-950/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between gap-4">
-      
-      <!-- Brand Logo -->
       <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
         <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 flex items-center justify-center font-black text-2xl text-white shadow-lg shadow-sky-500/20">
           <i class="fa-solid fa-cube"></i>
@@ -60,7 +58,6 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
       <div class="hidden md:flex items-center gap-5 text-xs font-semibold text-slate-300">
         <button onclick="navigateTo('home')" class="hover:text-sky-400 transition">Directory Home</button>
         <button onclick="navigateTo('ventures')" class="hover:text-amber-400 transition">OS Ventures</button>
@@ -69,7 +66,6 @@
         <button onclick="navigateTo('about')" class="hover:text-sky-400 transition">About Us</button>
       </div>
 
-      <!-- Action Buttons -->
       <div class="flex items-center gap-3">
         <button onclick="openListingModal()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs sm:text-sm font-black px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 flex items-center gap-2 transition whitespace-nowrap">
           <i class="fa-solid fa-plus-circle"></i> List Business Free
@@ -83,10 +79,8 @@
 
   <!-- ================= 1. DIRECTORY HOME ================= -->
   <div id="page-home" class="page-view flex-1">
-    
     <section class="relative py-14 px-4 border-b border-slate-900">
       <div class="max-w-6xl mx-auto text-center relative z-20">
-        
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold mb-6">
           <span class="text-sky-400 font-bold">OM SUNDARAM</span>
           <span class="text-slate-600">&bull;</span>
@@ -102,26 +96,19 @@
 
         <!-- GLOBAL CASCADING SEARCH BAR -->
         <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-2.5 max-w-5xl mx-auto relative z-30">
-          
           <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
             <i class="fa-solid fa-globe text-sky-400 mr-2 text-xs"></i>
-            <select id="mainCountry" onchange="onHeaderCountryChange()" class="w-full bg-transparent text-xs text-slate-200 font-bold focus:outline-none cursor-pointer">
-              <!-- Populated via JS -->
-            </select>
+            <select id="mainCountry" onchange="onHeaderCountryChange()" class="w-full bg-transparent text-xs text-slate-200 font-bold focus:outline-none cursor-pointer"></select>
           </div>
 
           <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
             <i class="fa-solid fa-map-location-dot text-indigo-400 mr-2 text-xs"></i>
-            <select id="mainState" onchange="onHeaderStateChange()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer">
-              <!-- Populated via JS -->
-            </select>
+            <select id="mainState" onchange="onHeaderStateChange()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer"></select>
           </div>
 
           <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5">
             <i class="fa-solid fa-location-dot text-amber-400 mr-2 text-xs"></i>
-            <select id="mainDistrict" onchange="performSearch()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer">
-              <!-- Populated via JS -->
-            </select>
+            <select id="mainDistrict" onchange="performSearch()" class="w-full bg-transparent text-xs text-slate-200 font-semibold focus:outline-none cursor-pointer"></select>
           </div>
 
           <div class="lg:w-1/4 flex items-center bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 relative">
@@ -130,7 +117,6 @@
             <button onclick="performSearch()" class="ml-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold px-4 py-2 rounded-lg text-xs shadow-md transition whitespace-nowrap">
               Search
             </button>
-
             <div id="typeaheadDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl search-flyout text-left"></div>
           </div>
         </div>
@@ -146,7 +132,6 @@
         </div>
         <span class="text-xs text-amber-400 font-bold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">30+ Verticals</span>
       </div>
-
       <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-3 text-center" id="categoryIconsGrid"></div>
     </section>
 
@@ -159,7 +144,6 @@
         </div>
         <span id="resultsCount" class="text-xs text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1 rounded-full font-bold">Loading...</span>
       </div>
-
       <div id="listingsContainer" class="space-y-6"></div>
     </main>
   </div>
@@ -203,7 +187,7 @@
               </div>
             </div>
             <p class="text-xs text-slate-300 leading-relaxed">
-              One-stop solution for banquet halls, marriage gardens, 4-star hotels, luxury resorts, farmhouses, and long-term commercial property leasing.
+              One-stop solution for banquet halls, marriage gardens, 4-star hotels, luxury resorts, farmhouses, and property leasing.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
@@ -222,7 +206,7 @@
               </div>
             </div>
             <p class="text-xs text-slate-300 leading-relaxed">
-              Trusted matrimonial platform with verified profiles across communities, destination wedding planning, and tailored honeymoon packages.
+              Trusted matrimonial platform with verified profiles across communities, destination wedding planning, and tailored packages.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
@@ -230,89 +214,33 @@
             <button onclick="filterByCat('Matrimonial & Events')" class="text-sky-400 hover:underline">Explore Matrimony &rarr;</button>
           </div>
         </div>
-
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl"><i class="fa-solid fa-building-user"></i></div>
-              <div>
-                <h3 class="text-lg font-bold text-white">OS Real Estate</h3>
-                <span class="text-[10px] text-slate-400 uppercase tracking-wider">Reliable Property Solutions</span>
-              </div>
-            </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Residential flats, luxury villas, commercial showrooms, and industrial plots with zero-brokerage transparent deals.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span class="text-emerald-400 font-bold">Active Venture</span>
-            <button onclick="filterByCat('Real Estate')" class="text-sky-400 hover:underline">Explore Listings &rarr;</button>
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl"><i class="fa-solid fa-gem"></i></div>
-              <div>
-                <h3 class="text-lg font-bold text-white">Clever Mandy Handicrafts</h3>
-                <span class="text-[10px] text-slate-400 uppercase tracking-wider">The Finest Craftsmanship</span>
-              </div>
-            </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Authentic Indian handicrafts, divine collector artifacts, customized home decor, and bespoke artificial & diamond jewelry.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span class="text-emerald-400 font-bold">Active Venture</span>
-            <button onclick="filterByCat('Handicrafts & Jewelry')" class="text-sky-400 hover:underline">Explore Artifacts &rarr;</button>
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl"><i class="fa-solid fa-landmark"></i></div>
-              <div>
-                <h3 class="text-lg font-bold text-white">OS EduTech & Public Works</h3>
-                <span class="text-[10px] text-slate-400 uppercase tracking-wider">Empowering Nation Building</span>
-              </div>
-            </div>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Atal Tinkering Labs (Robotics/IoT/3D Printing), FSSAI FoSTaC Food Safety Certification, Smart Metering, and public welfare utilities.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span class="text-emerald-400 font-bold">Active Venture</span>
-            <button onclick="filterByCat('Government & EduTech')" class="text-sky-400 hover:underline">View Projects &rarr;</button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- ================= 3. AUTONOMOUS AI TOOLS CONSOLE ================= -->
+  <!-- ================= 3. AUTONOMOUS AI TOOLS (WITH INSTANT GRAPHIC GENERATION & DOWNLOAD) ================= -->
   <div id="page-aisuite" class="page-view hidden flex-1 py-16 px-4">
     <div class="max-w-6xl mx-auto space-y-8">
       <div class="text-center max-w-3xl mx-auto">
         <div class="text-xs font-bold text-sky-400 uppercase tracking-widest">AUTONOMOUS BUSINESS SUITE</div>
         <h1 class="text-3xl sm:text-5xl font-black text-white mt-2">Enterprise AI Operations Suite</h1>
-        <p class="text-slate-400 text-sm mt-3">Generate graphics, reels, voice dialer scripts, and leads for your business in seconds.</p>
+        <p class="text-slate-400 text-sm mt-3">Instant Visual Ad Graphic Generation, 30s Reel Scripts, Voice Attendant & Lead Extraction.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Input Form -->
         <div class="lg:col-span-5 glass-card p-6 rounded-3xl space-y-4">
           <h3 class="text-sm font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">Select AI Tool</h3>
           
           <div class="grid grid-cols-2 gap-2">
-            <button onclick="setAITool('graphics', this)" class="ai-tool-btn p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-left border border-sky-500/30">
+            <button onclick="setAITool('graphics', this)" class="ai-tool-btn p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-left border border-sky-500/50">
               <i class="fa-solid fa-palette text-sky-400 mr-2"></i> AI Graphics & Ads
             </button>
             <button onclick="setAITool('video', this)" class="ai-tool-btn p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-left border border-slate-800">
               <i class="fa-solid fa-video text-purple-400 mr-2"></i> Video & Animation
             </button>
             <button onclick="setAITool('voice', this)" class="ai-tool-btn p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-left border border-slate-800">
-              <i class="fa-solid fa-headset text-emerald-400 mr-2"></i> AI Voice Auto-Dialer
+              <i class="fa-solid fa-headset text-emerald-400 mr-2"></i> AI Voice Dialer
             </button>
             <button onclick="setAITool('leads', this)" class="ai-tool-btn p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-left border border-slate-800">
               <i class="fa-solid fa-crosshairs text-amber-400 mr-2"></i> Lead Generation
@@ -320,33 +248,62 @@
           </div>
 
           <div class="space-y-3 pt-2">
-            <input id="ai_biz_name" placeholder="Business Name (e.g. Apex Gym)" value="Apex Fitness Club" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-            <input id="ai_category" placeholder="Industry (e.g. Gym, Doctor, IT)" value="Gym & Fitness" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-            <input id="ai_city" placeholder="City" value="Thane, Mumbai" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
-            <input id="ai_offer" placeholder="Current Offer" value="Flat 30% OFF on Annual Membership" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
+            <div>
+              <label class="text-[11px] text-slate-400 font-semibold">Business Name *</label>
+              <input id="ai_biz_name" placeholder="Business Name" value="Apex Fitness Club" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
+            </div>
+            <div>
+              <label class="text-[11px] text-slate-400 font-semibold">Category / Subcategory *</label>
+              <input id="ai_category" placeholder="Industry" value="Gym & Fitness" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
+            </div>
+            <div>
+              <label class="text-[11px] text-slate-400 font-semibold">Location / City *</label>
+              <input id="ai_city" placeholder="City" value="Thane, Mumbai" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
+            </div>
+            <div>
+              <label class="text-[11px] text-slate-400 font-semibold">Special Offer / Promotion *</label>
+              <input id="ai_offer" placeholder="Current Offer" value="Flat 30% OFF on Annual Membership" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
+            </div>
             
             <button onclick="runSelectedAITool()" class="w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
-              <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Run AI Generation
+              <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Run AI Generation & Render
             </button>
           </div>
         </div>
 
+        <!-- Visual / Terminal Output Display -->
         <div class="lg:col-span-7 glass-card p-6 rounded-3xl flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
               <div class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span id="aiTerminalTitle">Live AI Terminal Output</span>
+                <span id="aiTerminalTitle">AI Graphic Poster Canvas</span>
               </div>
-              <span class="text-[10px] text-sky-400 font-mono">Gemini Engine Active</span>
+              <span class="text-[10px] text-sky-400 font-mono">1080x1080px HD Mode</span>
             </div>
-            <pre id="aiTerminalBox" class="text-xs text-slate-300 font-mono bg-slate-950 p-4 rounded-xl border border-slate-800/80 whitespace-pre-wrap min-h-[300px] max-h-[420px] overflow-y-auto leading-relaxed">
-Select a tool on the left and click "Run AI Generation" to view instant marketing blueprints, scripts, and campaign assets.
-            </pre>
+
+            <!-- 1. GRAPHIC CANVAS DISPLAY -->
+            <div id="graphicOutputWrapper" class="flex flex-col items-center justify-center p-3 bg-slate-950 rounded-2xl border border-slate-800">
+              <canvas id="posterCanvas" width="1080" height="1080" class="w-full max-w-[340px] sm:max-w-[380px] h-auto rounded-xl shadow-2xl border border-slate-700"></canvas>
+              <div class="mt-4 flex gap-3 w-full max-w-[380px]">
+                <button onclick="downloadGeneratedPoster()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-lg transition">
+                  <i class="fa-solid fa-download"></i> Download HD Poster (PNG)
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. TEXT TERMINAL DISPLAY (FOR SCRIPTS, LEADS, VOICE) -->
+            <div id="textOutputWrapper" class="hidden">
+              <pre id="aiTerminalBox" class="text-xs text-slate-300 font-mono bg-slate-950 p-4 rounded-xl border border-slate-800/80 whitespace-pre-wrap min-h-[340px] max-h-[420px] overflow-y-auto leading-relaxed"></pre>
+              <div class="mt-3 text-right">
+                <button onclick="copyAITerminal()" class="text-xs text-sky-400 hover:underline"><i class="fa-regular fa-copy mr-1"></i> Copy Script to Clipboard</button>
+              </div>
+            </div>
           </div>
-          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span class="text-slate-500">Ready to dispatch via WhatsApp API & Call Desk</span>
-            <button onclick="copyAITerminal()" class="text-sky-400 hover:underline"><i class="fa-regular fa-copy mr-1"></i> Copy Output</button>
+
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500 mt-4">
+            <span>Powered by OS GROUP Autonomous Marketing Engine</span>
+            <span class="text-amber-400 font-bold">Thane, Mumbai</span>
           </div>
         </div>
       </div>
@@ -359,7 +316,7 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
       <div class="text-center max-w-3xl mx-auto">
         <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">OS DIGITAL STARTUP BUNDLE</div>
         <h1 class="text-3xl sm:text-5xl font-black text-white mt-2">The 20-Point Business Marketing Kit</h1>
-        <p class="text-slate-400 text-sm mt-3">Comprehensive commercial promotion package from the official OS Startup Marketing catalog.</p>
+        <p class="text-slate-400 text-sm mt-3">Comprehensive commercial promotion package from the official OS Startup Marketing catalog[cite: 6].</p>
       </div>
 
       <div class="glass-card p-8 rounded-3xl border-2 border-amber-400 bg-amber-400/5 relative shadow-2xl">
@@ -367,80 +324,80 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
           <div>
             <span class="bg-amber-400 text-slate-950 text-xs font-black px-3 py-1 rounded-full uppercase">Complete Startup Bundle</span>
             <h2 class="text-2xl font-black text-white mt-2">All-In-One Brand Awareness & Sales Kit</h2>
-            <p class="text-xs text-slate-400 mt-1">Single one-time commercial package covering lead extraction, messaging, creative design, and static website.</p>
+            <p class="text-xs text-slate-400 mt-1">Single one-time commercial package covering lead extraction, messaging, creative design, and static website[cite: 6].</p>
           </div>
           <div class="text-right">
             <div class="text-3xl font-black text-amber-400">₹12,150 <span class="text-xs text-slate-400 font-normal">+ 18% GST</span></div>
-            <span class="text-[11px] text-emerald-400 font-bold">One-Time Package Cost</span>
+            <span class="text-[11px] text-emerald-400 font-bold">One-Time Package Cost[cite: 6]</span>
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-slate-300">
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>1. Bulk SMS Pack (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100</span>
+            <span>1. Bulk SMS Pack (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>2. Bulk WhatsApp Pack (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100</span>
+            <span>2. Bulk WhatsApp Pack (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>3. Bulk WhatsApp Business (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100</span>
+            <span>3. Bulk WhatsApp Business (1,000 Messages)</span><span class="text-amber-400 font-bold">₹100[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>4. Email Pack (500 Normal Mails)</span><span class="text-amber-400 font-bold">₹1,000</span>
+            <span>4. Email Pack (500 Normal Mails)</span><span class="text-amber-400 font-bold">₹1,000[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>5. Email Pack Studio (10 Studio Mails)</span><span class="text-amber-400 font-bold">₹150</span>
+            <span>5. Email Pack Studio (10 Studio Mails)</span><span class="text-amber-400 font-bold">₹150[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>6. Lead Extraction (50 Targeted Leads)</span><span class="text-amber-400 font-bold">₹150</span>
+            <span>6. Lead Extraction (50 Targeted Leads)</span><span class="text-amber-400 font-bold">₹150[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>7. Similar Business Data (500 Data Points)</span><span class="text-amber-400 font-bold">₹250</span>
+            <span>7. Similar Business Data (500 Data Points)</span><span class="text-amber-400 font-bold">₹250[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>8. Facebook Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600</span>
+            <span>8. Facebook Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>9. Instagram Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600</span>
+            <span>9. Instagram Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>10. Pinterest Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600</span>
+            <span>10. Pinterest Post Design (15 Posts)</span><span class="text-amber-400 font-bold">₹600[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>11. YouTube Channel Video (4 Videos / 30s)</span><span class="text-amber-400 font-bold">₹3,200</span>
+            <span>11. YouTube Channel Video (4 Videos / 30s)</span><span class="text-amber-400 font-bold">₹3,200[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>12. Google AdWords Campaign Setup (10 Ads)</span><span class="text-amber-400 font-bold">₹200</span>
+            <span>12. Google AdWords Campaign Setup (10 Ads)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>13. Blog Articles Publication (4 Blogs)</span><span class="text-amber-400 font-bold">₹200</span>
+            <span>13. Blog Articles Publication (4 Blogs)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>14. Graphic Library (50 High-Res Graphics)</span><span class="text-amber-400 font-bold">₹500</span>
+            <span>14. Graphic Library (50 High-Res Graphics)</span><span class="text-amber-400 font-bold">₹500[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>15. Festival Design Templates (50 Templates)</span><span class="text-amber-400 font-bold">₹500</span>
+            <span>15. Festival Design Templates (50 Templates)</span><span class="text-amber-400 font-bold">₹500[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>16. Facebook Lead Extract (20 Targeted Leads)</span><span class="text-amber-400 font-bold">₹200</span>
+            <span>16. Facebook Lead Extract (20 Targeted Leads)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>17. Business Listing on 4 Web Portals</span><span class="text-amber-400 font-bold">₹200</span>
+            <span>17. Business Listing on 4 Web Portals</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>18. Digital Banner Slide Design (5 Banners)</span><span class="text-amber-400 font-bold">₹200</span>
+            <span>18. Digital Banner Slide Design (5 Banners)</span><span class="text-amber-400 font-bold">₹200[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>19. Professional Brand Logo Design</span><span class="text-amber-400 font-bold">₹800</span>
+            <span>19. Professional Brand Logo Design</span><span class="text-amber-400 font-bold">₹800[cite: 6]</span>
           </div>
           <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-            <span>20. Basic 1-Page Custom Website</span><span class="text-amber-400 font-bold">₹2,500</span>
+            <span>20. Basic 1-Page Custom Website</span><span class="text-amber-400 font-bold">₹2,500[cite: 6]</span>
           </div>
         </div>
 
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-800">
           <div class="text-xs text-slate-400">
-            * Dedicated team implementation assistance available for nominal ₹5,000 execution charge.
+            * Dedicated team implementation assistance available for nominal ₹5,000 execution charge[cite: 6].
           </div>
           <button onclick="openListingModalWithPlan('Startup Bundle', 12150)" class="px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition">
             Book Startup Bundle Now &rarr;
@@ -453,10 +410,10 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
   <!-- ================= 5. ABOUT US ================= -->
   <div id="page-about" class="page-view hidden flex-1 py-16 px-4">
     <div class="max-w-5xl mx-auto glass-card p-8 sm:p-12 rounded-3xl space-y-6">
-      <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">ABOUT OMSUNDARAM ENTERTAINTMENT PVT. LTD.</div>
+      <div class="text-xs font-bold text-amber-400 uppercase tracking-widest">ABOUT OMSUNDARAM ENTERTAINTMENT PVT. LTD.[cite: 1, 3]</div>
       <h1 class="text-3xl sm:text-5xl font-black text-white">Universal Autonomous AI Directory & Conglomerate</h1>
       <p class="text-slate-300 text-sm leading-relaxed">
-        Envisioned for long and implemented in the fall of 2017, <strong>OS GROUP (OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED)</strong> is a creative multi-business entity that deals across many channels: Event Management, Digital Marketing, Hospitality, Matrimonial Services, Real Estate, E-Commerce, Handicrafts, and Philanthropy (Life4Help Foundation & Bandhan Foundation)[cite: 2, 7].
+        Envisioned for long and implemented in the fall of 2017, <strong>OS GROUP (OMSUNDARAM ENTERTAINTMENT PRIVATE LIMITED)</strong> is a creative multi-business entity that deals across many channels: Event Management, Digital Marketing, Hospitality, Matrimonial Services, Real Estate, E-Commerce, Handicrafts, and Philanthropy (Life4Help Foundation & Bandhan Foundation)[cite: 1, 2, 7].
       </p>
 
       <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
@@ -464,21 +421,6 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
         <div><strong class="text-slate-400">Incorporation Date:</strong><br><span class="text-emerald-400 font-bold">02 April 2018</span>[cite: 1]</div>
         <div><strong class="text-slate-400">PAN:</strong><br><span class="text-amber-400 font-bold">AACCO6782G</span>[cite: 1]</div>
         <div><strong class="text-slate-400">TAN:</strong><br><span class="text-purple-400 font-bold">JPRO02582G</span>[cite: 1]</div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-800">
-        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-          <div class="text-xl font-bold text-sky-400"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> ENTHRAL</div>
-          <p class="text-xs text-slate-400 mt-2">Verified interactive storefronts that captivate customer trust instantly.</p>
-        </div>
-        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-          <div class="text-xl font-bold text-amber-400"><i class="fa-solid fa-comments mr-1"></i> ENGAGE</div>
-          <p class="text-xs text-slate-400 mt-2">Autonomous WhatsApp bots, voice attendants, and real-time lead qualification.</p>
-        </div>
-        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-          <div class="text-xl font-bold text-emerald-400"><i class="fa-solid fa-bolt mr-1"></i> EXECUTE</div>
-          <p class="text-xs text-slate-400 mt-2">Direct call connection, localized Google map routing, and customer acquisition.</p>
-        </div>
       </div>
 
       <div class="p-5 bg-sky-500/10 border border-sky-500/20 rounded-2xl text-xs text-slate-300 space-y-2">
@@ -517,7 +459,7 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
       <button onclick="closeListingModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
       
       <div class="border-b border-slate-800 pb-4 mb-6">
-        <div class="text-[10px] tracking-widest text-sky-400 font-bold uppercase">OM SUNDARAM &bull; OS GROUP</div>
+        <div class="text-[10px] tracking-widest text-sky-400 font-bold uppercase">OM SUNDARAM &bull; OS GROUP[cite: 2, 4]</div>
         <h3 class="text-2xl font-extrabold text-white mt-1">Vendor Application & Free Listing</h3>
         <p class="text-xs text-slate-400 mt-1">Official Onboarding Form &bull; Thane, Mumbai, Maharashtra</p>
       </div>
@@ -623,7 +565,7 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
   <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
       <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-      <div class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">OM SUNDARAM</div>
+      <div class="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-1">OM SUNDARAM[cite: 2, 4]</div>
       <h3 class="text-lg font-bold text-white mb-2">Vendor Portal Login</h3>
       <input id="login_id" placeholder="OS ID or Mobile Number" class="w-full mb-3 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
       <input id="login_pwd" type="password" placeholder="Password" class="w-full mb-4 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-sky-500">
@@ -633,14 +575,12 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
     </div>
   </div>
 
-  <!-- ================= FOOTER WITH THANE, MUMBAI ADDRESS & MAP ================= -->
+  <!-- ================= FOOTER ================= -->
   <footer class="border-t border-slate-900 bg-slate-950 pt-12 pb-8 text-xs text-slate-400 relative z-20">
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-      
-      <!-- Col 1 -->
       <div class="space-y-3">
         <div class="text-lg font-black text-white brand-title">OS GROUP</div>
-        <div class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">OMSUNDARAM ENTERTAINTMENT PVT. LTD.</div>
+        <div class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">OMSUNDARAM ENTERTAINTMENT PVT. LTD.[cite: 1, 3]</div>
         <p class="text-slate-500 text-xs leading-relaxed">
           CIN: U74999RJ2018PTC060766 &bull; India's Premier Autonomous Business Super-App & Classified Network[cite: 1].
         </p>
@@ -649,7 +589,6 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
         </div>
       </div>
 
-      <!-- Col 2 -->
       <div class="space-y-2">
         <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Platform Navigation</div>
         <div><a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-sky-400 transition">Directory Home</a></div>
@@ -661,7 +600,6 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
         <div><a href="javascript:void(0)" onclick="navigateTo('policy')" class="hover:text-sky-400 transition">Privacy Policy</a></div>
       </div>
 
-      <!-- Col 3 -->
       <div class="space-y-2">
         <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Contact & Support</div>
         <div class="text-slate-300"><strong>Customer Care:</strong> <a href="tel:+917597777897" class="text-amber-400 font-bold">+91 7597777897</a>[cite: 3]</div>
@@ -669,7 +607,6 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
         <div class="text-slate-400"><strong>Corporate Address:</strong> Thane, Mumbai, Maharashtra, India</div>
       </div>
 
-      <!-- Col 4: Updated Thane, Mumbai Interactive Map -->
       <div class="space-y-2">
         <div class="text-white font-bold mb-2 uppercase tracking-wider text-[11px]">Corporate Office Map</div>
         <p class="text-[11px] text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Thane, Mumbai, Maharashtra</p>
@@ -691,22 +628,16 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
     const globalCountries = [
       { name: "India", dial: "+91" }, { name: "United States", dial: "+1" }, { name: "United Arab Emirates", dial: "+971" },
       { name: "United Kingdom", dial: "+44" }, { name: "Canada", dial: "+1" }, { name: "Australia", dial: "+61" },
-      { name: "Singapore", dial: "+65" }, { name: "Saudi Arabia", dial: "+966" }, { name: "Qatar", dial: "+974" },
-      { name: "Germany", dial: "+49" }, { name: "France", dial: "+33" }, { name: "Japan", dial: "+81" },
-      { name: "New Zealand", dial: "+64" }, { name: "Malaysia", dial: "+60" }, { name: "Kuwait", dial: "+965" }
+      { name: "Singapore", dial: "+65" }, { name: "Saudi Arabia", dial: "+966" }, { name: "Qatar", dial: "+974" }
     ];
 
     const indiaGeo = {
-      "Maharashtra": ["Thane", "Mumbai", "Pune", "Nagpur", "Nashik", "Navi Mumbai", "Aurangabad", "Solapur", "Kolhapur"],
-      "Delhi NCR": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Noida", "Gurugram", "Faridabad"],
+      "Maharashtra": ["Thane", "Mumbai", "Pune", "Nagpur", "Nashik", "Navi Mumbai", "Aurangabad", "Solapur"],
+      "Delhi NCR": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Noida", "Gurugram"],
       "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"],
       "Karnataka": ["Bengaluru Urban", "Mysuru", "Hubballi-Dharwad", "Mangaluru"],
-      "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer"],
-      "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Noida"],
-      "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Salem"],
-      "Telangana": ["Hyderabad", "Warangal", "Nizamabad"],
-      "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Mohali"],
-      "Haryana": ["Gurugram", "Faridabad", "Panipat", "Ambala"]
+      "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"],
+      "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Noida"]
     };
 
     const coreCategories = [
@@ -742,19 +673,166 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
         b.className = "ai-tool-btn p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-left border border-slate-800";
       });
       btn.className = "ai-tool-btn p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-left border border-sky-500/50";
-      document.getElementById('aiTerminalTitle').innerText = `${tool.toUpperCase()} GENERATION CONSOLE`;
+
+      if (tool === 'graphics') {
+        document.getElementById('aiTerminalTitle').innerText = "AI Graphic Poster Canvas";
+        document.getElementById('graphicOutputWrapper').classList.remove('hidden');
+        document.getElementById('textOutputWrapper').classList.add('hidden');
+      } else {
+        document.getElementById('aiTerminalTitle').innerText = `${tool.toUpperCase()} CONSOLE OUTPUT`;
+        document.getElementById('graphicOutputWrapper').classList.add('hidden');
+        document.getElementById('textOutputWrapper').classList.remove('hidden');
+      }
+    }
+
+    // ================= DYNAMIC 1080x1080 HD POSTER GENERATOR =================
+    function renderLiveAIPoster(bizName, category, city, offer) {
+      const canvas = document.getElementById("posterCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // 1. Background Gradient
+      const grad = ctx.createLinearGradient(0, 0, 1080, 1080);
+      grad.addColorStop(0, "#090d16");
+      grad.addColorStop(0.5, "#0f172a");
+      grad.addColorStop(1, "#020617");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 1080, 1080);
+
+      // 2. Futuristic Geometric Neon Accents
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.25)";
+      ctx.lineWidth = 4;
+      ctx.strokeRect(50, 50, 980, 980);
+
+      ctx.strokeStyle = "rgba(245, 158, 11, 0.4)";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(65, 65, 950, 950);
+
+      // Radial Glow Spotlight
+      const spotGrad = ctx.createRadialGradient(540, 480, 50, 540, 480, 500);
+      spotGrad.addColorStop(0, "rgba(14, 165, 233, 0.2)");
+      spotGrad.addColorStop(1, "transparent");
+      ctx.fillStyle = spotGrad;
+      ctx.fillRect(50, 50, 980, 980);
+
+      // 3. Top OS Group Verification Header Banner
+      ctx.fillStyle = "rgba(15, 23, 42, 0.85)";
+      ctx.fillRect(80, 90, 920, 110);
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.3)";
+      ctx.strokeRect(80, 90, 920, 110);
+
+      ctx.fillStyle = "#38bdf8";
+      ctx.font = "bold 26px 'Plus Jakarta Sans', sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText("OS GROUP CERTIFIED BUSINESS PARTNER", 120, 140);
+
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "600 18px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("OM SUNDARAM • ENTHRAL | ENGAGE | EXECUTE", 120, 175);
+
+      ctx.fillStyle = "#10b981";
+      ctx.font = "bold 22px 'Plus Jakarta Sans', sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText("✔ 100% VERIFIED", 960, 155);
+
+      // 4. Center Main Business Identity
+      ctx.textAlign = "center";
+      
+      // Category pill
+      ctx.fillStyle = "rgba(245, 158, 11, 0.15)";
+      ctx.fillRect(340, 240, 400, 50);
+      ctx.strokeStyle = "#f59e0b";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(340, 240, 400, 50);
+      
+      ctx.fillStyle = "#f59e0b";
+      ctx.font = "bold 22px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText((category || "PREMIUM SERVICES").toUpperCase(), 540, 273);
+
+      // Business Name (Big & Bold)
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "900 68px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText(bizName || "YOUR BUSINESS NAME", 540, 390);
+
+      // Location line
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "600 28px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("📍 " + (city || "Thane, Mumbai") + " • Professional Services", 540, 440);
+
+      // 5. Promotional Offer Box (Catchy Gold/Amber Card)
+      ctx.fillStyle = "rgba(14, 165, 233, 0.12)";
+      ctx.fillRect(120, 520, 840, 220);
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.6)";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(120, 520, 840, 220);
+
+      ctx.fillStyle = "#38bdf8";
+      ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("SPECIAL EXCLUSIVE PROMOTION", 540, 575);
+
+      ctx.fillStyle = "#fbbf24";
+      ctx.font = "900 52px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText(offer || "FLAT 30% OFF ON ALL PACKAGES", 540, 650);
+
+      ctx.fillStyle = "#e2e8f0";
+      ctx.font = "500 22px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("Limited Period Offer • Valid Across OS Group Marketplace Network", 540, 700);
+
+      // 6. Multi-Channel Call to Action (CTA Bar)
+      ctx.fillStyle = "#0284c7";
+      ctx.fillRect(140, 780, 380, 80);
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 28px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("📞 CALL DIRECTLY", 330, 830);
+
+      ctx.fillStyle = "#059669";
+      ctx.fillRect(560, 780, 380, 80);
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 28px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("💬 WHATSAPP CHAT", 750, 830);
+
+      // 7. Footer Seal & Compliance
+      ctx.fillStyle = "#64748b";
+      ctx.font = "600 20px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("Corporate Office: Thane, Mumbai, Maharashtra | Helpline: +91 7597777897 | www.osgroup.in", 540, 930);
+
+      ctx.font = "500 16px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("OMSUNDARAM ENTERTAINTMENT PVT. LTD. (CIN: U74999RJ2018PTC060766)", 540, 970);
+    }
+
+    function downloadGeneratedPoster() {
+      const canvas = document.getElementById("posterCanvas");
+      const link = document.createElement("a");
+      const name = (document.getElementById("ai_biz_name").value || "OS-Poster").replace(/\s+/g, "_");
+      link.download = `${name}_AI_Promo_Poster.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
     }
 
     async function runSelectedAITool() {
+      const biz = document.getElementById('ai_biz_name').value || "Apex Fitness Club";
+      const cat = document.getElementById('ai_category').value || "Gym & Fitness";
+      const city = document.getElementById('ai_city').value || "Thane, Mumbai";
+      const off = document.getElementById('ai_offer').value || "Flat 30% OFF";
+
+      if (currentAITool === 'graphics') {
+        renderLiveAIPoster(biz, cat, city, off);
+        document.getElementById('graphicOutputWrapper').classList.remove('hidden');
+        document.getElementById('textOutputWrapper').classList.add('hidden');
+        return;
+      }
+
+      // If text/script tool selected
       const box = document.getElementById('aiTerminalBox');
       box.innerText = "Connecting to AI Core & generating outputs...";
+      document.getElementById('graphicOutputWrapper').classList.add('hidden');
+      document.getElementById('textOutputWrapper').classList.remove('hidden');
 
       const payload = {
         tool: currentAITool,
-        business_name: document.getElementById('ai_biz_name').value || "Apex Business",
-        category: document.getElementById('ai_category').value || "Services",
-        city: document.getElementById('ai_city').value || "Thane, Mumbai",
-        offer: document.getElementById('ai_offer').value || "Special Deal"
+        business_name: biz,
+        category: cat,
+        city: city,
+        offer: off
       };
 
       try {
@@ -1023,6 +1101,7 @@ Select a tool on the left and click "Run AI Generation" to view instant marketin
     window.onload = () => {
       setupCountries();
       setupCategories();
+      renderLiveAIPoster("Apex Fitness Club", "Gym & Fitness", "Thane, Mumbai", "Flat 30% OFF on Annual Membership");
     };
   </script>
 </body>
